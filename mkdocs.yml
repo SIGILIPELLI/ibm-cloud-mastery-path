@@ -1,0 +1,100 @@
+site_name: IBM Cloud Mastery Path
+site_description: A structured, module-wise IBM Cloud training program from entry level to master level, covering IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.
+site_url: https://sigilipelli.github.io/ibm-cloud-mastery-path/
+repo_url: https://github.com/SIGILIPELLI/ibm-cloud-mastery-path
+repo_name: ibm-cloud-mastery-path
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - Privacy Policy: privacy.md
+  - "Level 1 · Entry":
+      - Overview: level-1/index.md
+      - "01 · Setup & the ibmcloud CLI": level-1/01-setup-cli.md
+      - "02 · IAM & Security Basics": level-1/02-iam-security.md
+      - "03 · Virtual Servers (VPC)": level-1/03-virtual-servers-vpc.md
+      - "04 · Cloud Object Storage": level-1/04-cloud-object-storage.md
+      - "05 · VPC Networking Basics": level-1/05-vpc-networking.md
+      - "06 · Cloud Databases": level-1/06-cloud-databases.md
+      - "07 · Cloud Functions": level-1/07-cloud-functions.md
+      - "08 · Monitoring & Log Analysis": level-1/08-monitoring-log-analysis.md
+      - "09 · Schematics (Terraform IaC)": level-1/09-schematics-iac.md
+      - "10 · Capstone Project": level-1/10-capstone-project.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · VPC Design Deep Dive": level-2/01-vpc-design-deep-dive.md
+      - "02 · Load Balancing & Auto Scaling": level-2/02-load-balancing-autoscaling.md
+      - "03 · Kubernetes Service (IKS) Basics": level-2/03-kubernetes-service-basics.md
+      - "04 · Code Engine (Containers & Serverless)": level-2/04-code-engine.md
+      - "05 · Cloud Databases Deep Dive": level-2/05-cloud-databases-deep-dive.md
+      - "06 · Object Storage Lifecycle & Security": level-2/06-object-storage-lifecycle-security.md
+      - "07 · IAM Access Policies Deep Dive": level-2/07-iam-access-policies-deep-dive.md
+      - "08 · CI/CD with Toolchains": level-2/08-cicd-toolchains.md
+      - "09 · Schematics Workspaces & Modules": level-2/09-schematics-workspaces-modules.md
+      - "10 · Project — Highly Available Web App": level-2/10-project-ha-web-app.md
+  - "Level 3 · Advanced":
+      - Overview: level-3/index.md
+      - "01 · Red Hat OpenShift on IBM Cloud": level-3/01-openshift-on-ibm-cloud.md
+      - "02 · Advanced Networking (Transit Gateway, VPN, Direct Link)": level-3/02-advanced-networking.md
+      - "03 · Security & Compliance (Security Advisor, Key Protect)": level-3/03-security-compliance.md
+      - "04 · Event-Driven Architecture (Event Streams/Kafka)": level-3/04-event-driven-architecture.md
+      - "05 · Observability at Scale (Activity Tracker, Sysdig)": level-3/05-observability-at-scale.md
+      - "06 · Multi-Region & Disaster Recovery": level-3/06-multi-region-dr.md
+      - "07 · Cost Management & Governance": level-3/07-cost-management-governance.md
+      - "08 · Advanced Schematics & Terraform Modules": level-3/08-advanced-schematics-terraform.md
+      - "09 · API Management (API Connect)": level-3/09-api-management.md
+      - "10 · Project — Multi-Tier Microservices Platform": level-3/10-project-microservices-platform.md
+  - "Level 4 · Master":
+      - Overview: level-4/index.md
+      - "01 · Enterprise Account Structure & IAM at Scale": level-4/01-enterprise-account-iam-at-scale.md
+      - "02 · Landing Zone Architecture": level-4/02-landing-zone-architecture.md
+      - "03 · Hybrid Cloud with Satellite": level-4/03-hybrid-cloud-satellite.md
+      - "04 · Data & AI Services (watsonx, Db2 Warehouse)": level-4/04-data-ai-services.md
+      - "05 · Performance & Scalability Engineering": level-4/05-performance-scalability-engineering.md
+      - "06 · Security Deep Dive (Hyper Protect, Key Management)": level-4/06-security-deep-dive.md
+      - "07 · Automation Pipelines at Scale (GitOps + Schematics)": level-4/07-automation-pipelines-at-scale.md
+      - "08 · FinOps & Enterprise Cost Optimization": level-4/08-finops-cost-optimization.md
+      - "09 · Site Reliability Engineering on IBM Cloud": level-4/09-sre-on-ibm-cloud.md
+      - "10 · Capstone Project": level-4/10-capstone-project.md

@@ -1,0 +1,8 @@
+# 07 · Automation Pipelines at Scale (GitOps + Schematics)
+
+!!! info "Coming soon"
+    This module's full lessons and code snippets are being written next.
+    This module will cover GitOps-driven infrastructure automation combining Git workflows with Schematics pipelines.
+
+Check the task ledger or ask your virtual employee for a status update on
+remaining content.
