@@ -4,5 +4,4 @@
     This module's full lessons and code snippets are being written next.
     This module will cover integrating watsonx AI services and Db2 Warehouse into cloud-native applications.
 
-Check the task ledger or ask your virtual employee for a status update on
-remaining content.
+More lessons are on the way — check back soon.

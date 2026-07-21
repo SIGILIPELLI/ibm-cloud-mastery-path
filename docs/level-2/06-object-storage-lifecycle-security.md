@@ -4,5 +4,4 @@
     This module's full lessons and code snippets are being written next.
     This module will cover lifecycle rules, retention policies, and IAM-based access control for Cloud Object Storage.
 
-Check the task ledger or ask your virtual employee for a status update on
-remaining content.
+More lessons are on the way — check back soon.
