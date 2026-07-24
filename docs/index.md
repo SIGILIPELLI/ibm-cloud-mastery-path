@@ -1,3 +1,8 @@
+---
+title: "Learn IBM Cloud Free: Beginner to Master Course"
+description: "Free IBM Cloud course from beginner to advanced -- hands-on cloud lessons with real capstone projects. Part of a 37-course free learning library."
+---
+
 # IBM Cloud Mastery Path
 
 A structured, module-wise IBM Cloud training program that takes you from
