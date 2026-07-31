@@ -15,9 +15,9 @@ snippets in every module and a hands-on project at the end of each level.
 | Level | Focus | Modules |
 |-------|-------|---------|
 | [Level 1 · Entry](level-1/index.md) | Account setup, IAM, VPC compute, storage, networking, databases, serverless, monitoring, Schematics | 9 topics + 1 project |
-| [Level 2 · Intermediate](level-2/index.md) | VPC design, load balancing/auto scaling, Kubernetes Service, Code Engine, CI/CD toolchains | 9 topics + 1 project |
-| [Level 3 · Advanced](level-3/index.md) | OpenShift, advanced networking, security/compliance, event-driven architecture, multi-region DR | 9 topics + 1 project |
-| [Level 4 · Master](level-4/index.md) | Enterprise IAM, landing zones, hybrid cloud, data/AI services, FinOps, SRE | 9 topics + 1 capstone |
+| Level 2 · Intermediate (coming soon) | VPC design, load balancing/auto scaling, Kubernetes Service, Code Engine, CI/CD toolchains | 9 topics + 1 project |
+| Level 3 · Advanced (coming soon) | OpenShift, advanced networking, security/compliance, event-driven architecture, multi-region DR | 9 topics + 1 project |
+| Level 4 · Master (coming soon) | Enterprise IAM, landing zones, hybrid cloud, data/AI services, FinOps, SRE | 9 topics + 1 capstone |
 
 ## How to use this site
 
