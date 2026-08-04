@@ -62,8 +62,19 @@ nav:
       - "08 · Monitoring & Log Analysis": level-1/08-monitoring-log-analysis.md
       - "09 · Schematics (Terraform IaC)": level-1/09-schematics-iac.md
       - "10 · Capstone Project": level-1/10-capstone-project.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · VPC Design Deep Dive": level-2/01-vpc-design-deep-dive.md
+      - "02 · Load Balancing & Auto Scaling": level-2/02-load-balancing-autoscaling.md
+      - "03 · Kubernetes Service (IKS) Basics": level-2/03-kubernetes-service-basics.md
+      - "04 · Code Engine (Containers & Serverless)": level-2/04-code-engine.md
+      - "05 · Cloud Databases Deep Dive": level-2/05-cloud-databases-deep-dive.md
+      - "06 · Object Storage Lifecycle & Security": level-2/06-object-storage-lifecycle-security.md
+      - "07 · IAM Access Policies Deep Dive": level-2/07-iam-access-policies-deep-dive.md
+      - "08 · CI/CD with Toolchains": level-2/08-cicd-toolchains.md
+      - "09 · Schematics Workspaces & Modules": level-2/09-schematics-workspaces-modules.md
+      - "10 · Project — Highly Available Web App": level-2/10-project-ha-web-app.md
 # --- auto-pruned stub levels (see AdSense low-value-content fix) ---
 exclude_docs: |
-  level-2/*.md
   level-3/*.md
   level-4/*.md
