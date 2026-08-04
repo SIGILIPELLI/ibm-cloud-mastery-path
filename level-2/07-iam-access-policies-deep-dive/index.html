@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-1/07-cloud-functions/">
+        <link rel="canonical" href="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/07-iam-access-policies-deep-dive/">
       
       
-        <link rel="prev" href="../06-cloud-databases/">
+        <link rel="prev" href="../06-object-storage-lifecycle-security/">
       
       
-        <link rel="next" href="../08-monitoring-log-analysis/">
+        <link rel="next" href="../08-cicd-toolchains/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>07 · Cloud Functions - IBM Cloud Mastery Path</title>
+        <title>07 · IAM Access Policies Deep Dive - IBM Cloud Mastery Path</title>
       
     
     
@@ -64,11 +64,11 @@
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="IBM Cloud Mastery Path">
-  <meta property="og:title" content="07 · Cloud Functions">
+  <meta property="og:title" content="07 · IAM Access Policies Deep Dive">
   <meta property="og:description" content="A structured, module-wise IBM Cloud training program from entry level to master level — free, with runnable CLI commands and config in every module, focused on IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.">
-  <meta property="og:url" content="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-1/07-cloud-functions/">
+  <meta property="og:url" content="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/07-iam-access-policies-deep-dive/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="07 · Cloud Functions">
+  <meta name="twitter:title" content="07 · IAM Access Policies Deep Dive">
   <meta name="twitter:description" content="A structured, module-wise IBM Cloud training program from entry level to master level — free, with runnable CLI commands and config in every module, focused on IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
      crossorigin="anonymous"></script>
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#07-cloud-functions" class="md-skip">
+        <a href="#07-iam-access-policies-deep-dive" class="md-skip">
           Skip to content
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              07 · Cloud Functions
+              07 · IAM Access Policies Deep Dive
             
           </span>
         </div>
@@ -275,13 +275,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../level-1/" class="md-tabs__link">
           
   
   
@@ -299,11 +297,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../level-2/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -420,6 +420,380 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/01-setup-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Setup & the ibmcloud CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/02-iam-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · IAM & Security Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/03-virtual-servers-vpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Virtual Servers (VPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/04-cloud-object-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Cloud Object Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/05-vpc-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · VPC Networking Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/06-cloud-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Cloud Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/07-cloud-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Cloud Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/08-monitoring-log-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Monitoring & Log Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/09-schematics-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Schematics (Terraform IaC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -467,7 +841,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -478,7 +852,7 @@
   <span class="md-ellipsis">
     
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
     
@@ -489,18 +863,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
           </label>
@@ -515,14 +889,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-setup-cli/" class="md-nav__link">
+      <a href="../01-vpc-design-deep-dive/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    01 · Setup & the ibmcloud CLI
+    01 · VPC Design Deep Dive
   
 
     
@@ -543,14 +917,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-iam-security/" class="md-nav__link">
+      <a href="../02-load-balancing-autoscaling/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    02 · IAM & Security Basics
+    02 · Load Balancing & Auto Scaling
   
 
     
@@ -571,14 +945,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-virtual-servers-vpc/" class="md-nav__link">
+      <a href="../03-kubernetes-service-basics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    03 · Virtual Servers (VPC)
+    03 · Kubernetes Service (IKS) Basics
   
 
     
@@ -599,14 +973,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-cloud-object-storage/" class="md-nav__link">
+      <a href="../04-code-engine/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    04 · Cloud Object Storage
+    04 · Code Engine (Containers & Serverless)
   
 
     
@@ -627,14 +1001,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-vpc-networking/" class="md-nav__link">
+      <a href="../05-cloud-databases-deep-dive/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    05 · VPC Networking Basics
+    05 · Cloud Databases Deep Dive
   
 
     
@@ -655,14 +1029,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-cloud-databases/" class="md-nav__link">
+      <a href="../06-object-storage-lifecycle-security/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    06 · Cloud Databases
+    06 · Object Storage Lifecycle & Security
   
 
     
@@ -699,7 +1073,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Cloud Functions
+    07 · IAM Access Policies Deep Dive
   
 
     
@@ -717,7 +1091,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Cloud Functions
+    07 · IAM Access Policies Deep Dive
   
 
     
@@ -743,10 +1117,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-plugin-and-check-your-namespace" class="md-nav__link">
+  <a href="#custom-roles-narrower-than-the-built-in-ones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the plugin and check your namespace
+        Custom roles: narrower than the built-in ones
       
     </span>
   </a>
@@ -754,10 +1128,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actions-the-basic-unit-of-code" class="md-nav__link">
+  <a href="#tag-based-access-scale-without-touching-policies-per-resource" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions: the basic unit of code
+        Tag-based access: scale without touching policies per resource
       
     </span>
   </a>
@@ -765,10 +1139,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-actions-exposing-an-action-over-plain-http" class="md-nav__link">
+  <a href="#service-to-service-authorization-no-human-managed-key-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Web actions: exposing an action over plain HTTP
+        Service-to-service authorization: no human-managed key required
       
     </span>
   </a>
@@ -776,10 +1150,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#triggers-and-rules-reacting-to-events" class="md-nav__link">
+  <a href="#context-based-restrictions-lock-access-to-a-network-not-just-an-identity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Triggers and rules: reacting to events
+        Context-based restrictions: lock access to a network, not just an identity
       
     </span>
   </a>
@@ -787,21 +1161,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequences-chaining-actions-together" class="md-nav__link">
+  <a href="#auditing-effective-access" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequences: chaining actions together
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packages-grouping-related-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Packages: grouping related actions
+        Auditing effective access
       
     </span>
   </a>
@@ -846,381 +1209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-monitoring-log-analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 · Monitoring & Log Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-schematics-iac/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 · Schematics (Terraform IaC)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-capstone-project/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10 · Capstone Project
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../level-2/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Level 2 · Intermediate
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Level 2 · Intermediate
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/01-vpc-design-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 · VPC Design Deep Dive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/02-load-balancing-autoscaling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 · Load Balancing & Auto Scaling
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/03-kubernetes-service-basics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 · Kubernetes Service (IKS) Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/04-code-engine/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 · Code Engine (Containers & Serverless)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/05-cloud-databases-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    05 · Cloud Databases Deep Dive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/06-object-storage-lifecycle-security/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    06 · Object Storage Lifecycle & Security
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/07-iam-access-policies-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    07 · IAM Access Policies Deep Dive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/08-cicd-toolchains/" class="md-nav__link">
+      <a href="../08-cicd-toolchains/" class="md-nav__link">
         
   
   
@@ -1248,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/09-schematics-workspaces-modules/" class="md-nav__link">
+      <a href="../09-schematics-workspaces-modules/" class="md-nav__link">
         
   
   
@@ -1276,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/10-project-ha-web-app/" class="md-nav__link">
+      <a href="../10-project-ha-web-app/" class="md-nav__link">
         
   
   
@@ -1331,10 +1320,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-plugin-and-check-your-namespace" class="md-nav__link">
+  <a href="#custom-roles-narrower-than-the-built-in-ones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the plugin and check your namespace
+        Custom roles: narrower than the built-in ones
       
     </span>
   </a>
@@ -1342,10 +1331,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actions-the-basic-unit-of-code" class="md-nav__link">
+  <a href="#tag-based-access-scale-without-touching-policies-per-resource" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions: the basic unit of code
+        Tag-based access: scale without touching policies per resource
       
     </span>
   </a>
@@ -1353,10 +1342,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-actions-exposing-an-action-over-plain-http" class="md-nav__link">
+  <a href="#service-to-service-authorization-no-human-managed-key-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Web actions: exposing an action over plain HTTP
+        Service-to-service authorization: no human-managed key required
       
     </span>
   </a>
@@ -1364,10 +1353,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#triggers-and-rules-reacting-to-events" class="md-nav__link">
+  <a href="#context-based-restrictions-lock-access-to-a-network-not-just-an-identity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Triggers and rules: reacting to events
+        Context-based restrictions: lock access to a network, not just an identity
       
     </span>
   </a>
@@ -1375,21 +1364,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequences-chaining-actions-together" class="md-nav__link">
+  <a href="#auditing-effective-access" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequences: chaining actions together
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packages-grouping-related-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Packages: grouping related actions
+        Auditing effective access
       
     </span>
   </a>
@@ -1438,84 +1416,110 @@
   
 
 
-<h1 id="07-cloud-functions">07 · Cloud Functions<a class="headerlink" href="#07-cloud-functions" title="Permanent link">&para;</a></h1>
-<p><strong>IBM Cloud Functions</strong> is IBM's serverless platform, built on the
-open-source <strong>Apache OpenWhisk</strong> project: you deploy small units of code
-("actions"), and the platform runs them on demand, scales them
-automatically, and only bills for actual execution time. This module covers
-actions, triggers, rules, and sequences — the building blocks the capstone
-project in Module 10 wires together into an API.</p>
-<h2 id="install-the-plugin-and-check-your-namespace">Install the plugin and check your namespace<a class="headerlink" href="#install-the-plugin-and-check-your-namespace" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ibmcloud<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>cloud-functions
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>namespace<span class="w"> </span>list
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ibmcloud<span class="w"> </span>target<span class="w"> </span>--cf<span class="w">   </span><span class="c1"># or: ibmcloud fn namespace target &lt;namespace&gt;</span>
+<h1 id="07-iam-access-policies-deep-dive">07 · IAM Access Policies Deep Dive<a class="headerlink" href="#07-iam-access-policies-deep-dive" title="Permanent link">&para;</a></h1>
+<p>Level 1's IAM module (Module 2) covered users, service IDs, access groups,
+and resource-group-scoped policies — enough for a single developer working
+alone. This module adds what a real team or automated pipeline needs:
+custom roles narrower than the built-in ones, tag-based access that scales
+without editing policies every time a resource is created, service-to-
+service authorization so one IBM Cloud service can call another without a
+human-managed API key, and context-based restrictions that lock access
+down to specific networks regardless of what any policy grants.</p>
+<h2 id="custom-roles-narrower-than-the-built-in-ones">Custom roles: narrower than the built-in ones<a class="headerlink" href="#custom-roles-narrower-than-the-built-in-ones" title="Permanent link">&para;</a></h2>
+<p>The built-in service access roles (<code>Reader</code>, <code>Writer</code>, <code>Manager</code>, ...) are
+often coarser than you want. A <strong>custom role</strong> picks individual actions
+out of a service's full action list:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># See what actions a service exposes before building a role around them</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>service-roles<span class="w"> </span>--service-name<span class="w"> </span>cloud-object-storage<span class="w"> </span>--output<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.serviceRoles[].actions&#39;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>role-create<span class="w"> </span>cos-read-only-metadata<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--service-name<span class="w"> </span>cloud-object-storage<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>--display-name<span class="w"> </span><span class="s2">&quot;COS Read Metadata Only&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span>--actions<span class="w"> </span><span class="s2">&quot;cloud-object-storage.object.get,cloud-object-storage.bucket.get_bucket_head&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>access-group-policy-create<span class="w"> </span>mastery-path-developers<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span>--roles<span class="w"> </span><span class="s2">&quot;cos-read-only-metadata&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span>--service-name<span class="w"> </span>cloud-object-storage<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span>--resource-group-name<span class="w"> </span>mastery-path
 </code></pre></div>
-<h2 id="actions-the-basic-unit-of-code">Actions: the basic unit of code<a class="headerlink" href="#actions-the-basic-unit-of-code" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// hello.js</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;world&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="w"> </span><span class="p">};</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">exports</span><span class="p">.</span><span class="nx">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">main</span><span class="p">;</span>
+<p>A custom role that grants only <code>object.get</code> and a HEAD-style metadata read
+can list and inspect objects but can't download full object bodies or
+write anything — useful for a monitoring or auditing identity that has no
+business handling actual object content.</p>
+<h2 id="tag-based-access-scale-without-touching-policies-per-resource">Tag-based access: scale without touching policies per resource<a class="headerlink" href="#tag-based-access-scale-without-touching-policies-per-resource" title="Permanent link">&para;</a></h2>
+<p>Resource-group scoping (Level 1) is coarse; per-resource scoping (Module 6
+of this level) doesn't scale past a handful of resources. <strong>Access tags</strong>
+sit in between: tag resources by attribute, then write one policy against
+the tag instead of one policy per resource.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Tag resources as you create them (or after the fact)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ibmcloud<span class="w"> </span>resource<span class="w"> </span>tag-attach<span class="w"> </span>--tag-names<span class="w"> </span><span class="s2">&quot;env:staging&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--resource-name<span class="w"> </span>mastery-postgres-ha
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>ibmcloud<span class="w"> </span>resource<span class="w"> </span>tag-attach<span class="w"> </span>--tag-names<span class="w"> </span><span class="s2">&quot;env:staging&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>--resource-name<span class="w"> </span>mastery-iks
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># One policy grants access to everything tagged env:staging, present or future</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>access-group-policy-create<span class="w"> </span>mastery-path-developers<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--roles<span class="w"> </span>Viewer<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>--service-name<span class="w"> </span>all-identity-services<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>--resource-tags<span class="w"> </span><span class="s2">&quot;env:staging&quot;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>hello<span class="w"> </span>hello.js
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>hello<span class="w"> </span>--result<span class="w"> </span>--param<span class="w"> </span>name<span class="w"> </span><span class="s2">&quot;IBM Cloud&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># { &quot;message&quot;: &quot;Hello, IBM Cloud!&quot; }</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Async invocation returns an activation ID immediately</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>hello<span class="w"> </span>--param<span class="w"> </span>name<span class="w"> </span><span class="s2">&quot;IBM Cloud&quot;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>activation<span class="w"> </span>result<span class="w"> </span>&lt;activation-id&gt;
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>activation<span class="w"> </span>logs<span class="w"> </span>&lt;activation-id&gt;
+<p><strong>Gotcha:</strong> access tags are not the same as the cost/billing tags you
+might already be attaching for reporting — both use <code>resource tag-attach</code>,
+but only tags actually referenced in a policy's <code>--resource-tags</code> do
+anything for access control. Attaching a tag to a resource grants nobody
+anything by itself; the policy referencing that tag is what matters.</p>
+<h2 id="service-to-service-authorization-no-human-managed-key-required">Service-to-service authorization: no human-managed key required<a class="headerlink" href="#service-to-service-authorization-no-human-managed-key-required" title="Permanent link">&para;</a></h2>
+<p>When one IBM Cloud service needs to call another on your behalf — Code
+Engine pulling from Container Registry, Kubernetes Service reading a
+Secrets Manager certificate — the clean answer is an <strong>authorization
+policy</strong> between the two services, not an API key stored as a Kubernetes
+secret.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>authorization-policy-create<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>codeengine<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>cloud-object-storage<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>Reader<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>--source-resource-group-name<span class="w"> </span>mastery-path<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>--target-resource-group-name<span class="w"> </span>mastery-path
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>authorization-policies
 </code></pre></div>
-<h2 id="web-actions-exposing-an-action-over-plain-http">Web actions: exposing an action over plain HTTP<a class="headerlink" href="#web-actions-exposing-an-action-over-plain-http" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>update<span class="w"> </span>hello<span class="w"> </span>hello.js<span class="w"> </span>--web<span class="w"> </span><span class="nb">true</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>get<span class="w"> </span>hello<span class="w"> </span>--url
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># https://&lt;region&gt;.functions.cloud.ibm.com/api/v1/web/&lt;namespace&gt;/default/hello</span>
+<p>Once created, any Code Engine app or job in that resource group can read
+from any COS bucket in the same resource group using its own platform
+identity — no <code>PGPASSWORD</code>-style secret to create, rotate, or leak. This
+is exactly the mechanism that lets IKS worker nodes pull images from
+Container Registry in Module 3 without an explicit pull secret.</p>
+<h2 id="context-based-restrictions-lock-access-to-a-network-not-just-an-identity">Context-based restrictions: lock access to a network, not just an identity<a class="headerlink" href="#context-based-restrictions-lock-access-to-a-network-not-just-an-identity" title="Permanent link">&para;</a></h2>
+<p>A policy answers "can this identity do this action." A <strong>context-based
+restriction (CBR)</strong> adds "...but only from this network" on top, and
+applies even to identities with an otherwise valid <code>Administrator</code> policy.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Define a network zone -- here, only the VPC from Module 1</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ibmcloud<span class="w"> </span>cbr<span class="w"> </span>zone-create<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--name<span class="w"> </span>mastery-path-vpc-zone<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--description<span class="w"> </span><span class="s2">&quot;Only ha-app-vpc&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--addresses<span class="w"> </span><span class="nv">type</span><span class="o">=</span>vpc,value<span class="o">=</span><span class="k">$(</span>ibmcloud<span class="w"> </span>is<span class="w"> </span>vpc<span class="w"> </span>ha-app-vpc<span class="w"> </span>--output<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span>.crn<span class="k">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Restrict Cloud Object Storage so its API is only reachable from that zone</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>ibmcloud<span class="w"> </span>cbr<span class="w"> </span>rule-create<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span>--description<span class="w"> </span><span class="s2">&quot;COS reachable only from ha-app-vpc&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>--resource-attributes<span class="w"> </span><span class="nv">serviceName</span><span class="o">=</span>cloud-object-storage,resourceGroupId<span class="o">=</span>&lt;mastery-path-rg-id&gt;<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span>--zone-id<span class="w"> </span>&lt;zone-id-from-above&gt;<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>--enforcement-mode<span class="w"> </span>enabled
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>curl<span class="w"> </span><span class="s2">&quot;https://&lt;region&gt;.functions.cloud.ibm.com/api/v1/web/&lt;namespace&gt;/default/hello?name=Curl&quot;</span>
-</code></pre></div>
-<p>A web action is the simplest way to give a frontend (like the COS static
-site from Module 4) a callable backend endpoint with no server to manage.</p>
-<h2 id="triggers-and-rules-reacting-to-events">Triggers and rules: reacting to events<a class="headerlink" href="#triggers-and-rules-reacting-to-events" title="Permanent link">&para;</a></h2>
-<p>A <strong>trigger</strong> is a named event channel; a <strong>rule</strong> connects a trigger to an
-action so firing the trigger invokes the action.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>trigger<span class="w"> </span>create<span class="w"> </span>every-morning<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--feed<span class="w"> </span>/whisk.system/alarms/alarm<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--param<span class="w"> </span>cron<span class="w"> </span><span class="s2">&quot;0 8 * * *&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>rule<span class="w"> </span>create<span class="w"> </span>run-hello-daily<span class="w"> </span>every-morning<span class="w"> </span>hello
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Manually fire any trigger to test the wiring without waiting for the feed</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>trigger<span class="w"> </span>fire<span class="w"> </span>every-morning
-</code></pre></div>
-<h2 id="sequences-chaining-actions-together">Sequences: chaining actions together<a class="headerlink" href="#sequences-chaining-actions-together" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>validate<span class="w"> </span>validate.js
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>process<span class="w"> </span>process.js
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>notify<span class="w"> </span>notify.js
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Runs validate -&gt; process -&gt; notify, passing each action&#39;s output as</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># the next action&#39;s input</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>pipeline<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span>--sequence<span class="w"> </span>validate,process,notify
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>pipeline<span class="w"> </span>--result<span class="w"> </span>--param<span class="w"> </span>path<span class="w"> </span><span class="s2">&quot;/orders/42&quot;</span>
-</code></pre></div>
-<p>Sequences are billed as their sum of constituent action durations, but
-deploy and invoke as a single logical action — useful for small pipelines
-without standing up an orchestrator.</p>
-<h2 id="packages-grouping-related-actions">Packages: grouping related actions<a class="headerlink" href="#packages-grouping-related-actions" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>package<span class="w"> </span>create<span class="w"> </span>visits-api
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>visits-api/record<span class="w"> </span>record.js
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>visits-api/list<span class="w"> </span>list.js
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>list
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># /namespace/visits-api/record</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># /namespace/visits-api/list</span>
+<p><strong>Gotcha:</strong> <code>--enforcement-mode enabled</code> blocks non-conforming requests
+immediately; test new rules with <code>--enforcement-mode report</code> first, which
+logs what <em>would</em> have been blocked without actually blocking it — CBR
+mistakes lock out legitimate traffic (including your own laptop, if it's
+outside the zone you defined) just as effectively as they block attackers.</p>
+<h2 id="auditing-effective-access">Auditing effective access<a class="headerlink" href="#auditing-effective-access" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># What can this identity actually do, combining IAM policy + CBR + tags?</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>user-policies<span class="w"> </span>you@example.com
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>access-group-policies<span class="w"> </span>mastery-path-developers
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>ibmcloud<span class="w"> </span>cbr<span class="w"> </span>rules
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Simulate whether a specific request would be allowed, without making it</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>access-report<span class="w"> </span>--output<span class="w"> </span>json
 </code></pre></div>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
@@ -1527,49 +1531,47 @@ without standing up an orchestrator.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>ibmcloud fn action create &lt;name&gt; &lt;file.js&gt;</code></td>
-<td>Deploy a new action</td>
+<td><code>ibmcloud iam service-roles --service-name &lt;svc&gt;</code></td>
+<td>List a service's available fine-grained actions</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action update &lt;name&gt; &lt;file.js&gt; --web true</code></td>
-<td>Update an action / expose it as a web action</td>
+<td><code>ibmcloud iam role-create &lt;name&gt; --service-name &lt;svc&gt; --actions &lt;a,b&gt;</code></td>
+<td>Define a custom role</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action invoke &lt;name&gt; --result --param k v</code></td>
-<td>Invoke synchronously</td>
+<td><code>ibmcloud resource tag-attach --tag-names &lt;k:v&gt; --resource-name &lt;r&gt;</code></td>
+<td>Tag a resource</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn activation logs &lt;id&gt;</code></td>
-<td>Fetch logs for an async invocation</td>
+<td><code>ibmcloud iam access-group-policy-create &lt;group&gt; --resource-tags &lt;k:v&gt;</code></td>
+<td>Grant access scoped by tag</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn trigger create &lt;name&gt; --feed &lt;feed&gt; --param k v</code></td>
-<td>Create an event trigger</td>
+<td><code>ibmcloud iam authorization-policy-create &lt;source-svc&gt; &lt;target-svc&gt; &lt;role&gt;</code></td>
+<td>Let one service call another without a manual API key</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn rule create &lt;name&gt; &lt;trigger&gt; &lt;action&gt;</code></td>
-<td>Bind a trigger to an action</td>
+<td><code>ibmcloud cbr zone-create --name &lt;n&gt; --addresses type=vpc,value=&lt;crn&gt;</code></td>
+<td>Define an allowed network zone</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action create &lt;name&gt; --sequence a,b,c</code></td>
-<td>Chain actions into a sequence</td>
+<td><code>ibmcloud cbr rule-create --resource-attributes &lt;attrs&gt; --zone-id &lt;id&gt; --enforcement-mode report</code></td>
+<td>Restrict a service to a zone (test mode first)</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn package create &lt;name&gt;</code></td>
-<td>Group related actions</td>
-</tr>
-<tr>
-<td><code>ibmcloud fn action delete &lt;name&gt;</code></td>
-<td>Delete an action</td>
+<td><code>ibmcloud iam access-group-policies &lt;group&gt;</code></td>
+<td>Audit a group's effective policies</td>
 </tr>
 </tbody>
 </table>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
-<p>Deploy the <code>hello</code> action above as a web action and confirm you can <code>curl</code>
-it from the command line without any IBM Cloud CLI involved. Then create an
-<code>every-morning</code> alarm trigger and a rule connecting it to <code>hello</code>, fire the
-trigger manually with <code>ibmcloud fn trigger fire</code>, and inspect the resulting
-activation's logs to confirm the action actually ran.</p>
+<p>Create a custom role on Cloud Object Storage that only permits reading
+object metadata, and grant it to <code>mastery-path-developers</code>. Tag
+<code>mastery-postgres-ha</code> and <code>mastery-iks</code> with <code>env:staging</code> and add one
+policy granting <code>Viewer</code> across everything with that tag. Then create a
+CBR zone scoped to <code>ha-app-vpc</code> and a rule restricting Cloud Object
+Storage to it in <code>report</code> mode; check <code>ibmcloud cbr rules</code> and confirm the
+rule exists before ever flipping it to <code>enabled</code> against production data.</p>
 
 
 

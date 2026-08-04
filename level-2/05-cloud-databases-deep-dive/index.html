@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-1/07-cloud-functions/">
+        <link rel="canonical" href="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/05-cloud-databases-deep-dive/">
       
       
-        <link rel="prev" href="../06-cloud-databases/">
+        <link rel="prev" href="../04-code-engine/">
       
       
-        <link rel="next" href="../08-monitoring-log-analysis/">
+        <link rel="next" href="../06-object-storage-lifecycle-security/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>07 · Cloud Functions - IBM Cloud Mastery Path</title>
+        <title>05 · Cloud Databases Deep Dive - IBM Cloud Mastery Path</title>
       
     
     
@@ -64,11 +64,11 @@
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="IBM Cloud Mastery Path">
-  <meta property="og:title" content="07 · Cloud Functions">
+  <meta property="og:title" content="05 · Cloud Databases Deep Dive">
   <meta property="og:description" content="A structured, module-wise IBM Cloud training program from entry level to master level — free, with runnable CLI commands and config in every module, focused on IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.">
-  <meta property="og:url" content="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-1/07-cloud-functions/">
+  <meta property="og:url" content="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/05-cloud-databases-deep-dive/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="07 · Cloud Functions">
+  <meta name="twitter:title" content="05 · Cloud Databases Deep Dive">
   <meta name="twitter:description" content="A structured, module-wise IBM Cloud training program from entry level to master level — free, with runnable CLI commands and config in every module, focused on IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
      crossorigin="anonymous"></script>
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#07-cloud-functions" class="md-skip">
+        <a href="#05-cloud-databases-deep-dive" class="md-skip">
           Skip to content
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              07 · Cloud Functions
+              05 · Cloud Databases Deep Dive
             
           </span>
         </div>
@@ -275,13 +275,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../level-1/" class="md-tabs__link">
           
   
   
@@ -299,11 +297,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../level-2/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -420,6 +420,380 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/01-setup-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Setup & the ibmcloud CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/02-iam-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · IAM & Security Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/03-virtual-servers-vpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Virtual Servers (VPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/04-cloud-object-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Cloud Object Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/05-vpc-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · VPC Networking Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/06-cloud-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Cloud Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/07-cloud-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Cloud Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/08-monitoring-log-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Monitoring & Log Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/09-schematics-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Schematics (Terraform IaC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -467,7 +841,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -478,7 +852,7 @@
   <span class="md-ellipsis">
     
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
     
@@ -489,18 +863,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
           </label>
@@ -515,14 +889,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-setup-cli/" class="md-nav__link">
+      <a href="../01-vpc-design-deep-dive/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    01 · Setup & the ibmcloud CLI
+    01 · VPC Design Deep Dive
   
 
     
@@ -543,14 +917,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-iam-security/" class="md-nav__link">
+      <a href="../02-load-balancing-autoscaling/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    02 · IAM & Security Basics
+    02 · Load Balancing & Auto Scaling
   
 
     
@@ -571,14 +945,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-virtual-servers-vpc/" class="md-nav__link">
+      <a href="../03-kubernetes-service-basics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    03 · Virtual Servers (VPC)
+    03 · Kubernetes Service (IKS) Basics
   
 
     
@@ -599,70 +973,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-cloud-object-storage/" class="md-nav__link">
+      <a href="../04-code-engine/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    04 · Cloud Object Storage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-vpc-networking/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    05 · VPC Networking Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-cloud-databases/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    06 · Cloud Databases
+    04 · Code Engine (Containers & Serverless)
   
 
     
@@ -699,7 +1017,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Cloud Functions
+    05 · Cloud Databases Deep Dive
   
 
     
@@ -717,7 +1035,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Cloud Functions
+    05 · Cloud Databases Deep Dive
   
 
     
@@ -743,10 +1061,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-plugin-and-check-your-namespace" class="md-nav__link">
+  <a href="#ha-is-about-members-not-instances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the plugin and check your namespace
+        HA is about members, not instances
       
     </span>
   </a>
@@ -754,10 +1072,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actions-the-basic-unit-of-code" class="md-nav__link">
+  <a href="#read-replicas-scale-reads-without-scaling-writes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions: the basic unit of code
+        Read replicas: scale reads without scaling writes
       
     </span>
   </a>
@@ -765,10 +1083,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-actions-exposing-an-action-over-plain-http" class="md-nav__link">
+  <a href="#point-in-time-recovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Web actions: exposing an action over plain HTTP
+        Point-in-time recovery
       
     </span>
   </a>
@@ -776,10 +1094,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#triggers-and-rules-reacting-to-events" class="md-nav__link">
+  <a href="#private-endpoint-the-connection-production-should-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Triggers and rules: reacting to events
+        Private endpoint: the connection production should use
       
     </span>
   </a>
@@ -787,21 +1105,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequences-chaining-actions-together" class="md-nav__link">
+  <a href="#scaling-and-maintenance-windows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequences: chaining actions together
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packages-grouping-related-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Packages: grouping related actions
+        Scaling and maintenance windows
       
     </span>
   </a>
@@ -846,325 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-monitoring-log-analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 · Monitoring & Log Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-schematics-iac/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 · Schematics (Terraform IaC)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-capstone-project/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10 · Capstone Project
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../level-2/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Level 2 · Intermediate
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Level 2 · Intermediate
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/01-vpc-design-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 · VPC Design Deep Dive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/02-load-balancing-autoscaling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 · Load Balancing & Auto Scaling
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/03-kubernetes-service-basics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 · Kubernetes Service (IKS) Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/04-code-engine/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 · Code Engine (Containers & Serverless)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/05-cloud-databases-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    05 · Cloud Databases Deep Dive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/06-object-storage-lifecycle-security/" class="md-nav__link">
+      <a href="../06-object-storage-lifecycle-security/" class="md-nav__link">
         
   
   
@@ -1192,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/07-iam-access-policies-deep-dive/" class="md-nav__link">
+      <a href="../07-iam-access-policies-deep-dive/" class="md-nav__link">
         
   
   
@@ -1220,7 +1209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/08-cicd-toolchains/" class="md-nav__link">
+      <a href="../08-cicd-toolchains/" class="md-nav__link">
         
   
   
@@ -1248,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/09-schematics-workspaces-modules/" class="md-nav__link">
+      <a href="../09-schematics-workspaces-modules/" class="md-nav__link">
         
   
   
@@ -1276,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/10-project-ha-web-app/" class="md-nav__link">
+      <a href="../10-project-ha-web-app/" class="md-nav__link">
         
   
   
@@ -1331,10 +1320,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-plugin-and-check-your-namespace" class="md-nav__link">
+  <a href="#ha-is-about-members-not-instances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the plugin and check your namespace
+        HA is about members, not instances
       
     </span>
   </a>
@@ -1342,10 +1331,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actions-the-basic-unit-of-code" class="md-nav__link">
+  <a href="#read-replicas-scale-reads-without-scaling-writes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions: the basic unit of code
+        Read replicas: scale reads without scaling writes
       
     </span>
   </a>
@@ -1353,10 +1342,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-actions-exposing-an-action-over-plain-http" class="md-nav__link">
+  <a href="#point-in-time-recovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Web actions: exposing an action over plain HTTP
+        Point-in-time recovery
       
     </span>
   </a>
@@ -1364,10 +1353,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#triggers-and-rules-reacting-to-events" class="md-nav__link">
+  <a href="#private-endpoint-the-connection-production-should-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Triggers and rules: reacting to events
+        Private endpoint: the connection production should use
       
     </span>
   </a>
@@ -1375,21 +1364,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequences-chaining-actions-together" class="md-nav__link">
+  <a href="#scaling-and-maintenance-windows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequences: chaining actions together
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packages-grouping-related-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Packages: grouping related actions
+        Scaling and maintenance windows
       
     </span>
   </a>
@@ -1438,85 +1416,100 @@
   
 
 
-<h1 id="07-cloud-functions">07 · Cloud Functions<a class="headerlink" href="#07-cloud-functions" title="Permanent link">&para;</a></h1>
-<p><strong>IBM Cloud Functions</strong> is IBM's serverless platform, built on the
-open-source <strong>Apache OpenWhisk</strong> project: you deploy small units of code
-("actions"), and the platform runs them on demand, scales them
-automatically, and only bills for actual execution time. This module covers
-actions, triggers, rules, and sequences — the building blocks the capstone
-project in Module 10 wires together into an API.</p>
-<h2 id="install-the-plugin-and-check-your-namespace">Install the plugin and check your namespace<a class="headerlink" href="#install-the-plugin-and-check-your-namespace" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ibmcloud<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>cloud-functions
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>namespace<span class="w"> </span>list
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ibmcloud<span class="w"> </span>target<span class="w"> </span>--cf<span class="w">   </span><span class="c1"># or: ibmcloud fn namespace target &lt;namespace&gt;</span>
+<h1 id="05-cloud-databases-deep-dive">05 · Cloud Databases Deep Dive<a class="headerlink" href="#05-cloud-databases-deep-dive" title="Permanent link">&para;</a></h1>
+<p>Level 1's database module (Module 6) provisioned a single PostgreSQL
+deployment and connected to it — enough to store data, not enough to
+survive a node failure or a bad migration. This module covers what "fully
+managed" actually buys you across the <strong>Databases for...</strong> family: multi
+member high availability, read replicas for scaling reads, point-in-time
+recovery, and the private-endpoint connectivity that production workloads
+should use instead of the public one.</p>
+<h2 id="ha-is-about-members-not-instances">HA is about members, not instances<a class="headerlink" href="#ha-is-about-members-not-instances" title="Permanent link">&para;</a></h2>
+<p>A Databases for PostgreSQL (or MongoDB, or most engines in the family)
+deployment isn't one server — it's a set of <strong>members</strong> in a replica set.
+The <code>standard</code> plan already provisions with replication for failover; what
+you control is how much capacity each member gets and, for some engines,
+how many members exist.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ibmcloud<span class="w"> </span>resource<span class="w"> </span>service-instance-create<span class="w"> </span>mastery-postgres-ha<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>databases-for-postgresql<span class="w"> </span>standard<span class="w"> </span>us-south<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--resource-group-name<span class="w"> </span>mastery-path<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">&#39;{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">    &quot;members_memory_allocation_mb&quot;: 4096,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">    &quot;members_disk_allocation_mb&quot;: 20480,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s1">    &quot;members_cpu_allocation_count&quot;: 2</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s1">  }&#39;</span>
 </code></pre></div>
-<h2 id="actions-the-basic-unit-of-code">Actions: the basic unit of code<a class="headerlink" href="#actions-the-basic-unit-of-code" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// hello.js</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;world&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="w"> </span><span class="p">};</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">exports</span><span class="p">.</span><span class="nx">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">main</span><span class="p">;</span>
+<p><strong>Gotcha:</strong> these <code>members_*</code> values apply <em>per member</em>, not to the
+deployment total — <code>members_memory_allocation_mb: 4096</code> on a 3-member
+replica set provisions 3 × 4 GB, not one 4 GB pool split three ways. Sizing
+math that ignores this reliably surprises people the first time they see
+the bill.</p>
+<h2 id="read-replicas-scale-reads-without-scaling-writes">Read replicas: scale reads without scaling writes<a class="headerlink" href="#read-replicas-scale-reads-without-scaling-writes" title="Permanent link">&para;</a></h2>
+<p>For read-heavy workloads, a <strong>read replica</strong> is a separate deployment that
+continuously streams from the primary and serves read-only queries,
+keeping expensive analytical or reporting queries off the primary that
+your application writes to.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ibmcloud<span class="w"> </span>cdb<span class="w"> </span>deployment-replica-create<span class="w"> </span>mastery-postgres-ha<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--name<span class="w"> </span>mastery-postgres-read1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--resource-group-name<span class="w"> </span>mastery-path
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Replicas have their own connection endpoint -- get its credentials</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>ibmcloud<span class="w"> </span>resource<span class="w"> </span>service-key-create<span class="w"> </span>mastery-postgres-read1-cred<span class="w"> </span>Administrator<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--instance-name<span class="w"> </span>mastery-postgres-read1
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>hello<span class="w"> </span>hello.js
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>hello<span class="w"> </span>--result<span class="w"> </span>--param<span class="w"> </span>name<span class="w"> </span><span class="s2">&quot;IBM Cloud&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># { &quot;message&quot;: &quot;Hello, IBM Cloud!&quot; }</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Async invocation returns an activation ID immediately</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>hello<span class="w"> </span>--param<span class="w"> </span>name<span class="w"> </span><span class="s2">&quot;IBM Cloud&quot;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>activation<span class="w"> </span>result<span class="w"> </span>&lt;activation-id&gt;
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>activation<span class="w"> </span>logs<span class="w"> </span>&lt;activation-id&gt;
+<p>Point read-only application code (reporting dashboards, exports) at the
+replica's connection string and leave transactional writes going to the
+primary. Replication lag is normally sub-second but is still <em>eventual</em>
+consistency — don't read your own write back from a replica immediately
+after writing it and expect to always see it.</p>
+<h2 id="point-in-time-recovery">Point-in-time recovery<a class="headerlink" href="#point-in-time-recovery" title="Permanent link">&para;</a></h2>
+<p>Beyond the on-demand backups from Level 1, Databases deployments support
+<strong>point-in-time recovery (PITR)</strong> — restoring to any moment within the
+retention window, not just to a specific backup snapshot.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># List recovery points / backups available</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ibmcloud<span class="w"> </span>cdb<span class="w"> </span>deployment-backups<span class="w"> </span>mastery-postgres-ha
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Restore to a specific point in time into a NEW deployment</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># (PITR always creates a new instance -- it never overwrites the source)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ibmcloud<span class="w"> </span>cdb<span class="w"> </span>deployment-restore<span class="w"> </span>mastery-postgres-ha<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>--point-in-time<span class="w"> </span><span class="s2">&quot;2026-08-01T14:30:00Z&quot;</span>
 </code></pre></div>
-<h2 id="web-actions-exposing-an-action-over-plain-http">Web actions: exposing an action over plain HTTP<a class="headerlink" href="#web-actions-exposing-an-action-over-plain-http" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>update<span class="w"> </span>hello<span class="w"> </span>hello.js<span class="w"> </span>--web<span class="w"> </span><span class="nb">true</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>get<span class="w"> </span>hello<span class="w"> </span>--url
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># https://&lt;region&gt;.functions.cloud.ibm.com/api/v1/web/&lt;namespace&gt;/default/hello</span>
+<p><strong>Gotcha:</strong> restoring never touches the original deployment — it always
+creates a fresh one. Plan for that in incident response: recovering from a
+bad migration means standing up a new deployment, verifying the data, and
+then repointing the application, not waiting for the original to "come
+back."</p>
+<h2 id="private-endpoint-the-connection-production-should-use">Private endpoint: the connection production should use<a class="headerlink" href="#private-endpoint-the-connection-production-should-use" title="Permanent link">&para;</a></h2>
+<p>The public endpoint used in Level 1's exercise is fine for a laptop, wrong
+for an app running inside the VPC from Module 1 — the private endpoint
+keeps traffic on IBM's internal network instead of going out to the public
+internet and back in.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Enable the private endpoint (also requires VPE/Virtual Private Endpoint</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># gateway setup in the consuming VPC for full private connectivity)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ibmcloud<span class="w"> </span>cdb<span class="w"> </span>deployment-connections<span class="w"> </span>mastery-postgres-ha<span class="w"> </span>--endpoint-type<span class="w"> </span>private
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>ibmcloud<span class="w"> </span>resource<span class="w"> </span>service-key<span class="w"> </span>mastery-postgres-ha-cred<span class="w"> </span>--output<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.credentials.connection.postgres.hosts&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>curl<span class="w"> </span><span class="s2">&quot;https://&lt;region&gt;.functions.cloud.ibm.com/api/v1/web/&lt;namespace&gt;/default/hello?name=Curl&quot;</span>
+<p>Connecting from a VSI or Kubernetes pod inside <code>ha-app-vpc</code> (Module 1) over
+the private endpoint means database traffic never crosses IBM Cloud's
+public network boundary — one less thing an IAM misconfiguration or public
+security-group rule could accidentally expose.</p>
+<h2 id="scaling-and-maintenance-windows">Scaling and maintenance windows<a class="headerlink" href="#scaling-and-maintenance-windows" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Live scale: memory/disk/cpu changes roll through members one at a time</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ibmcloud<span class="w"> </span>cdb<span class="w"> </span>deployment-scale<span class="w"> </span>mastery-postgres-ha<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--memory<span class="w"> </span><span class="m">8192</span><span class="w"> </span>--disk<span class="w"> </span><span class="m">40960</span><span class="w"> </span>--cpu<span class="w"> </span><span class="m">4</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Check (and set) the maintenance window for patches you don&#39;t control</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>ibmcloud<span class="w"> </span>cdb<span class="w"> </span>deployment-maintenance<span class="w"> </span>mastery-postgres-ha
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>ibmcloud<span class="w"> </span>cdb<span class="w"> </span>deployment-maintenance-update<span class="w"> </span>mastery-postgres-ha<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>--day<span class="w"> </span>sunday<span class="w"> </span>--hour<span class="w"> </span><span class="m">3</span>
 </code></pre></div>
-<p>A web action is the simplest way to give a frontend (like the COS static
-site from Module 4) a callable backend endpoint with no server to manage.</p>
-<h2 id="triggers-and-rules-reacting-to-events">Triggers and rules: reacting to events<a class="headerlink" href="#triggers-and-rules-reacting-to-events" title="Permanent link">&para;</a></h2>
-<p>A <strong>trigger</strong> is a named event channel; a <strong>rule</strong> connects a trigger to an
-action so firing the trigger invokes the action.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>trigger<span class="w"> </span>create<span class="w"> </span>every-morning<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--feed<span class="w"> </span>/whisk.system/alarms/alarm<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--param<span class="w"> </span>cron<span class="w"> </span><span class="s2">&quot;0 8 * * *&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>rule<span class="w"> </span>create<span class="w"> </span>run-hello-daily<span class="w"> </span>every-morning<span class="w"> </span>hello
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Manually fire any trigger to test the wiring without waiting for the feed</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>trigger<span class="w"> </span>fire<span class="w"> </span>every-morning
-</code></pre></div>
-<h2 id="sequences-chaining-actions-together">Sequences: chaining actions together<a class="headerlink" href="#sequences-chaining-actions-together" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>validate<span class="w"> </span>validate.js
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>process<span class="w"> </span>process.js
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>notify<span class="w"> </span>notify.js
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Runs validate -&gt; process -&gt; notify, passing each action&#39;s output as</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># the next action&#39;s input</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>pipeline<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span>--sequence<span class="w"> </span>validate,process,notify
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>pipeline<span class="w"> </span>--result<span class="w"> </span>--param<span class="w"> </span>path<span class="w"> </span><span class="s2">&quot;/orders/42&quot;</span>
-</code></pre></div>
-<p>Sequences are billed as their sum of constituent action durations, but
-deploy and invoke as a single logical action — useful for small pipelines
-without standing up an orchestrator.</p>
-<h2 id="packages-grouping-related-actions">Packages: grouping related actions<a class="headerlink" href="#packages-grouping-related-actions" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>package<span class="w"> </span>create<span class="w"> </span>visits-api
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>visits-api/record<span class="w"> </span>record.js
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>visits-api/list<span class="w"> </span>list.js
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>list
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># /namespace/visits-api/record</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># /namespace/visits-api/list</span>
-</code></pre></div>
+<p>Rolling scale/patch operations take each member out of rotation briefly one
+at a time, which is exactly why a single-member deployment (some smaller
+plans) sees a real connection blip during patching, while a properly
+multi-member HA deployment doesn't — the replica set keeps serving from
+the members not currently being touched.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1527,49 +1520,44 @@ without standing up an orchestrator.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>ibmcloud fn action create &lt;name&gt; &lt;file.js&gt;</code></td>
-<td>Deploy a new action</td>
+<td><code>ibmcloud resource service-instance-create &lt;name&gt; databases-for-postgresql standard &lt;region&gt; -p '{...}'</code></td>
+<td>Provision with explicit per-member sizing</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action update &lt;name&gt; &lt;file.js&gt; --web true</code></td>
-<td>Update an action / expose it as a web action</td>
+<td><code>ibmcloud cdb deployment-replica-create &lt;primary&gt; --name &lt;replica&gt;</code></td>
+<td>Create a read replica</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action invoke &lt;name&gt; --result --param k v</code></td>
-<td>Invoke synchronously</td>
+<td><code>ibmcloud cdb deployment-backups &lt;name&gt;</code></td>
+<td>List backups / recovery points</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn activation logs &lt;id&gt;</code></td>
-<td>Fetch logs for an async invocation</td>
+<td><code>ibmcloud cdb deployment-restore &lt;name&gt; --point-in-time &lt;ts&gt;</code></td>
+<td>Restore to a point in time (creates a new deployment)</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn trigger create &lt;name&gt; --feed &lt;feed&gt; --param k v</code></td>
-<td>Create an event trigger</td>
+<td><code>ibmcloud cdb deployment-connections &lt;name&gt; --endpoint-type private</code></td>
+<td>Switch to the private endpoint</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn rule create &lt;name&gt; &lt;trigger&gt; &lt;action&gt;</code></td>
-<td>Bind a trigger to an action</td>
+<td><code>ibmcloud cdb deployment-scale &lt;name&gt; --memory &lt;mb&gt; --disk &lt;mb&gt; --cpu &lt;n&gt;</code></td>
+<td>Live rolling resize</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action create &lt;name&gt; --sequence a,b,c</code></td>
-<td>Chain actions into a sequence</td>
-</tr>
-<tr>
-<td><code>ibmcloud fn package create &lt;name&gt;</code></td>
-<td>Group related actions</td>
-</tr>
-<tr>
-<td><code>ibmcloud fn action delete &lt;name&gt;</code></td>
-<td>Delete an action</td>
+<td><code>ibmcloud cdb deployment-maintenance-update &lt;name&gt; --day &lt;d&gt; --hour &lt;h&gt;</code></td>
+<td>Set the patch maintenance window</td>
 </tr>
 </tbody>
 </table>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
-<p>Deploy the <code>hello</code> action above as a web action and confirm you can <code>curl</code>
-it from the command line without any IBM Cloud CLI involved. Then create an
-<code>every-morning</code> alarm trigger and a rule connecting it to <code>hello</code>, fire the
-trigger manually with <code>ibmcloud fn trigger fire</code>, and inspect the resulting
-activation's logs to confirm the action actually ran.</p>
+<p>Provision <code>mastery-postgres-ha</code> with explicit <code>members_*</code> sizing, create a
+read replica, and confirm the replica has its own connection endpoint via
+a separate service key. Trigger an on-demand backup, then use
+<code>ibmcloud cdb deployment-backups</code> to find its timestamp and practice a
+point-in-time restore into a new deployment. Confirm the restored
+deployment has the data you expect, then delete the replica and the
+restored deployment (keep only the primary if you're continuing to later
+modules, since Module 10's project reuses a database from this family).</p>
 
 
 

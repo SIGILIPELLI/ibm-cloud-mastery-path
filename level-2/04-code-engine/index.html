@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-1/07-cloud-functions/">
+        <link rel="canonical" href="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/04-code-engine/">
       
       
-        <link rel="prev" href="../06-cloud-databases/">
+        <link rel="prev" href="../03-kubernetes-service-basics/">
       
       
-        <link rel="next" href="../08-monitoring-log-analysis/">
+        <link rel="next" href="../05-cloud-databases-deep-dive/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>07 · Cloud Functions - IBM Cloud Mastery Path</title>
+        <title>04 · Code Engine (Containers & Serverless) - IBM Cloud Mastery Path</title>
       
     
     
@@ -64,11 +64,11 @@
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="IBM Cloud Mastery Path">
-  <meta property="og:title" content="07 · Cloud Functions">
+  <meta property="og:title" content="04 · Code Engine (Containers & Serverless)">
   <meta property="og:description" content="A structured, module-wise IBM Cloud training program from entry level to master level — free, with runnable CLI commands and config in every module, focused on IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.">
-  <meta property="og:url" content="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-1/07-cloud-functions/">
+  <meta property="og:url" content="https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/04-code-engine/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="07 · Cloud Functions">
+  <meta name="twitter:title" content="04 · Code Engine (Containers & Serverless)">
   <meta name="twitter:description" content="A structured, module-wise IBM Cloud training program from entry level to master level — free, with runnable CLI commands and config in every module, focused on IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
      crossorigin="anonymous"></script>
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#07-cloud-functions" class="md-skip">
+        <a href="#04-code-engine-containers-serverless" class="md-skip">
           Skip to content
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              07 · Cloud Functions
+              04 · Code Engine (Containers & Serverless)
             
           </span>
         </div>
@@ -275,13 +275,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../level-1/" class="md-tabs__link">
           
   
   
@@ -299,11 +297,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../level-2/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -420,6 +420,380 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/01-setup-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Setup & the ibmcloud CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/02-iam-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · IAM & Security Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/03-virtual-servers-vpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Virtual Servers (VPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/04-cloud-object-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Cloud Object Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/05-vpc-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · VPC Networking Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/06-cloud-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Cloud Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/07-cloud-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Cloud Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/08-monitoring-log-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Monitoring & Log Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/09-schematics-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Schematics (Terraform IaC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -467,7 +841,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -478,7 +852,7 @@
   <span class="md-ellipsis">
     
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
     
@@ -489,18 +863,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
           </label>
@@ -515,14 +889,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-setup-cli/" class="md-nav__link">
+      <a href="../01-vpc-design-deep-dive/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    01 · Setup & the ibmcloud CLI
+    01 · VPC Design Deep Dive
   
 
     
@@ -543,14 +917,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-iam-security/" class="md-nav__link">
+      <a href="../02-load-balancing-autoscaling/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    02 · IAM & Security Basics
+    02 · Load Balancing & Auto Scaling
   
 
     
@@ -571,98 +945,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-virtual-servers-vpc/" class="md-nav__link">
+      <a href="../03-kubernetes-service-basics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    03 · Virtual Servers (VPC)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-cloud-object-storage/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 · Cloud Object Storage
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-vpc-networking/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    05 · VPC Networking Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-cloud-databases/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    06 · Cloud Databases
+    03 · Kubernetes Service (IKS) Basics
   
 
     
@@ -699,7 +989,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Cloud Functions
+    04 · Code Engine (Containers & Serverless)
   
 
     
@@ -717,7 +1007,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Cloud Functions
+    04 · Code Engine (Containers & Serverless)
   
 
     
@@ -743,10 +1033,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-plugin-and-check-your-namespace" class="md-nav__link">
+  <a href="#apps-vs-jobs-vs-function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the plugin and check your namespace
+        Apps vs. jobs vs. function
       
     </span>
   </a>
@@ -754,10 +1044,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actions-the-basic-unit-of-code" class="md-nav__link">
+  <a href="#create-a-project" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions: the basic unit of code
+        Create a project
       
     </span>
   </a>
@@ -765,10 +1055,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-actions-exposing-an-action-over-plain-http" class="md-nav__link">
+  <a href="#deploy-an-app-from-source-no-dockerfile-needed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Web actions: exposing an action over plain HTTP
+        Deploy an app from source (no Dockerfile needed)
       
     </span>
   </a>
@@ -776,10 +1066,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#triggers-and-rules-reacting-to-events" class="md-nav__link">
+  <a href="#deploy-from-a-prebuilt-image-instead" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Triggers and rules: reacting to events
+        Deploy from a prebuilt image instead
       
     </span>
   </a>
@@ -787,10 +1077,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequences-chaining-actions-together" class="md-nav__link">
+  <a href="#environment-variables-and-secrets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequences: chaining actions together
+        Environment variables and secrets
       
     </span>
   </a>
@@ -798,10 +1088,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#packages-grouping-related-actions" class="md-nav__link">
+  <a href="#jobs-run-to-completion-work" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Packages: grouping related actions
+        Jobs: run-to-completion work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scale-to-zero-and-concurrency-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scale-to-zero and concurrency, in practice
       
     </span>
   </a>
@@ -846,297 +1147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-monitoring-log-analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 · Monitoring & Log Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-schematics-iac/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 · Schematics (Terraform IaC)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-capstone-project/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10 · Capstone Project
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../level-2/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Level 2 · Intermediate
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Level 2 · Intermediate
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/01-vpc-design-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 · VPC Design Deep Dive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/02-load-balancing-autoscaling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 · Load Balancing & Auto Scaling
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/03-kubernetes-service-basics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 · Kubernetes Service (IKS) Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/04-code-engine/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 · Code Engine (Containers & Serverless)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/05-cloud-databases-deep-dive/" class="md-nav__link">
+      <a href="../05-cloud-databases-deep-dive/" class="md-nav__link">
         
   
   
@@ -1164,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/06-object-storage-lifecycle-security/" class="md-nav__link">
+      <a href="../06-object-storage-lifecycle-security/" class="md-nav__link">
         
   
   
@@ -1192,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/07-iam-access-policies-deep-dive/" class="md-nav__link">
+      <a href="../07-iam-access-policies-deep-dive/" class="md-nav__link">
         
   
   
@@ -1220,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/08-cicd-toolchains/" class="md-nav__link">
+      <a href="../08-cicd-toolchains/" class="md-nav__link">
         
   
   
@@ -1248,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/09-schematics-workspaces-modules/" class="md-nav__link">
+      <a href="../09-schematics-workspaces-modules/" class="md-nav__link">
         
   
   
@@ -1276,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../level-2/10-project-ha-web-app/" class="md-nav__link">
+      <a href="../10-project-ha-web-app/" class="md-nav__link">
         
   
   
@@ -1331,10 +1342,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-plugin-and-check-your-namespace" class="md-nav__link">
+  <a href="#apps-vs-jobs-vs-function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the plugin and check your namespace
+        Apps vs. jobs vs. function
       
     </span>
   </a>
@@ -1342,10 +1353,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actions-the-basic-unit-of-code" class="md-nav__link">
+  <a href="#create-a-project" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions: the basic unit of code
+        Create a project
       
     </span>
   </a>
@@ -1353,10 +1364,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-actions-exposing-an-action-over-plain-http" class="md-nav__link">
+  <a href="#deploy-an-app-from-source-no-dockerfile-needed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Web actions: exposing an action over plain HTTP
+        Deploy an app from source (no Dockerfile needed)
       
     </span>
   </a>
@@ -1364,10 +1375,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#triggers-and-rules-reacting-to-events" class="md-nav__link">
+  <a href="#deploy-from-a-prebuilt-image-instead" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Triggers and rules: reacting to events
+        Deploy from a prebuilt image instead
       
     </span>
   </a>
@@ -1375,10 +1386,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequences-chaining-actions-together" class="md-nav__link">
+  <a href="#environment-variables-and-secrets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sequences: chaining actions together
+        Environment variables and secrets
       
     </span>
   </a>
@@ -1386,10 +1397,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#packages-grouping-related-actions" class="md-nav__link">
+  <a href="#jobs-run-to-completion-work" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Packages: grouping related actions
+        Jobs: run-to-completion work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scale-to-zero-and-concurrency-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scale-to-zero and concurrency, in practice
       
     </span>
   </a>
@@ -1438,85 +1460,124 @@
   
 
 
-<h1 id="07-cloud-functions">07 · Cloud Functions<a class="headerlink" href="#07-cloud-functions" title="Permanent link">&para;</a></h1>
-<p><strong>IBM Cloud Functions</strong> is IBM's serverless platform, built on the
-open-source <strong>Apache OpenWhisk</strong> project: you deploy small units of code
-("actions"), and the platform runs them on demand, scales them
-automatically, and only bills for actual execution time. This module covers
-actions, triggers, rules, and sequences — the building blocks the capstone
-project in Module 10 wires together into an API.</p>
-<h2 id="install-the-plugin-and-check-your-namespace">Install the plugin and check your namespace<a class="headerlink" href="#install-the-plugin-and-check-your-namespace" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ibmcloud<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>cloud-functions
+<h1 id="04-code-engine-containers-serverless">04 · Code Engine (Containers &amp; Serverless)<a class="headerlink" href="#04-code-engine-containers-serverless" title="Permanent link">&para;</a></h1>
+<p>IKS in Module 3 is powerful but always-on: worker nodes bill by the hour
+whether or not any pod is handling traffic. <strong>Code Engine</strong> runs the same
+container images with none of that node management — you get a fully
+managed, serverless platform that can scale to zero between requests, plus
+a batch <strong>jobs</strong> primitive for run-to-completion work that doesn't fit the
+"app" shape at all.</p>
+<h2 id="apps-vs-jobs-vs-function">Apps vs. jobs vs. function<a class="headerlink" href="#apps-vs-jobs-vs-function" title="Permanent link">&para;</a></h2>
+<p>Code Engine has three workload types, and picking the right one matters:</p>
+<ul>
+<li><strong>Application</strong> — long-running, request-driven, HTTP(S) traffic in.
+  Scales on concurrent requests, can scale to zero when idle.</li>
+<li><strong>Job</strong> — run-to-completion, no inbound HTTP. Good for batch processing,
+  migrations, scheduled cleanup. Runs to a defined number of instances and
+  exits.</li>
+<li><strong>Function</strong> — single-purpose code (not a container you build) for the
+  smallest, most event-driven pieces; closer to Level 1's Cloud Functions
+  module than to the app/job model.</li>
+</ul>
+<p>This module focuses on apps and jobs, since most Level 2 workloads are
+either "serve traffic" or "do batch work."</p>
+<h2 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permanent link">&para;</a></h2>
+<p>A <strong>Code Engine project</strong> is the resource container for apps, jobs, and
+their shared configuration — roughly Code Engine's equivalent of a
+Kubernetes namespace.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>project<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mastery-ce<span class="w"> </span>--resource-group-name<span class="w"> </span>mastery-path
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>namespace<span class="w"> </span>list
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ibmcloud<span class="w"> </span>target<span class="w"> </span>--cf<span class="w">   </span><span class="c1"># or: ibmcloud fn namespace target &lt;namespace&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Select it as the target for subsequent commands</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>project<span class="w"> </span><span class="k">select</span><span class="w"> </span>--name<span class="w"> </span>mastery-ce
 </code></pre></div>
-<h2 id="actions-the-basic-unit-of-code">Actions: the basic unit of code<a class="headerlink" href="#actions-the-basic-unit-of-code" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// hello.js</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;world&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="w"> </span><span class="p">};</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">exports</span><span class="p">.</span><span class="nx">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">main</span><span class="p">;</span>
+<h2 id="deploy-an-app-from-source-no-dockerfile-needed">Deploy an app from source (no Dockerfile needed)<a class="headerlink" href="#deploy-an-app-from-source-no-dockerfile-needed" title="Permanent link">&para;</a></h2>
+<p>Code Engine can build directly from a Git repo or local source using
+Cloud Native Buildpacks, so a simple app doesn't need a hand-written
+Dockerfile at all:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--name<span class="w"> </span>hello-web<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--build-source<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--strategy<span class="w"> </span>buildpacks<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>--cpu<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span>--memory<span class="w"> </span>1G<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--min-scale<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--max-scale<span class="w"> </span><span class="m">5</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>hello<span class="w"> </span>hello.js
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>hello<span class="w"> </span>--result<span class="w"> </span>--param<span class="w"> </span>name<span class="w"> </span><span class="s2">&quot;IBM Cloud&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># { &quot;message&quot;: &quot;Hello, IBM Cloud!&quot; }</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Async invocation returns an activation ID immediately</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>hello<span class="w"> </span>--param<span class="w"> </span>name<span class="w"> </span><span class="s2">&quot;IBM Cloud&quot;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>activation<span class="w"> </span>result<span class="w"> </span>&lt;activation-id&gt;
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>activation<span class="w"> </span>logs<span class="w"> </span>&lt;activation-id&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Creating image build &#39;hello-web-build&#39; and submitting source code from &#39;.&#39;...
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Run &#39;ibmcloud ce buildrun get -n hello-web-build-run-...&#39; to check the build status.
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>...
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>App &#39;hello-web&#39; is ready.
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>URL: https://hello-web.abcd1234.us-south.codeengine.appdomain.cloud
 </code></pre></div>
-<h2 id="web-actions-exposing-an-action-over-plain-http">Web actions: exposing an action over plain HTTP<a class="headerlink" href="#web-actions-exposing-an-action-over-plain-http" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>update<span class="w"> </span>hello<span class="w"> </span>hello.js<span class="w"> </span>--web<span class="w"> </span><span class="nb">true</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>get<span class="w"> </span>hello<span class="w"> </span>--url
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># https://&lt;region&gt;.functions.cloud.ibm.com/api/v1/web/&lt;namespace&gt;/default/hello</span>
+<p><code>--min-scale 0</code> is the point of the whole module — with no traffic, Code
+Engine stops all instances and billing drops to zero, then cold-starts a
+new instance on the next request.</p>
+<h2 id="deploy-from-a-prebuilt-image-instead">Deploy from a prebuilt image instead<a class="headerlink" href="#deploy-from-a-prebuilt-image-instead" title="Permanent link">&para;</a></h2>
+<p>If you already built and pushed to Container Registry in Module 3, deploy
+straight from that image and skip the build step:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--name<span class="w"> </span>hello-web-img<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--image<span class="w"> </span>icr.io/mastery-path/hello-web:1.0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--min-scale<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--max-scale<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>curl<span class="w"> </span><span class="s2">&quot;https://&lt;region&gt;.functions.cloud.ibm.com/api/v1/web/&lt;namespace&gt;/default/hello?name=Curl&quot;</span>
+<p><code>--min-scale 1</code> here keeps one instance always warm — useful if cold-start
+latency matters more than idle cost for this particular app.</p>
+<h2 id="environment-variables-and-secrets">Environment variables and secrets<a class="headerlink" href="#environment-variables-and-secrets" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Plain config</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>app<span class="w"> </span>update<span class="w"> </span>hello-web<span class="w"> </span>--env<span class="w"> </span><span class="nv">LOG_LEVEL</span><span class="o">=</span>info
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Reference a secret instead of a literal value</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>secret<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>db-creds<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--from-literal<span class="w"> </span><span class="nv">PGHOST</span><span class="o">=</span>&lt;host&gt;<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>--from-literal<span class="w"> </span><span class="nv">PGPASSWORD</span><span class="o">=</span>&lt;password&gt;
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>app<span class="w"> </span>update<span class="w"> </span>hello-web<span class="w"> </span>--env-from-secret<span class="w"> </span>db-creds
 </code></pre></div>
-<p>A web action is the simplest way to give a frontend (like the COS static
-site from Module 4) a callable backend endpoint with no server to manage.</p>
-<h2 id="triggers-and-rules-reacting-to-events">Triggers and rules: reacting to events<a class="headerlink" href="#triggers-and-rules-reacting-to-events" title="Permanent link">&para;</a></h2>
-<p>A <strong>trigger</strong> is a named event channel; a <strong>rule</strong> connects a trigger to an
-action so firing the trigger invokes the action.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>trigger<span class="w"> </span>create<span class="w"> </span>every-morning<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--feed<span class="w"> </span>/whisk.system/alarms/alarm<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--param<span class="w"> </span>cron<span class="w"> </span><span class="s2">&quot;0 8 * * *&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>rule<span class="w"> </span>create<span class="w"> </span>run-hello-daily<span class="w"> </span>every-morning<span class="w"> </span>hello
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Manually fire any trigger to test the wiring without waiting for the feed</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>trigger<span class="w"> </span>fire<span class="w"> </span>every-morning
+<p>Secrets referenced with <code>--env-from-secret</code> are injected as environment
+variables at container start without ever appearing in <code>ibmcloud ce app
+get</code> output or deployment logs — the same least-privilege instinct from
+Level 1's IAM module applied to app configuration.</p>
+<h2 id="jobs-run-to-completion-work">Jobs: run-to-completion work<a class="headerlink" href="#jobs-run-to-completion-work" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>job<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--name<span class="w"> </span>nightly-report<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--image<span class="w"> </span>icr.io/mastery-path/report-gen:1.0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--cpu<span class="w"> </span><span class="m">1</span><span class="w"> </span>--memory<span class="w"> </span>2G<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--array-indices<span class="w"> </span><span class="m">0</span>-4<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span>--retry-limit<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
-<h2 id="sequences-chaining-actions-together">Sequences: chaining actions together<a class="headerlink" href="#sequences-chaining-actions-together" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>validate<span class="w"> </span>validate.js
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>process<span class="w"> </span>process.js
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>notify<span class="w"> </span>notify.js
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Runs validate -&gt; process -&gt; notify, passing each action&#39;s output as</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># the next action&#39;s input</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>pipeline<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span>--sequence<span class="w"> </span>validate,process,notify
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>invoke<span class="w"> </span>pipeline<span class="w"> </span>--result<span class="w"> </span>--param<span class="w"> </span>path<span class="w"> </span><span class="s2">&quot;/orders/42&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Trigger one run of the job right now</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>jobrun<span class="w"> </span>submit<span class="w"> </span>--job<span class="w"> </span>nightly-report
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>jobrun<span class="w"> </span>get<span class="w"> </span>--name<span class="w"> </span>nightly-report-jobrun-...
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Status: Succeeded / Failed, plus per-array-index status</span>
 </code></pre></div>
-<p>Sequences are billed as their sum of constituent action durations, but
-deploy and invoke as a single logical action — useful for small pipelines
-without standing up an orchestrator.</p>
-<h2 id="packages-grouping-related-actions">Packages: grouping related actions<a class="headerlink" href="#packages-grouping-related-actions" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>package<span class="w"> </span>create<span class="w"> </span>visits-api
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>visits-api/record<span class="w"> </span>record.js
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>create<span class="w"> </span>visits-api/list<span class="w"> </span>list.js
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>ibmcloud<span class="w"> </span>fn<span class="w"> </span>action<span class="w"> </span>list
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># /namespace/visits-api/record</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># /namespace/visits-api/list</span>
+<p><code>--array-indices 0-4</code> runs five parallel instances of the same image, each
+receiving a different <code>CE_SUBJOB_INDEX</code> environment variable — useful for
+partitioning a batch (e.g., process shard <code>$CE_SUBJOB_INDEX</code> of 5) without
+writing your own coordination logic.</p>
+<h2 id="scale-to-zero-and-concurrency-in-practice">Scale-to-zero and concurrency, in practice<a class="headerlink" href="#scale-to-zero-and-concurrency-in-practice" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ibmcloud<span class="w"> </span>ce<span class="w"> </span>app<span class="w"> </span>update<span class="w"> </span>hello-web<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--concurrency<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--min-scale<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>--max-scale<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--scale-down-delay<span class="w"> </span><span class="m">300</span>
 </code></pre></div>
+<ul>
+<li><strong><code>--concurrency 10</code></strong> — max simultaneous requests one instance handles
+  before Code Engine starts a new instance. Too high and a slow request
+  blocks others sharing that instance; too low and you scale out (and pay
+  for) more instances than the traffic needs.</li>
+<li><strong><code>--scale-down-delay 300</code></strong> — seconds an idle instance stays warm before
+  scaling toward zero, trading a little idle cost for fewer cold starts on
+  bursty-but-frequent traffic.</li>
+</ul>
+<p><strong>Gotcha:</strong> scale-to-zero means the <em>first</em> request after idle time pays
+the cold-start cost (buildpack-built images especially can take a few
+seconds to start). For latency-sensitive endpoints, <code>--min-scale 1</code> trades
+that guaranteed idle cost for consistent response times — there's no
+setting that gives you both zero idle cost and zero cold starts.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1527,49 +1588,51 @@ without standing up an orchestrator.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>ibmcloud fn action create &lt;name&gt; &lt;file.js&gt;</code></td>
-<td>Deploy a new action</td>
+<td><code>ibmcloud ce project create --name &lt;n&gt;</code></td>
+<td>Create a Code Engine project</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action update &lt;name&gt; &lt;file.js&gt; --web true</code></td>
-<td>Update an action / expose it as a web action</td>
+<td><code>ibmcloud ce app create --name &lt;n&gt; --build-source . --strategy buildpacks --port &lt;p&gt;</code></td>
+<td>Deploy an app, building from source</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action invoke &lt;name&gt; --result --param k v</code></td>
-<td>Invoke synchronously</td>
+<td><code>ibmcloud ce app create --name &lt;n&gt; --image &lt;img&gt; --port &lt;p&gt;</code></td>
+<td>Deploy an app from a prebuilt image</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn activation logs &lt;id&gt;</code></td>
-<td>Fetch logs for an async invocation</td>
+<td><code>ibmcloud ce app update &lt;n&gt; --min-scale &lt;n&gt; --max-scale &lt;n&gt;</code></td>
+<td>Set scaling bounds</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn trigger create &lt;name&gt; --feed &lt;feed&gt; --param k v</code></td>
-<td>Create an event trigger</td>
+<td><code>ibmcloud ce secret create --name &lt;n&gt; --from-literal K=V</code></td>
+<td>Create a secret</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn rule create &lt;name&gt; &lt;trigger&gt; &lt;action&gt;</code></td>
-<td>Bind a trigger to an action</td>
+<td><code>ibmcloud ce app update &lt;n&gt; --env-from-secret &lt;secret&gt;</code></td>
+<td>Inject a secret as env vars</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action create &lt;name&gt; --sequence a,b,c</code></td>
-<td>Chain actions into a sequence</td>
+<td><code>ibmcloud ce job create --name &lt;n&gt; --image &lt;img&gt; --array-indices &lt;a-b&gt;</code></td>
+<td>Create a parallel batch job</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn package create &lt;name&gt;</code></td>
-<td>Group related actions</td>
+<td><code>ibmcloud ce jobrun submit --job &lt;n&gt;</code></td>
+<td>Trigger one run of a job</td>
 </tr>
 <tr>
-<td><code>ibmcloud fn action delete &lt;name&gt;</code></td>
-<td>Delete an action</td>
+<td><code>ibmcloud ce app get --name &lt;n&gt;</code></td>
+<td>Show an app's URL and current scale</td>
 </tr>
 </tbody>
 </table>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
-<p>Deploy the <code>hello</code> action above as a web action and confirm you can <code>curl</code>
-it from the command line without any IBM Cloud CLI involved. Then create an
-<code>every-morning</code> alarm trigger and a rule connecting it to <code>hello</code>, fire the
-trigger manually with <code>ibmcloud fn trigger fire</code>, and inspect the resulting
-activation's logs to confirm the action actually ran.</p>
+<p>Deploy <code>hello-web</code> from source with <code>--min-scale 0 --max-scale 3</code>, hit its
+URL a few times with <code>curl</code>, then leave it idle for 10+ minutes and confirm
+<code>ibmcloud ce app get --name hello-web</code> shows zero running instances before
+the next request. Separately, create the <code>nightly-report</code> job with
+<code>--array-indices 0-2</code>, submit a run, and use <code>ibmcloud ce jobrun get</code> to
+confirm all three array indices reached <code>Succeeded</code> before deleting both
+the app and the job.</p>
 
 
 
