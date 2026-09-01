@@ -1,8 +1,8 @@
 site_name: IBM Cloud Mastery Path
 site_description: A structured, module-wise IBM Cloud training program from entry level to master level, covering IAM, VPC compute and networking, storage, databases, serverless, monitoring, and infrastructure as code.
-site_url: https://sigilipelli.github.io/ibm-cloud-mastery-path/
-repo_url: https://github.com/SIGILIPELLI/ibm-cloud-mastery-path
-repo_name: ibm-cloud-mastery-path
+site_url: https://sigilipelli.github.io/ibm-cloud-skillmastery/
+repo_url: https://github.com/SIGILIPELLI/ibm-cloud-skillmastery
+repo_name: ibm-cloud-skillmastery
 
 theme:
   name: material
