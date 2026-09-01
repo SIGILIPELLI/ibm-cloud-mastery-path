@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sigilipelli.github.io/ibm-cloud-skillmastery/sitemap.xml
+Sitemap: https://sigilipelli.github.io/ibm-cloud-mastery-path/sitemap.xml
