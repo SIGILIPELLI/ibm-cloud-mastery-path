@@ -183,6 +183,46 @@ terraform validate
   anything where consistent output matters, such as automated report
   generation.
 
+## How It Actually Works
+
+- **Db2 Warehouse gets its analytical speed from a columnar, MPP (massively
+  parallel processing) storage engine rather than the row-store B-tree
+  indexing an OLTP engine like PostgreSQL uses.** Data is physically
+  stored column-by-column and distributed across worker nodes, so a query
+  like `SUM(total_cents)` reads only the `total_cents` column's compressed
+  blocks across all nodes in parallel instead of scanning entire rows one
+  at a time — exactly backwards from what makes a transactional engine
+  fast at single-row inserts and lookups, which is the real reason the two
+  workload shapes don't share one database well.
+- **The external-table/Parquet loading pattern works because Db2
+  Warehouse's storage engine can read columnar Parquet files directly off
+  Cloud Object Storage without a separate import step — `CREATE EXTERNAL
+  TABLE` registers metadata pointing at the S3-compatible COS path, and
+  `CREATE TABLE ... AS SELECT` triggers a parallel read-and-load into the
+  warehouse's own storage.** That's why the export format matters: Parquet
+  already carries columnar layout and compression the warehouse's engine
+  reads efficiently, versus a row-oriented format like CSV that would need
+  full re-parsing per column read.
+- **A foundation-model call is a stateless HTTP request to a hosted
+  inference endpoint — the "model" holds no memory between calls, so
+  RAG's grounding effect comes entirely from what's stuffed into that
+  single prompt's context window, not from the model learning anything.**
+  Every token in the retrieved context plus the question plus the
+  generated response counts against the model's context-length limit and
+  the account's billed/metered token usage, which is the direct
+  mechanical reason unbounded retrieved-chunk counts are a cost and
+  latency problem: it's literally more tokens sent and generated per call,
+  with no caching of "what was retrieved last time" built in.
+- **Pinning a model version matters because IBM periodically retrains or
+  swaps out what a named model checkpoint under an unpinned alias
+  actually serves — the inference API resolves the model ID to a specific
+  set of weights at call time, and "greedy decoding" only guarantees
+  determinism against one fixed set of weights, not across a silent
+  version change behind the same alias.** Referencing an explicit version
+  string is what actually freezes which weights answer your prompt; an
+  alias frees IBM to move it later without changing your code, which is
+  precisely the tradeoff to avoid for reproducible report generation.
+
 ## Cheat sheet
 
 | Task | Command |

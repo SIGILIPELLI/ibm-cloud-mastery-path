@@ -98,6 +98,38 @@ ibmcloud cos bucket-policy-put \
 The public website endpoint follows the pattern
 `https://<bucket>.s3-web.<region>.cloud-object-storage.appdomain.cloud`.
 
+## How It Actually Works
+
+- **COS never stores an object as one intact copy — every object is
+  split into chunks and encoded with erasure coding (Reed-Solomon-style
+  math) into a larger number of slices distributed across multiple
+  physical devices and, at regional/cross-region resiliency, multiple
+  data centers.** Reading the object back only requires a subset of
+  those slices — for example, an object might be split so that any 6 of
+  9 slices reconstruct it fully — which is why COS tolerates several
+  simultaneous drive or even facility failures without data loss without
+  ever having stored the object twice like naive replication would.
+- **A bucket's resiliency setting (Cross Region / Regional / Single Data
+  Center) chooses *where* those erasure-coded slices are spread, and
+  that's a permanent, bucket-creation-time decision** — it determines the
+  radius of physical failure the encoding is spread across, not a
+  performance toggle you can flip later. It cannot be changed after
+  creation for exactly this reason: the data is already physically
+  distributed according to that geometry.
+- **Every write to an object is atomic and immutable at the API layer —
+  PUT never patches bytes in place.** Uploading to an existing key
+  writes an entirely new object version (or, if versioning is off,
+  atomically swaps which object the key now resolves to) rather than
+  modifying data in place, which is the underlying reason COS has no
+  partial-write or append operation and why overwriting a large object
+  is exactly as expensive as uploading it fresh.
+- **Static website hosting doesn't run a web server at all — the S3-web
+  endpoint is a thin HTTP front end that translates a URL path directly
+  into an object-GET against the bucket**, applying only the
+  bucket-level public-read policy and a configured index/error document
+  mapping; there's no compute serving the page, which is exactly why it
+  scales to arbitrary traffic without you provisioning anything.
+
 ## Cheat sheet
 
 | Command | Purpose |

@@ -186,6 +186,45 @@ terraform validate
   easy to get backwards — a product published to the wrong catalog is
   invisible to the portal users expecting it in another one.
 
+## How It Actually Works
+
+- **The API Connect gateway sits as a full reverse proxy in the request
+  path, executing the assembly pipeline before anything reaches the
+  backend — rate limiting is enforced there by counting requests against a
+  shared counter keyed to the caller's API key and plan.** Each incoming
+  request is authenticated against that key first, then the gateway checks
+  and increments the plan's rolling counter (`1000/1hour` here); a caller
+  over the limit gets `429` straight from the gateway's own logic and the
+  `invoke` policy that would call the backend never executes. That's
+  exactly why the backend "has no idea" — it's not in the call chain at
+  all for a throttled request.
+- **The `gatewayscript` and `json-to-xml` policies run as ordered steps in
+  the same assembly pipeline as `invoke`, operating on the in-flight
+  message object rather than on a copy of the backend's response sent
+  separately.** `invoke` populates `context.message.body` with whatever
+  the backend returned; each subsequent policy reads and mutates that same
+  object in place, which is why ordering matters (stripping a field before
+  a format-conversion step processes different bytes than stripping it
+  after) and why the backend's actual response, internal fields included,
+  genuinely leaves the backend network — it's removed downstream at the
+  gateway, not withheld by the backend itself.
+- **Two product versions can be live at once because each published
+  product gets its own base path bound to a specific OpenAPI document and
+  assembly, not because API Connect merges document versions.** Publishing
+  `2.0.0` doesn't touch `1.0.0`'s gateway configuration at all — they're
+  independent artifacts that happen to route to the same or different
+  backend URLs; a partner's existing key, scoped to the `1.0.0` product's
+  plan, simply never resolves against `/orders-api/v2` unless a separate
+  subscription is created for it.
+- **The developer portal is a separate content-management layer reading
+  catalog/product metadata via API Connect's management API, not a live
+  view directly into the gateway's runtime config.** Publishing a product
+  writes its definition into the catalog; the portal periodically (or on
+  an explicit "publish portal") pulls that catalog metadata to regenerate
+  its own pages — which is the actual reason a freshly published product
+  can be callable at the gateway before it's visible for self-service
+  discovery in the portal UI.
+
 ## Cheat sheet
 
 | Task | Command |

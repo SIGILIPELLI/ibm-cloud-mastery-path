@@ -185,6 +185,41 @@ terraform validate
 # Success! The configuration is valid.
 ```
 
+## How It Actually Works
+
+- **The decoupling this platform relies on holds because `inventory-svc`
+  and `billing-svc` are two independent consumer groups reading the same
+  Kafka partition log, not two subscribers on a fan-out bus.** Each group
+  maintains its own committed offset into `orders.created`; a slow or
+  crashed `billing-svc` doesn't block `inventory-svc`'s consumption
+  because Kafka retains the log and serves each group from wherever its
+  own offset sits — adding `notifications-svc` in the stretch goal is
+  purely "start a third consumer group at whatever offset it chooses,"
+  which is why it requires zero change to the producer side.
+- **One root key covering both databases and the COS bucket means one
+  Key Protect rotation event re-wraps every data-encryption key those
+  services hold a reference to — it doesn't touch or re-encrypt the
+  underlying data itself**, per the envelope-encryption mechanism from
+  Module 03. That's the operational payoff of standardizing on a single
+  platform-wide root key: a security incident response that needs to
+  revoke and rotate a key does it once, for everything the platform
+  encrypts, instead of hunting down every service's own key.
+- **The Sysdig alert and the API Connect rate limit protect two different
+  layers of the same request path and can both be true simultaneously.**
+  A caller hammering `/orders` first hits API Connect's per-plan counter
+  (Module 09) — if under the limit, the request proceeds to the ROKS
+  Route and only then shows up in Sysdig's per-namespace error-rate metric
+  (Module 05) if the backend itself starts failing. A spike in gateway
+  429s and a spike in backend 5xx alerts are diagnosing different
+  problems even though both fire from the same burst of traffic.
+- **Cross-region DR readiness here is only as real as the last drill —
+  the replica relationship shown by `deployment-connections` proves
+  replication is live, not that promotion and failback actually work
+  end-to-end**, which is exactly why Module 06 treats a timed promotion
+  drill as the real verification, and why this project's checklist checks
+  for an active replica but the stretch goal insists on actually running
+  the failover.
+
 ## Stretch goals
 
 - Add a fourth consumer service (`notifications-svc`) to `orders.created`

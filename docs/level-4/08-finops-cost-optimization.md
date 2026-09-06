@@ -163,6 +163,43 @@ terraform validate
   count against account-level quotas** — a cost review focused only on
   billed dollars can miss quota exhaustion building up on the free side.
 
+## How It Actually Works
+
+- **The enterprise account-group usage report is possible only because
+  billing data is rolled up along the same account-group hierarchy tree
+  Module 01 built, not recomputed separately** — every account's metering
+  records already carry their account ID, and the enterprise's billing
+  system aggregates by walking the account-group parentage from Module 01
+  the way an org chart aggregates headcount. That's why the account-group
+  structure decision made at provisioning time directly determines what
+  cost views are possible later without custom tooling.
+- **An unattached floating IP keeps billing because a floating IP is a
+  reserved, routable public address allocated against the account's
+  address pool independent of whatever instance it's currently bound
+  to** — detaching it from a deleted instance doesn't release the
+  allocation itself, it just clears the `target` field; the IP is still
+  held in reserve (so it can be immediately re-attached to a replacement
+  instance) and billed for exactly that reservation, not for traffic or
+  compute. Only an explicit release call actually frees it back to IBM's
+  pool and stops the charge.
+- **A month-over-month anomaly script works because metering records
+  accumulate into per-service-instance monthly totals that the billing
+  API exposes as a queryable time series, not just a final invoice
+  number.** Comparing `charges` against `last_month_charges` per resource
+  is directly reading two adjacent points on that time series — the same
+  underlying data source Level 3's budget alerts poll, just compared
+  resource-by-resource instead of against one aggregate threshold, which
+  is why this script catches a single service's spike even when total
+  account spend still looks unremarkable.
+- **Instance profile resizing needs a reboot because vCPU and memory
+  allocation are properties of the underlying VSI's hypervisor placement,
+  not something the guest OS can renegotiate live** — changing profile
+  requires the VPC infrastructure layer to deallocate the instance's
+  current compute resources and reschedule it onto a host slot matching
+  the new profile's shape, which is a stop/reallocate/start cycle from the
+  hypervisor's perspective regardless of how briefly the CLI command
+  appears to run.
+
 ## Cheat sheet
 
 | Task | Command |

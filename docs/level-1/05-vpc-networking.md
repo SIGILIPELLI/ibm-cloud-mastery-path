@@ -89,6 +89,40 @@ ibmcloud is vpc-routing-table-route-create app-vpc <routing-table-id> \
   --zone us-south-1
 ```
 
+## How It Actually Works
+
+- **A VPC subnet is not a physical broadcast segment — it's a logical
+  address range enforced by the fabric's virtual routers, and every
+  packet between two VSIs, even in the same subnet, is switched through
+  that software-defined routing layer rather than an actual shared
+  Ethernet wire.** That's why subnets can span the way they do without
+  physical ARP/broadcast overhead, and why a public gateway or route
+  change takes effect instantly for every instance in the subnet — you're
+  updating one fabric-wide routing table entry, not reconfiguring
+  individual hosts.
+- **A public gateway performs address translation (NAT) at the VPC
+  edge, not a routed public IP per instance** — outbound packets from a
+  private-only VSI get their source address rewritten to the gateway's
+  public IP as they leave the zone, and the gateway tracks the
+  connection to route the reply back to the correct originating
+  instance. This is why a public gateway lets instances reach the
+  internet but never lets the internet initiate a connection to them —
+  there's no inbound mapping in that translation table, only outbound
+  connection state.
+- **A custom route with a next-hop address doesn't relocate traffic
+  through a separate router appliance by default — it rewrites the
+  fabric's forwarding decision for matching destination prefixes**,
+  which is exactly the mechanism that lets you insert a VSI (running as
+  a NAT instance, firewall, or VPN endpoint) into the path between two
+  subnets: the fabric simply forwards matching packets to that
+  instance's private IP instead of directly to the destination.
+- **ACLs are stateless and evaluated per subnet in rule-number order;
+  security groups are stateful and evaluated per interface** — a packet
+  crossing a subnet boundary is checked against the ACL every time in
+  each direction (return traffic needs its own explicit allow rule),
+  while a security group only needs the initiating direction's rule
+  because the fabric remembers the connection.
+
 ## Cheat sheet
 
 | Concept | Command / Rule |

@@ -186,6 +186,43 @@ terraform validate
   (create an order, immediately read it back) against a replica can
   return stale data; route strongly-consistent reads to the primary.
 
+## How It Actually Works
+
+- **HPA's CPU-percent target is computed against the pod's `requests`
+  value, not against the node's total CPU or the container's `limits`.**
+  The metrics pipeline (kubelet → metrics-server, same chain as Level 3's
+  observability module) reports actual CPU usage, and the HPA controller
+  divides that by the pod's requested CPU to get a utilization percentage
+  — a pod with no `requests` set has no denominator to divide by, which is
+  exactly why its scaling behavior becomes undefined rather than simply
+  "scale less aggressively."
+- **Cluster autoscaler latency is a real provisioning chain, not
+  artificial throttling** — an unschedulable pod triggers a request to the
+  ROKS/IKS control plane for a new VSI-backed worker node, which then
+  needs to be provisioned from VPC infrastructure, boot, join the cluster
+  as a Kubernetes node, and pass readiness checks before the scheduler
+  will place anything on it. Every one of those steps is the same
+  multi-minute VSI-creation path Level 2's VPC module used directly, which
+  is why "the HPA wants more replicas" and "the cluster has room for them"
+  are decoupled by exactly that provisioning time.
+- **The p(99)-far-above-p(95) pattern is a tail-latency signature that
+  averages and even p(95) numbers hide by design** — a small fraction of
+  requests hitting a lock, a cold cache line, or a GC pause show up only
+  in the extreme percentiles, because percentile calculation is just
+  sorting observed latencies and reading off a position; the slow
+  requests are still in the dataset; they're just rare enough not to move
+  p(95). That's the mechanical reason adding replicas (which helps
+  throughput-bound bottlenecks) does nothing for a tail caused by a shared
+  contention point every replica hits equally.
+- **A CDN cache hit terminates the request at the edge PoP closest to the
+  client, using a cached response body stored there from a prior origin
+  fetch — the origin's TCP connection is never opened for that request at
+  all.** That's a structurally different kind of scaling than adding
+  replicas: replica count multiplies how much origin capacity exists,
+  while a cache hit removes the need for origin capacity for that request
+  entirely, which is why edge caching's headroom is bounded by cache-hit
+  ratio and TTL tuning rather than by compute budget.
+
 ## Cheat sheet
 
 | Task | Command |

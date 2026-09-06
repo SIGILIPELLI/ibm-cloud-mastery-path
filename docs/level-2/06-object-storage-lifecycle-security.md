@@ -151,6 +151,42 @@ ibmcloud iam service-policy-create mastery-path-app \
   --resource mastery-path-site
 ```
 
+## How It Actually Works
+
+- **COS durability comes from erasure coding, not simple replication** — an
+  object is split into data shards plus parity shards and spread across
+  multiple storage nodes (and, for cross-region/regional resiliency plans,
+  multiple facilities). Reading it back reconstructs the object from any
+  sufficient subset of those shards, which is why COS tolerates the loss of
+  several nodes or an entire facility without losing the object and without
+  ever storing three or more full copies the way simple mirroring would —
+  it's the same efficiency-vs-redundancy tradeoff RAID 6 makes, just
+  distributed across a data center-scale storage cluster instead of disks
+  in one machine.
+- **Lifecycle rules are evaluated by a background daily sweep against
+  object metadata, not enforced at write time.** Setting a 90-day
+  expiration on `logs/` doesn't touch objects already in the bucket
+  instantly — the next daily rule evaluation compares each object's stored
+  creation timestamp against the rule and only then marks matching,
+  now-overdue objects for deletion. That lag (up to ~24h) is why a rule
+  change never produces an immediate, visible cleanup.
+- **Object Lock and retention are stored as immutable metadata attached to
+  the specific object version, enforced by the storage layer itself before
+  any IAM check runs.** A delete request that would otherwise succeed under
+  IAM is rejected by COS's own retention check first — this is the
+  mechanism that makes `COMPLIANCE` mode resistant even to a fully
+  privileged, compromised admin credential: there's no IAM policy or role
+  that COS will honor to override an active compliance-mode lock.
+- **Customer-managed encryption works by envelope encryption, not by
+  encrypting every object directly with your Key Protect root key.** COS
+  generates a unique data-encryption key (DEK) per object, encrypts the
+  object with it, then asks Key Protect to wrap that DEK with your root
+  key and stores only the wrapped DEK alongside the object. Reading the
+  object means COS asks Key Protect to unwrap the DEK (an operation Key
+  Protect logs and can refuse) before decrypting — which is exactly why
+  deleting the root key breaks every object's DEK unwrap in one action
+  instead of requiring a slow re-encryption sweep.
+
 ## Cheat sheet
 
 | Command | Purpose |

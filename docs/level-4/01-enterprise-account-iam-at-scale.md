@@ -177,6 +177,47 @@ terraform validate
   legitimately need to create keys locks out normal operations, not just
   the risky case.
 
+## How It Actually Works
+
+- **A trusted profile works by IAM issuing a short-lived, scoped access
+  token to whatever identity is configured as its trust source — the same
+  token-exchange mechanism as an ordinary login, just with the trust
+  relationship pre-declared instead of a password.** The service ID in
+  `platform-shared-services` calls IAM's token endpoint asking to assume
+  `cross-account-ci`; IAM checks that the calling CRN matches an identity
+  the profile trusts, then mints a token carrying only the policies
+  attached to the profile — never a token with the calling identity's own
+  home-account permissions. Deleting the profile doesn't need to revoke
+  any distributed secret because there never was one; the next token
+  request for that profile simply has nothing to grant.
+- **Dynamic access-group rules are evaluated at federated-login time
+  against the SAML/OIDC assertion IBM Cloud receives from the identity
+  provider, not against a synced directory.** IAM inspects the incoming
+  assertion's claims for the configured condition, and if it matches,
+  attaches the access group's policies to the session token IAM issues for
+  that login — for the duration set by `--expiration`, after which the
+  user must re-federate for it to be re-evaluated. Since nothing is
+  actually written into a membership list, a claim that's missing or
+  spelled differently than expected doesn't error, it's just absent from
+  the check, silently producing "no matching rule" rather than a failure.
+- **`RESTRICTED` on service-ID/API-key creation flips a single account
+  setting checked by the IAM control plane on every relevant create call**
+  — it's enforced the same way a resource quota is (Level 3, Module 07):
+  synchronously, in the request path, before the object is created. That's
+  why it can lock out normal operations instantly and account-wide the
+  moment it's enabled — there's no grace period or per-user exemption
+  built into the setting itself, only whatever IAM policies you've granted
+  separately to specific identities before flipping it.
+- **Separate accounts are a harder isolation boundary than resource groups
+  because IAM policies, quotas, and even Key Protect/COS encryption
+  contexts are scoped at the account level as a hard partition** — a
+  resource-group-scoped policy still lives inside one shared IAM realm
+  where a sufficiently broad grant (or a bug) can cross resource-group
+  boundaries; two different accounts don't share that realm at all, so a
+  policy or a compromised credential in `orders-dev` has no path to
+  `orders-prod` without an explicit, auditable trusted-profile grant like
+  the one built above.
+
 ## Cheat sheet
 
 | Task | Command |

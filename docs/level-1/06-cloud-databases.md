@@ -103,6 +103,37 @@ ibmcloud cdb deployment-scale mastery-postgres \
   --memory 2048 --disk 10240
 ```
 
+## How It Actually Works
+
+- **IBM Cloud Databases (ICD) is a multi-tenant control plane wrapped
+  around single-tenant data planes — each deployment gets its own set of
+  VSI-backed compute and storage, never a shared database process with
+  other customers' data**, which is what lets ICD offer real
+  memory/disk/CPU sizing and guaranteed resource isolation rather than
+  the noisy-neighbor risk of a shared cluster; the "managed" part is
+  IBM's control plane automating provisioning, patching, and failover
+  around that dedicated footprint.
+- **A high-availability deployment isn't one database with a backup
+  copy — it's a primary plus one or more standby replicas continuously
+  applying the primary's write-ahead log (or equivalent replication
+  stream), with a health-checking control plane watching heartbeats.**
+  Failover is the control plane detecting the primary stopped responding,
+  promoting the most caught-up standby to primary, and repointing the
+  connection endpoint's DNS/routing — which is why a failover briefly
+  interrupts connections (clients must reconnect to the same endpoint)
+  rather than losing the endpoint address itself.
+- **Scaling memory/disk/CPU is not a live resize of the running
+  process — it's the control plane provisioning new, larger-specced
+  compute, replicating the current data onto it, and cutting the
+  endpoint over**, which is why scaling operations take real minutes
+  and briefly interrupt connections even though the deployment `name`
+  and connection string never change.
+- **Point-in-time backups work by combining periodic full snapshots with
+  continuously archived write-ahead logs** — restoring "to 3:14pm
+  yesterday" means the control plane loads the nearest snapshot before
+  that time and replays the log forward exactly to that timestamp,
+  rather than IBM having taken a snapshot at that exact second.
+
 ## Cheat sheet
 
 | Command | Purpose |

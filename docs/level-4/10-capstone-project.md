@@ -170,6 +170,48 @@ catalog-prod       1,876.44
 - [ ] An SLO and a fast/slow burn-rate alert pair exist for at least one
       service, with the arithmetic behind the thresholds documented.
 
+## How It Actually Works
+
+- **Both accounts inherit identical guardrails from one landing zone
+  module because Terraform composes the same underlying resource graph
+  twice, once per `module` block, against two different account-scoped
+  provider configurations** — the module's HCL is fetched and evaluated
+  once but instantiated per module call, so `orders_landing_zone` and
+  `catalog_landing_zone` end up as two independent sets of the same VPC,
+  IAM, and SCC resources rather than one shared instance split between
+  teams. That independence is exactly what makes a GitOps PR against
+  `catalog-prod` provably unable to touch `orders-prod`: they don't share
+  a Schematics workspace, state file, or Terraform module instance at all.
+- **The account-group usage rollup, the Satellite-to-Transit-Gateway
+  routing, and the per-team GitOps isolation are all instances of the
+  same underlying pattern from earlier modules applied at once: a shared
+  control-plane resource (billing hierarchy, routing fabric, or CI
+  pipeline definition) parameterized per tenant rather than duplicated
+  by hand** — which is the actual argument for the whole capstone's
+  architecture: none of Level 4's individual mechanisms changed to
+  support two teams, they were simply invoked twice with different
+  parameters, exactly as Module 02's landing zone argued a standardized
+  starting point should behave.
+- **Segregating KYOK to only payment-adjacent fields works because
+  envelope encryption operates per data-encryption-key, not per
+  database** — a table's columns can reference different wrapping keys
+  for different rows or fields as long as the application (or a
+  column-level encryption feature) chooses which key CRN wraps which
+  DEK, so `billing-svc` genuinely can have some fields protected by an
+  HPCS master key with all its ceremony overhead while adjacent
+  non-sensitive fields use ordinary Key Protect BYOK, without needing two
+  separate databases.
+- **A cost-based autoscaling ceiling and an SLO's error budget are
+  reconciled by the same arithmetic relationship Module 05 introduced for
+  sizing, just run in the opposite direction** — Module 05 derived
+  `max-size` from a required replica count to hit a latency target;
+  capping `max-size` at whatever the FinOps budget affords instead fixes
+  the ceiling first and makes the achievable SLO the dependent variable,
+  which is precisely why documenting that tradeoff explicitly (rather
+  than treating both as independent, always-satisfiable constraints)
+  matters once real traffic exceeds what the budget-capped ceiling can
+  serve.
+
 ## Stretch goals
 
 - Run a real (simulated) incident: intentionally break `catalog-frontend`,

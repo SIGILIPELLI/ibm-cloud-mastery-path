@@ -170,6 +170,46 @@ terraform validate
   worker pool's flavor in place — create a new pool with the target flavor,
   drain, then delete the old one.
 
+## How It Actually Works
+
+- **SCCs are evaluated as an admission-control step, before the scheduler
+  ever sees the pod** — when you `oc apply` a pod spec, the API server
+  runs it through every SecurityContextConstraint bound to the submitting
+  service account (via RBAC-like `system:openshift:scc:*` role bindings)
+  in priority order, and the pod is only admitted if some SCC's
+  constraints (allowed UID range, whether privilege escalation is
+  permitted, allowed volume types) are satisfied. The `restricted` SCC's
+  UID range you saw in the error isn't arbitrary — it's the namespace's
+  slice of a cluster-wide UID pool that OpenShift allocates per project so
+  that no two namespaces' containers can collide on host UID even if both
+  omit `runAsUser` entirely, which is the actual mechanism the leave-it-
+  unset fix relies on.
+- **A `Route` doesn't replace your Service's ClusterIP — it's a separate
+  object the HAProxy router watches and uses purely for host-based
+  routing.** Every worker node running the router pod watches the
+  `Route`/`Service`/`Endpoints` API objects, and when `frontend.roks-
+  mastery...` matches an incoming request's Host header, HAProxy forwards
+  directly to one of the Service's pod IPs — bypassing kube-proxy's
+  ClusterIP entirely for that hop. That's why an edge-terminated Route
+  needs no in-cluster TLS: HAProxy terminates TLS at the router and speaks
+  plain HTTP to the pod from there.
+- **The wildcard `*.containers.appdomain.cloud` certificate is a single
+  cert covering the whole cluster's default routing subdomain, provisioned
+  and rotated by IBM's managed control plane** — it's not per-app. Any
+  `Route` created without an explicit certificate automatically resolves
+  under that shared wildcard, which is why a first deploy gets working TLS
+  with zero cert-manager setup, but also why it can't be used for a
+  hostname outside `*.<cluster>.<region>.containers.appdomain.cloud` — a
+  custom domain needs its own certificate supplied to `oc create route
+  edge --cert`.
+- **`--disable-public-service-endpoint` doesn't firewall the API — it
+  simply never provisions the public listener for it**, so the control
+  plane's load balancer only ever binds a private VPC address. Reaching it
+  then requires being on that VPC's network (a VSI, VPN, or Direct Link)
+  because there's no public DNS record or route to it at all, which is a
+  stronger guarantee than a security-group rule blocking public access
+  would be — there's nothing to misconfigure open later.
+
 ## Cheat sheet
 
 | Task | Command |

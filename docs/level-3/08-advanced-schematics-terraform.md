@@ -195,6 +195,44 @@ the practice Level 4's pipelines module builds out fully.
   — Schematics encrypts state at rest, but exporting state locally for
   debugging reintroduces that exposure.
 
+## How It Actually Works
+
+- **A Schematics workspace runs `plan`/`apply` inside a job container IBM
+  provisions per activity, using a token minted for the workspace's own
+  IAM identity — never your local credentials.** That's why "no local
+  secrets" is a real property, not just a policy: the job authenticates as
+  a service identity scoped by the workspace's IAM policies, does its
+  clone-init-plan/apply cycle, streams logs back, and the container is
+  discarded afterward — nothing about your laptop's credentials or
+  environment variables is ever in the loop.
+- **Drift detection is just `terraform refresh` followed by `terraform
+  plan`, run by Schematics on your behalf rather than a distinct
+  feature.** `refresh-state` re-reads the real, current configuration of
+  every resource in state directly from each service's API and updates
+  Terraform's recorded view of "what exists" without changing actual
+  infrastructure; the following `plan` then diffs that refreshed state
+  against your HCL. A plan showing unexpected changes after a refresh
+  means the live resource's API-reported state no longer matches what
+  your code says it should be — which is precisely what a console
+  click-fix produces.
+- **Module source pinning changes what `terraform init` does at the file
+  level, which is the entire mechanism behind the risk described above.**
+  A local path source is read live off disk on every init; a Git source
+  with `?ref=<tag-or-sha>` is fetched once into `.terraform/modules/` and
+  cached — `init` only re-fetches it if the ref itself changes or
+  `-upgrade` is passed. A floating branch ref re-resolves to whatever
+  commit is currently at the branch tip on the next `init`, so two applies
+  minutes apart can silently use different module code with an identical
+  Terraform config.
+- **State encryption at rest protects the stored JSON file, but every
+  value a provider marks sensitive is still fully present in plaintext
+  inside that JSON — encryption controls who can read the file, not what's
+  in it.** Schematics encrypts the workspace's persisted state using a
+  managed key, which is why the risk described only appears once you
+  `terraform state pull`/export it locally: at that point the decrypted
+  JSON, generated passwords included, exists as plaintext on whatever
+  machine you exported it to.
+
 ## Cheat sheet
 
 | Task | Command |

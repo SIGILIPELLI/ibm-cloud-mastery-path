@@ -91,6 +91,38 @@ ibmcloud is instance mastery-vsi --output json | grep -A2 floating
 ssh -i ~/.ssh/mastery-path root@<floating-ip>
 ```
 
+## How It Actually Works
+
+- **A VSI is not a dedicated physical box — it's a KVM-based virtual
+  machine multiplexed onto a shared hypervisor host, with your VPC's
+  network fabric implementing isolation at the software-defined-networking
+  layer rather than with physical cabling.** Every packet your VSI sends
+  is intercepted by the hypervisor's virtual switch, which tags it with
+  your VPC's network identifier before it ever reaches shared physical
+  wiring — that's the actual mechanism guaranteeing tenant isolation, not
+  the mere existence of separate account boundaries.
+- **A floating IP is a NAT mapping maintained in the VPC's network
+  edge, not an address configured on the VM's own network interface.**
+  The VSI's real (private) network interface only ever knows its private
+  subnet IP; the floating IP lives in a translation table on the fabric
+  router, which rewrites the destination address of inbound packets and
+  the source address of outbound ones. This is exactly why detaching and
+  reattaching a floating IP to a different instance is instantaneous —
+  you're editing one row of a routing table, not reconfiguring a NIC.
+- **Boot volumes are backed by IBM Cloud Block Storage, itself replicated
+  across independent physical drives inside the availability zone** — the
+  VSI's disk I/O is actually network-attached storage traffic over the
+  data center's internal fabric, not local disk. That's why you can
+  resize or snapshot a boot volume without physically touching the
+  instance: a snapshot is a copy-on-write pointer into the same
+  distributed storage backend, not a byte-for-byte disk image.
+- **Security groups are evaluated per network interface, stateful, and
+  additive across every group attached to that interface** — a packet is
+  allowed the instant any one rule permits it, and a reply to an already
+  permitted outbound connection is auto-allowed without a matching
+  inbound rule, because the fabric tracks connection state rather than
+  re-evaluating every packet independently.
+
 ## Cheat sheet
 
 | Command | Purpose |

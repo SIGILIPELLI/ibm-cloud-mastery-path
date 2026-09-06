@@ -169,6 +169,41 @@ terraform validate
   Link/VPN BGP session is a common setup mistake; keep a documented ASN
   range per environment.
 
+## How It Actually Works
+
+- **Transit Gateway is a route-exchange fabric, not a data-plane hop your
+  packets physically pass through the way a hub router would.** Each
+  attached VPC's implicit router (the one already handling its subnets)
+  learns routes to every other attached network's prefixes via the
+  gateway's control plane, and traffic then flows directly between the
+  underlying networks using IBM's backbone — that's why attaching a VPC is
+  near-instant and why Transit Gateway itself has no bandwidth cap of its
+  own; the limits you actually hit are per-VPC and per-connection
+  throughput, not a shared appliance.
+- **Overlapping CIDRs break routing because route tables are keyed by
+  prefix, not by which VPC a prefix "belongs to."** When two attached VPCs
+  both advertise `10.0.0.0/16`, the gateway's route table has two
+  equally-valid entries for the same destination with no tiebreak rule
+  that reflects intent — depending on which was learned first, traffic
+  meant for one VPC silently lands in the other, which is exactly why this
+  fails silently rather than with an attach-time rejection.
+- **A route-mode VPN tunnel and a BGP-based Direct Link connection both
+  ultimately populate the same kind of route table entry, which is why
+  either can be handed to Transit Gateway as a network type.** The
+  difference is how the peer address is reached: VPN wraps ESP packets in
+  UDP over the public internet (hence the throughput ceiling from
+  IPsec/CPU overhead on the gateway), while Direct Link is a physical
+  cross-connect where BGP sessions exchange routes over a dedicated,
+  non-internet circuit — which is why `pending_approval` involves a real
+  human provisioning a fiber cross-connect rather than an API call
+  finishing.
+- **Security groups and ACLs are evaluated per-VPC on the way in and out,
+  independent of Transit Gateway entirely** — the gateway only decides
+  which network a packet's destination routes to; each VPC's own
+  perimeter rules still run exactly as they would for any other traffic
+  reaching that subnet, which is why attaching a VPC to a shared hub never
+  bypasses whatever security groups already lock down its resources.
+
 ## Cheat sheet
 
 | Task | Command |

@@ -85,6 +85,37 @@ cat <<'EOF' > high-error-rate-alert.json
 EOF
 ```
 
+## How It Actually Works
+
+- **IBM Cloud Monitoring is built on Sysdig, and metrics arrive via an
+  agent that scrapes the local kernel/cgroup and process tables on each
+  host or container, batching data points and shipping them to a
+  time-series backend rather than the backend polling each instance
+  directly.** That's why installing the monitoring agent (or, on
+  managed services, IBM's own instrumentation) is a prerequisite for
+  data to exist at all — without an agent pushing data, there is
+  nothing for the dashboard to query.
+- **A dashboard panel is a saved query against that time-series store,
+  re-executed live every time you view it** — nothing is pre-rendered
+  and cached; the numbers you see are the query's result as of that
+  instant, aggregated (sum/avg/percentile) over the time window and
+  grouping you configured, which is why zooming a time range or
+  changing the aggregation recomputes the panel from raw samples rather
+  than redrawing a static image.
+- **Log Analysis is built on ELK-family technology (Elasticsearch under
+  the hood) — every log line you ship is tokenized and indexed into an
+  inverted index at write time**, which is the actual mechanism that
+  makes full-text search across millions of log lines return in
+  milliseconds: you're not scanning raw log files at query time, you're
+  looking up pre-built token-to-document mappings.
+- **An alert isn't a background thread watching your infrastructure
+  continuously — it's a query re-evaluated on a fixed polling interval
+  (e.g. every minute) against the same time-series backend the
+  dashboards use**, and the alert fires the moment that query's result
+  crosses your configured threshold for the configured duration; the
+  duration requirement exists specifically to avoid firing on a single
+  noisy sample rather than a sustained condition.
+
 ## Cheat sheet
 
 | Command | Purpose |

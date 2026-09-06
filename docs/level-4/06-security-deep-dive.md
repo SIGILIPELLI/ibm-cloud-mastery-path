@@ -169,6 +169,48 @@ terraform validate
   Route referencing it still expires functionally, even though
   Certificate Manager itself shows it as valid.
 
+## How It Actually Works
+
+- **The BYOK-vs-KYOK difference is a hardware-tenancy fact, not a policy
+  setting — Key Protect's HSMs are shared across many customers' key
+  material inside one appliance, partitioned by software access controls,
+  while HPCS provisions a physically dedicated HSM partition that only
+  your organization's custodians can operate.** IBM's operational access
+  to a Key Protect instance is a permissions boundary enforced in
+  software running on shared hardware; on HPCS, the master key never
+  exists in a form any IBM process can reconstruct, because the crypto
+  officer ceremony described below establishes cryptographic material
+  split across custodian smart cards that IBM's own systems never hold a
+  complete copy of.
+- **The 2-of-3 signature threshold works via a secret-sharing scheme,
+  not a simple "two people must click approve" workflow** — the master
+  key material (or the authority to regenerate it) is mathematically
+  split so that any two of the three shares can reconstruct it but any
+  one alone reveals nothing. That's the literal, unforgeable mechanism
+  behind "no single administrator can do it alone," and it's also why
+  losing quorum of cards is unrecoverable: the math that lets two shares
+  reconstruct the secret provides no path with fewer than two.
+- **An SGX enclave protects data in use by encrypting a region of memory
+  with a processor-internal key that never leaves the CPU package,
+  decrypting data only inside the CPU's execution pipeline and re-
+  encrypting it before it's ever written back out to RAM.** Attestation
+  lets a remote party cryptographically verify the exact code measurement
+  running inside that protected region before trusting it with secrets —
+  which is the actual capability TLS and at-rest key management don't
+  provide: both protect data before it's decrypted for processing and
+  after it's re-encrypted for storage, leaving the CPU's plaintext working
+  set as the one place they can't reach, and that's exactly the gap an
+  enclave closes.
+- **Certificate Manager's DNS-01 validation proves domain ownership by
+  requiring you to publish a specific TXT record the certificate
+  authority queries for before issuing** — it's the same domain-validation
+  protocol (ACME-based) any Let's-Encrypt-style CA uses, not an
+  IBM-specific check. Auto-renewal automates re-running that same
+  challenge-response exchange before expiry, but the certificate's actual
+  presentation to clients still depends on whichever load balancer or
+  Route references its CRN re-reading the updated certificate — renewal
+  updates the stored object, not every consumer of it, automatically.
+
 ## Cheat sheet
 
 | Task | Command |

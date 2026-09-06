@@ -179,6 +179,45 @@ terraform validate
   actually needed — treat the failover drill as a recurring calendar
   event, not a one-time setup task.
 
+## How It Actually Works
+
+- **A cross-region read replica streams WAL over the public/backbone
+  network across regions the same way an in-region replica does within
+  Level 2's module — the only real difference is the distance the bytes
+  travel.** That extra round-trip latency is exactly why cross-region
+  replication lag runs seconds rather than the sub-second lag of an
+  in-region replica, and why RPO for a warm-standby posture is quoted in
+  seconds-to-minutes instead of near-zero: any writes still in flight when
+  the primary region goes dark haven't reached `us-east` yet and are
+  genuinely lost on promotion.
+- **Promotion is irreversible because it's a control-plane action that
+  severs the replication stream and reconfigures the standby's own
+  internal cluster metadata to declare itself a primary** — there's no
+  "reconnect as replica" path back to the old primary because the
+  promoted deployment has already diverged (accepted new writes the old
+  primary never saw) the instant it starts serving. Rebuilding replication
+  in the reverse direction is mechanically the same as building the
+  original replica: a fresh base backup plus WAL streaming from whichever
+  side is now authoritative.
+- **A GLB failover is a DNS-answer change, not a network reroute** — CIS's
+  health checker polls each pool's origin from checker nodes in the
+  configured region on a fixed interval, and when the primary pool's
+  origins fail enough consecutive checks to cross the unhealthy threshold,
+  the GLB simply starts answering DNS queries for that hostname with the
+  failover pool's address instead. Clients that already resolved and
+  cached the old answer (respecting the record's TTL) keep hitting the
+  dead primary until their cache expires, which is the real, unavoidable
+  floor under any DNS-based failover's RTO — no configuration removes that
+  TTL-bound tail.
+- **`us-geo` Cross-Region buckets replicate by asynchronously copying
+  object writes to COS clusters in the other constituent regions after
+  the initial write acknowledges** — a `PUT` returns success once it's
+  durably erasure-coded in the region that received it, and propagation to
+  the other regions happens afterward. That's the source of the "eventual
+  consistency across regions" caveat: a read immediately afterward against
+  a different region's endpoint can briefly miss the object even though
+  the write already succeeded.
+
 ## Cheat sheet
 
 | Task | Command |

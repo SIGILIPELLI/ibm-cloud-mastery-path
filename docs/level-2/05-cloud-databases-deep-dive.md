@@ -118,6 +118,41 @@ plans) sees a real connection blip during patching, while a properly
 multi-member HA deployment doesn't — the replica set keeps serving from
 the members not currently being touched.
 
+## How It Actually Works
+
+- **Replication in a Databases for PostgreSQL deployment runs on the same
+  streaming-WAL mechanism as open-source Postgres — IBM's control plane
+  just automates the failover decision.** Each member ships its
+  write-ahead log to the others continuously; a health-check sidecar on
+  each node reports liveness to the deployment's orchestrator, and when
+  the primary stops responding within its failure-detection window, the
+  orchestrator promotes the replica with the most caught-up WAL position
+  and repoints the connection endpoint's DNS at it — the endpoint hostname
+  never changes, only what it resolves to.
+- **A read replica is a logically separate deployment consuming the same
+  WAL stream, which is why it has its own credentials and endpoint** but
+  also why it can lag: it applies WAL records after receiving and
+  fsyncing them, so a burst of writes to the primary shows up on the
+  replica a network round-trip plus disk-flush time later — normally
+  milliseconds, but unbounded if the replica's own disk I/O falls behind
+  the primary's write rate.
+- **Point-in-time recovery works by replaying WAL, not by storing a backup
+  per second.** IBM retains periodic full snapshots plus the continuous
+  WAL stream between them; a PITR request finds the nearest snapshot
+  before your target timestamp, restores it into a new deployment, then
+  replays WAL forward to the exact second you asked for. That's why
+  restore time scales with how far the target is from the last snapshot,
+  and why the operation always produces a new deployment — replaying WAL
+  in place against a live, serving primary isn't something the engine
+  will do.
+- **The private endpoint isn't a different database — it's a second
+  network listener bound to an interface only reachable through IBM's
+  private backbone**, resolved via a VPE gateway you create in the
+  consuming VPC. Traffic to it never traverses the public IBM Cloud
+  front-door load balancers the public endpoint uses, which is also why
+  enabling it doesn't migrate existing public connections — each client
+  has to be pointed at the new hostname explicitly.
+
 ## Cheat sheet
 
 | Command | Purpose |

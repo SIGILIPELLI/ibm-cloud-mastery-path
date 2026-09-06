@@ -104,6 +104,39 @@ ibmcloud fn action list
 # /namespace/visits-api/list
 ```
 
+## How It Actually Works
+
+- **Cloud Functions is IBM's managed layer over Apache OpenWhisk, and an
+  "action" isn't a persistently running process — it's a container
+  image invoked fresh (or reused from a warm pool) per request by
+  OpenWhisk's invoker component**, which pulls your action's packaged
+  code (a zip, or a base Docker image plus your code layered on) into a
+  container, runs it against the incoming event payload, and returns
+  the result — this container lifecycle is exactly the mechanism behind
+  cold starts: the first invocation after idle time pays container
+  startup cost, subsequent ones within the idle window reuse a warm
+  container.
+- **A "sequence" isn't a workflow engine — it's OpenWhisk chaining
+  actions by piping each action's JSON output directly into the next
+  action's input**, invoked one after another synchronously; there's no
+  separate orchestration layer, which is why a sequence fails as a unit
+  the moment any action in the chain throws, with no partial-completion
+  state to recover.
+- **Triggers and rules are OpenWhisk's publish/subscribe layer: a
+  trigger is a named event channel, and a rule is a standing
+  subscription binding that channel to an action** — firing a trigger
+  (via an API call, a cron feed, or a Cloudant change feed) doesn't call
+  your action directly; it publishes an event that OpenWhisk's rule
+  engine matches against active rules and only then invokes the bound
+  action, decoupling "what happened" from "what runs" so one trigger can
+  fan out to multiple actions.
+- **Billing is metered in GB-seconds — allocated memory multiplied by
+  wall-clock execution time, rounded up to the nearest 100ms** — which
+  is the actual reason over-provisioning an action's memory (even if it
+  never uses it) directly increases cost per invocation, and why the
+  free-tier allowance is expressed as a monthly GB-second budget rather
+  than a request count.
+
 ## Cheat sheet
 
 | Command | Purpose |

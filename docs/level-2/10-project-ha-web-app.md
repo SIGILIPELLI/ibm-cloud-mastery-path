@@ -232,6 +232,44 @@ If the `curl` loop above never returns anything but `200` while zone 1's
 node is drained, the app survived a simulated zone outage — the actual
 point of this whole project.
 
+## How It Actually Works
+
+- **`cordon` and `drain` don't simulate a zone failure the way killing a
+  VM would — they walk a deliberate eviction protocol the control plane
+  fully participates in.** `cordon` marks the node unschedulable so the
+  scheduler stops placing new pods there; `drain` then evicts existing
+  pods one at a time through the Kubernetes eviction API, respecting each
+  Deployment's `PodDisruptionBudget` (implicit here, defaulting to
+  allowing disruption) and letting `terminationGracePeriodSeconds` run
+  before force-killing. The scheduler immediately re-places evicted pods
+  on any node with capacity — zone 2's — which is the actual mechanism
+  behind "traffic never drops," not some IKS-specific failover feature.
+- **The `LoadBalancer` Service's zero-downtime behavior during the drain
+  comes from the ALB's health checks, not from Kubernetes.** The VPC ALB
+  provisioned for this Service continuously health-checks every backend
+  pod IP across both zones; as zone 1's pods are evicted, the ALB's health
+  check for those targets fails and it stops routing new connections to
+  them within its check interval, while zone 2's already-healthy targets
+  absorb the traffic — the ALB doesn't know or care that an entire zone
+  went away, it's just reacting to individual target health the same way
+  it would for one crashed pod.
+- **The HPA doesn't watch CPU usage directly — it polls aggregated metrics
+  from the Kubernetes metrics-server** (itself scraping kubelet's
+  cAdvisor-derived stats from each node) on a fixed interval, computes
+  `currentUtilization / targetUtilization` against `averageUtilization:
+  70`, and only then requests a new replica count from the Deployment.
+  That polling interval (roughly every 15-30s) plus a stabilization window
+  to avoid flapping is why replica count visibly lags a CPU spike by tens
+  of seconds rather than reacting instantly.
+- **Writes to `mastery-postgres-ha` over the private endpoint still go to
+  exactly one member — the current primary** — multi-member HA changes
+  what happens when that member fails, not how many members accept writes
+  at once. The pods in this Deployment all share one `postgres-creds`
+  Secret pointing at the same primary-tracking hostname; if the primary
+  fails over mid-drain-test, every pod reconnects to the same hostname
+  once DNS re-resolves to the newly promoted member, with no code change
+  needed on the application side.
+
 ## Cheat sheet
 
 | Step | Command |

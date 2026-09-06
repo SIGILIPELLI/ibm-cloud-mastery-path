@@ -96,6 +96,43 @@ ibmcloud iam service-api-key-delete mastery-path-app <key-name>
 - Rotate and delete API keys you're not actively using; a key never expires
   on its own.
 
+## How It Actually Works
+
+- **Every access check IAM ever performs is the same evaluation, run
+  fresh on every API call: gather every policy attached to the caller
+  (directly, via access groups, and inherited from parent resource
+  groups or the account), union the platform and service-access roles
+  they grant on the target resource, and check whether the specific
+  action being invoked (e.g. `cloud-object-storage.object.write`) is
+  included.** There is no cached "you're an editor" flag stamped on a
+  session — a policy change on an access group takes effect on that
+  member's very next request, because the decision is recomputed from
+  scratch every time, not read from a stale grant.
+- **Roles are not features IBM Cloud invented per-service; they're
+  standardized labels (`Viewer`/`Operator`/`Editor`/`Administrator` for
+  the platform, `Reader`/`Writer`/`Manager` for service access) mapped
+  internally to a fixed set of fine-grained actions that each service
+  registers with IAM.** That's why granting "Writer" on Cloud Object
+  Storage and "Writer" on Cloud Databases produce completely different
+  actual permissions — each service defines its own action list behind
+  the same role name.
+- **An access group is not itself an identity IAM authenticates — it's a
+  policy-attachment container.** When a user or service ID is added to a
+  group, IAM doesn't create a new merged identity; at evaluation time it
+  simply also pulls in every policy attached to any group that identity
+  is a member of. This is why removing someone from a group revokes
+  access instantly (there's nothing cached to expire) but why an
+  identity's *direct* policies remain even after you remove every group
+  membership — group and direct policies are additive, never exclusive.
+- **A service ID's API key is bound to that ID's policies, not to
+  whoever created it** — the key is just a bearer credential that proves
+  "I am this service ID" to the token endpoint; IAM then evaluates
+  policies against the service ID, never against the human who ran
+  `service-api-key-create`. That's the actual mechanism behind least
+  privilege: scoping the *service ID's* policy narrowly matters, and
+  scoping the creating user's own access does nothing to constrain what
+  the resulting key can do.
+
 ## Cheat sheet
 
 | Command | Purpose |

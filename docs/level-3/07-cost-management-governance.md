@@ -189,6 +189,43 @@ terraform validate
   different purposes (attribution vs. IAM scoping) and are managed by
   different `ibmcloud resource tag-attach --tag-type` values.
 
+## How It Actually Works
+
+- **Usage attribution is computed from metering records emitted by each
+  service, not from polling resource inventories.** Every billable
+  service reports discrete usage events (an hour of ROKS worker time, a
+  GB-month of COS storage) tagged with the resource's ID, resource group,
+  and whatever access-management/cost tags were attached to it *at the
+  moment the event was recorded*. That's the actual mechanism behind
+  "tagging after the fact doesn't retroactively attribute spend" — the
+  historical metering records were already written without the tag and
+  are never rewritten once billing has rolled them up.
+- **A budget is a threshold watcher over the same aggregated usage data
+  the billing API exposes, evaluated on a periodic sweep — not a live
+  gate any provisioning call passes through.** Creating a resource never
+  consults the budget at all; the budget engine separately totals a
+  resource group's usage-to-date against the configured amount and fires
+  a notification when a percentage threshold is crossed, which is exactly
+  why it can only ever alert after the spend already happened rather than
+  prevent it.
+- **VPC infrastructure quotas are enforced synchronously at the API layer,
+  which is the real distinction from budgets.** A `POST` to create a
+  floating IP or instance is checked against the account's quota
+  allowance in the same request path that validates the rest of the
+  payload, and a request that would exceed the limit is rejected outright
+  — no resource is created, no charge accrues, and no alert is needed
+  because the action itself never completed. That's why quotas stop a
+  runaway loop and budgets only report on one after the fact.
+- **Autoscaling on a worker pool watches pending-pod pressure via the
+  cluster autoscaler component, not raw CPU usage on existing nodes.** It
+  polls the Kubernetes scheduler for pods that are `Unschedulable` due to
+  insufficient resources; if any exist and the pool is under `max-size`,
+  it requests a new worker node from the ROKS control plane. Scale-down
+  works the opposite way — a node whose pods could all be rescheduled
+  elsewhere is cordoned, drained, and removed once utilization stays low
+  past the `--cooldown` window, which is why cooldown exists at all: to
+  stop nodes being added and removed on every small, momentary fluctuation.
+
 ## Cheat sheet
 
 | Task | Command |

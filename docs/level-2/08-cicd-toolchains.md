@@ -179,6 +179,44 @@ pipeline or a notification script, but for actually reading build logs
 day-to-day, the console is the practical tool — there's no `tkn`-style CLI
 against IBM's managed service.
 
+## How It Actually Works
+
+- **A toolchain is a metadata container that groups tool integrations — it
+  runs nothing itself.** `ibm_cd_toolchain` just creates an ID and a
+  resource-group scope; every actual capability (the Git link, the
+  pipeline, a Slack notifier) is a separate `ibm_cd_toolchain_tool_*`
+  resource that registers itself against that toolchain ID. That
+  separation is why deleting a toolchain in Terraform cascades to delete
+  its tool integrations, but the underlying GitHub repo or Container
+  Registry namespace those tools point at is untouched — the toolchain
+  only holds references, not the resources themselves.
+- **An SCM trigger works through a webhook IBM registers on your Git
+  provider, not through Continuous Delivery polling the repo.** Creating
+  `ibm_cd_tekton_pipeline_trigger` with `type = "scm"` calls out to GitHub
+  (via the token in the hostedgit tool integration) to add a webhook
+  pointed at an `event_listener` endpoint unique to that pipeline; a push
+  matching the branch pattern makes GitHub POST the commit payload to that
+  endpoint, which is what actually starts the `PipelineRun`. If the
+  webhook is deleted on the GitHub side out-of-band, Terraform's state
+  still shows the trigger configured but nothing will ever fire.
+- **Each Tekton `Task` step runs in its own ephemeral container on the
+  pipeline's worker, not in a persistent build VM** — `runAfter` ordering
+  is enforced by the pipeline controller creating each step's pod only
+  once its dependency's pod has exited successfully, and any files a task
+  needs to pass to the next (like the built image reference) go through a
+  workspace volume or params, not shared process state, since the
+  containers never coexist. That's also why the `public` worker type has
+  cold-start latency comparable to a fresh Code Engine instance — it's
+  provisioning fresh compute per run, the same primitive Module 4 used for
+  jobs.
+- **`terraform apply` only ever changes control-plane wiring — a
+  `PipelineRun` is a separate, transient Kubernetes-style custom resource
+  created either by the webhook listener or your manual API call**, never
+  by Terraform's own reconciliation loop. This is precisely why the state
+  after `apply` has an idle pipeline: Terraform's job ends at "the trigger
+  exists and is correctly configured," and something outside Terraform
+  (the webhook, or you) has to be the thing that actually creates a run.
+
 ## Cheat sheet
 
 | Resource / Command | Purpose |

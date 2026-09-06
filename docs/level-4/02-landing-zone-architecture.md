@@ -151,6 +151,46 @@ instead of invisible, which a missing tag would otherwise be.
   accepts the invitation email leaves a naive `until ... ACTIVE` loop
   running forever; add a max-attempts guard in real automation.
 
+## How It Actually Works
+
+- **The landing zone module isn't a new IBM Cloud service — it's a
+  composition layer that internally calls the same `ibm_is_vpc`,
+  `ibm_tg_gateway`, and related resources you wrote by hand in Level 2 and
+  Level 3, wired together with sensible defaults and cross-references.**
+  `terraform plan` against it produces exactly the resource graph those
+  earlier modules built manually (VPCs, subnets, address prefixes, a
+  Transit Gateway, connections) — the module's value is that those
+  cross-resource references (subnet IDs into worker pools, VPC CRNs into
+  Transit Gateway connections) are already correctly wired and tested,
+  not that it does anything the underlying provider couldn't.
+- **A version pin on a shared module works the same mechanism as any
+  Terraform module source pin (Level 3, Module 08): `terraform init`
+  resolves `~> 5.0` once against the module registry and caches the
+  fetched version, only re-resolving on `init -upgrade`.** That's why an
+  unpinned or loosely pinned landing zone module is riskier than an
+  ordinary app dependency — every account bootstrapped through it inherits
+  whatever breaking variable rename or default change shipped in a newer
+  minor version the next time someone runs `init -upgrade` on the shared
+  bootstrap repo, not just the one account being built.
+- **`cost-center:unassigned` as a default tag exploits the same tag-based
+  billing attribution mechanism from Level 3, Module 07 — a resource
+  without an explicit cost-center tag still emits metering records, and
+  those records need *some* tag value to be queryable at all.** Applying
+  the placeholder at creation time (via the Terraform resource, not a
+  later manual step) guarantees every metering record from that resource
+  carries a non-null, searchable value, turning "forgot to tag" into a
+  visible, queryable billing-report line instead of spend that simply
+  doesn't show up when filtering by tag.
+- **The account-activation polling loop works because
+  `ibmcloud enterprise account-create` only creates a *pending* invitation
+  record — the account itself doesn't exist as a usable IAM/billing
+  entity until the invited owner accepts it**, which is a human action
+  Terraform and the CLI have no way to trigger or wait on synchronously.
+  That's why the bootstrap script polls state rather than chaining
+  `apply` directly after `account-create`: there's a genuine external
+  dependency (an email being read and a link clicked) sitting between the
+  two API calls.
+
 ## Cheat sheet
 
 | Task | Command / reference |

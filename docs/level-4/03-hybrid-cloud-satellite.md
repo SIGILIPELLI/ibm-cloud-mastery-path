@@ -169,6 +169,49 @@ terraform validate
   with actual host state — treat Satellite hosts like any other IaC-
   managed resource, no manual edits.
 
+## How It Actually Works
+
+- **The outbound-only connectivity model works because every registered
+  host runs an agent that dials out to IBM Cloud's Satellite control
+  plane and holds that connection open, rather than IBM Cloud dialing
+  in.** `attach-host.sh` installs that agent and points it at the
+  location's management endpoint in the `--managed-from` region; the
+  agent then long-polls or holds a persistent tunnel for control
+  instructions (schedule this workload, apply this cluster upgrade) and
+  pushes status back over the same connection. That's the entire reason
+  no inbound firewall rule is ever needed on the on-prem side — from the
+  data center's network perspective, this looks identical to any other
+  outbound HTTPS client.
+- **Satellite's managed control plane genuinely runs in the IBM Cloud
+  region you pick with `--managed-from`, while only the worker nodes are
+  physically on-prem** — the OpenShift API server, etcd, and scheduler for
+  a Satellite cluster live in IBM's cloud, communicating with the
+  on-prem/attached hosts over the same outbound agent tunnel used for
+  location management. That split is precisely why `oc get nodes`, `oc
+  new-app`, and every Level 3 OpenShift pattern behave identically: the
+  control plane your `oc` CLI talks to is doing the same job it always
+  does, it's just scheduling pods onto remote, physically distant workers
+  instead of local ones.
+- **A GRE tunnel into Transit Gateway routes Satellite traffic by
+  encapsulating packets between the location and the hub over whatever
+  transport connects them (often the public internet, unlike Direct
+  Link's dedicated circuit)** — once encapsulated, the packets are
+  injected into the same route-exchange fabric Level 3's Transit Gateway
+  module described, so from a routing perspective the Satellite location
+  looks like just another attached network. Throughput and latency are
+  bounded by the underlying GRE transport, though, which is why Direct
+  Link is recommended once bandwidth needs exceed what a tunnel over
+  shared internet capacity can reliably deliver.
+- **Host readiness is a separate signal from host registration because
+  they're checked by different layers** — registration only confirms the
+  agent successfully authenticated and joined the location's inventory;
+  schedulability additionally requires the host to pass hardware/kernel
+  prerequisite checks the control plane runs after registration. A host
+  that fails those checks stays registered (visible in `sat host ls`) but
+  is marked unhealthy and never receives a workload, which is why "pending
+  forever with no obvious error" is actually the control plane waiting on
+  enough *healthy*, not merely *registered*, capacity per zone.
+
 ## Cheat sheet
 
 | Task | Command |

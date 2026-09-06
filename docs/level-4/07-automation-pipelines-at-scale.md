@@ -202,6 +202,48 @@ terraform validate
   over many small PRs) — periodically diff overlays against each other,
   not just against the base.
 
+## How It Actually Works
+
+- **Argo CD's `selfHeal` works by continuously diffing the live cluster
+  state against the rendered manifests from Git, not by locking resources
+  against edits.** On its sync interval (and on a watch of the target
+  resources), Argo CD re-renders the kustomize overlay, computes a diff
+  against what's actually running, and re-applies anything that drifted —
+  a manual `kubectl edit` isn't blocked from happening, it's simply
+  overwritten on the next reconciliation pass. That's exactly why an
+  emergency hotfix needs `--sync-policy none` first: pausing stops the
+  reconciliation loop from running at all, rather than trying to
+  distinguish "good" drift from "bad" drift.
+- **`git revert` is the correct rollback because Argo CD's desired state
+  literally *is* whatever the tracked Git ref currently renders to — there
+  is no separate "previous cluster state" it remembers outside of Git.**
+  Reverting the commit changes what the overlay renders to, and the very
+  next sync reconciles the live cluster toward that reverted manifest set;
+  `kubectl rollout undo` instead changes the live Deployment's revision
+  directly, which immediately diverges from what Git renders to and either
+  gets stomped by the next `selfHeal` pass or silently becomes permanent
+  drift if self-heal happens to be paused — either way it breaks the
+  invariant that Git and cluster state agree.
+- **A Schematics plan posted in CI can go stale because Terraform state
+  is a snapshot taken at plan time, and any other apply against that same
+  workspace between plan and merge changes the real infrastructure out
+  from under it.** The plan output represents a diff against state as it
+  existed at plan time; if a second PR's apply lands first, the actual
+  resources (and the state Schematics tracks) have moved, so a plan that's
+  an hour old can propose changes based on assumptions that are no longer
+  true — which is exactly why re-planning immediately before apply in the
+  CD job, against current state, is the only way to keep the applied
+  change matching what a human actually reviewed.
+- **Environment-protection "required reviewer" gates and PR review are two
+  independently enforced checkpoints because they're checked by different
+  systems at different times** — PR review is enforced by the Git
+  platform's branch-protection rules before merge is even possible; the
+  `environment: production` gate is a separate check GitHub Actions
+  enforces immediately before the job that references that environment is
+  allowed to start running, regardless of how the code got merged. Neither
+  can be satisfied by bypassing the other, which is the actual mechanism
+  behind "a second human checkpoint" rather than just a naming convention.
+
 ## Cheat sheet
 
 | Task | Command |

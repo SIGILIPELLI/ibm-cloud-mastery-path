@@ -163,6 +163,46 @@ terraform validate
   blame language by default; it's a discipline that needs active
   facilitation, not just a markdown heading.
 
+## How It Actually Works
+
+- **The 14.4x fast-burn threshold isn't an arbitrary round number — it's
+  derived directly from the SLO's own error budget arithmetic.** A 28-day
+  budget of 0.5% failing requests, if consumed at a constant rate, is
+  fully exhausted in 28 days at burn-rate 1x; a 1-hour window sampling a
+  burn rate of 14.4x extrapolates to exhausting that same budget in
+  28/14.4 ≈ 1.94 days — the multiplier is chosen precisely so that
+  sustaining it for the alert's short measurement window represents a
+  genuinely budget-threatening trajectory, not a coincidence of common
+  SRE folklore.
+- **Multi-window burn-rate alerting exists because a single fixed-threshold
+  alert can't distinguish a brief severe spike from a mild sustained
+  leak, even though both eventually exhaust the same budget.** Evaluating
+  the same underlying ratio (failing requests / total requests) over two
+  different time windows with two different thresholds catches both
+  shapes: a short window with a high threshold reacts fast to a severe
+  spike before much budget is spent, while a long window with a low
+  threshold accumulates enough signal to notice a leak too gradual to
+  cross the short window's threshold at all.
+- **"Mitigate first, root-cause later" works because a GitOps rollback
+  (Module 07) and root-cause investigation are causally independent
+  operations against different systems** — reverting a commit changes
+  what Argo CD reconciles the cluster toward, which resolves the
+  customer-facing symptom within one sync interval regardless of whether
+  anyone yet understands why the prior deploy broke; the investigation
+  meanwhile can proceed against logs, traces, and the retained bad commit
+  without time pressure, since restoring service doesn't require or
+  depend on that investigation completing first.
+- **Automating a runbook step (like the failed-pod cleanup script) works
+  by encoding the same imperative commands a human would type into a
+  script or a Cloud Function triggered by the alert that used to page a
+  person** — the underlying Kubernetes API calls (`field-selector`
+  filtering, `delete pod`) are identical either way; what changes is
+  whether a human's judgment and typing speed sit in the response's
+  critical path. That's the actual mechanical distinction SRE draws
+  between toil (a human executing a deterministic, repeatable procedure)
+  and legitimate incident response (judgment applied to a genuinely novel
+  situation the script wasn't written to handle).
+
 ## Cheat sheet
 
 | Task | Command / concept |

@@ -153,6 +153,32 @@ resource "ibm_is_subnet" "private_z1" {
 needs an address prefix to exist first, since the prefix isn't referenced
 by ID anywhere in the subnet resource.
 
+## How It Actually Works
+
+- **An address prefix is a reservation on the fabric's IP allocator, not
+  a network object with its own routing behavior — it exists purely so
+  the VPC control plane can validate that every subnet's CIDR you create
+  afterward falls inside a range it already knows is yours and doesn't
+  collide with another prefix in the same zone.** That's why Terraform
+  needs an explicit `depends_on`: nothing in a subnet resource's
+  arguments references the prefix by ID, so the dependency is invisible
+  to Terraform's automatic graph-building and has to be stated.
+- **Zones within a region are physically independent facilities with
+  independent power, cooling, and network uplinks, connected by
+  low-latency private fabric links** — spreading subnets across zones is
+  what actually buys fault isolation, because a zone-level failure
+  (power, cooling, a fabric incident) is architecturally incapable of
+  taking down a workload correctly split across zones, unlike splitting
+  across subnets within the same zone which shares all of that
+  infrastructure.
+- **A VPC's default deny-all posture is enforced identically to every
+  other security group rule — there's no special "default" rule
+  object, just the mathematical fact that a security group with zero
+  rules matches zero traffic**, which is why explicitly reviewing the
+  auto-created default security group after Terraform provisions a VPC
+  matters: any permissive default rule it happens to attach is a real,
+  evaluated rule, not a placeholder.
+
 ## Cheat sheet
 
 | Command | Purpose |

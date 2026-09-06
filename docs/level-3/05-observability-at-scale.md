@@ -174,6 +174,45 @@ terraform validate
   cardinality custom metrics (e.g. one metric series per unique user ID)
   — cardinality explosions are the most common surprise monitoring bill.
 
+## How It Actually Works
+
+- **The Sysdig agent daemonset needs `privileged` SCC because it reads
+  metrics from the kernel and container runtime directly, not from an
+  application-level API.** It hooks system calls (via a kernel module or
+  eBPF probe) on the host to capture per-process CPU, memory, network, and
+  file-descriptor activity for every container on that node — capabilities
+  a `restricted`-SCC pod simply isn't allowed to request, which is why
+  this is a case where granting a broader SCC to a specific, known
+  workload is the correct move rather than a shortcut around Module 1's
+  security posture.
+- **An alert condition referencing a metric name that doesn't exist yet
+  creates successfully because alert policies are stored and evaluated
+  independently of whether the metric currently has any data behind it.**
+  The alerting engine periodically runs the stored expression against
+  whatever time series matches the label selector; a typo'd or
+  renamed-by-agent-upgrade metric name simply matches zero series forever,
+  which evaluates to "no data," not "true" or "false" — so the alert
+  silently never fires instead of erroring, which is exactly why
+  confirming the metric name first is the only reliable check.
+- **OpenTelemetry spans are correlated into one trace using a shared trace
+  ID propagated through request headers, not through Sysdig inferring
+  causality after the fact.** The originating service generates a trace ID
+  and a root span ID, injects them as `traceparent` headers on outbound
+  calls, and every downstream service that's instrumented reads that
+  header and creates its child spans under the same trace ID before
+  exporting to the OTLP endpoint. A service that isn't instrumented simply
+  never reads or forwards that header, which is why one gap in
+  instrumentation doesn't corrupt the trace — it just leaves an unexplained
+  gap in the timeline where that hop should be.
+- **Cardinality cost comes from each unique combination of metric name +
+  label values becoming its own stored time series** — a metric tagged
+  with `user_id` doesn't add rows to one series, it creates one entirely
+  separate series per distinct user ID the monitoring backend has ever
+  seen, each with its own storage and query overhead. That multiplicative
+  structure (metric × every label's cardinality) is why a single
+  high-cardinality label can silently multiply the ingested-series count
+  by orders of magnitude compared to what the dashboard visually suggests.
+
 ## Cheat sheet
 
 | Task | Command |

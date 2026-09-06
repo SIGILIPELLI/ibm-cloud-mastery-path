@@ -210,6 +210,32 @@ Both commands should come back empty (or show only Lite-tier COS/Functions
 resources) for the `mastery-path` resource group. If anything unexpected
 shows up, delete it before you consider the project finished.
 
+## How It Actually Works
+
+- **Nothing you built across Modules 1–9 shares a hidden dependency
+  beyond what you wired explicitly — VPC, COS, a database, and Functions
+  are each independent control planes that only interact through the
+  network paths, IAM policies, and connection strings you configured.**
+  This capstone's integration work is precisely the part IBM Cloud
+  doesn't do for you: each service is provisioned and billed
+  independently, so a working end-to-end app is the sum of explicit
+  wiring, not an emergent property of having all the pieces switched on.
+- **A "nothing billable is left running" check has to enumerate
+  resources, not just compute — a stopped VSI still bills for its
+  attached block storage, a deleted-looking COS bucket with a pending
+  lifecycle rule can still hold objects, and an idle Cloud Databases
+  deployment bills for its provisioned memory/disk regardless of query
+  volume**, because IBM Cloud's billing meters track allocated capacity
+  per resource independently of whether it's actively serving traffic —
+  there is no platform-wide "auto-pause everything idle" behavior.
+- **Resource-group scoping is what makes a clean teardown checkable at
+  all: `ibmcloud resource service-instances -g mastery-path` and
+  `ibmcloud is instances --resource-group-name mastery-path` both query
+  the resource-group index directly**, which is exactly why Module 1
+  had you create a dedicated group up front — without a shared
+  tag/group to filter by, verifying "did I delete everything" degrades
+  to manually checking every service's console page.
+
 ## Cheat sheet
 
 | Step | Command |

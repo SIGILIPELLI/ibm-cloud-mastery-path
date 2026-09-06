@@ -167,6 +167,40 @@ region without extra image-pull secrets, as long as the cluster's default
 service account has the `Reader` role on the registry namespace (granted
 automatically for clusters and registries in the same account).
 
+## How It Actually Works
+
+- **IKS runs the control plane (API server, etcd, scheduler, controller
+  manager) as IBM-managed infrastructure you never see or pay VSI cost
+  for, while worker nodes are ordinary VPC VSIs that IBM provisions,
+  joins to the cluster via kubelet, and bills to your account like any
+  other compute.** That split is exactly why `ibmcloud ks cluster
+  create` takes minutes (standing up managed control-plane components)
+  while `ibmcloud ks worker-pool create` is comparatively fast — it's
+  provisioning VSIs and running a join script against a control plane
+  that already exists.
+- **`kubectl apply` doesn't imperatively create your Deployment — it
+  writes desired state into etcd via the API server, and the Deployment
+  controller (running in the control plane) is what actually notices
+  the diff and creates ReplicaSets and Pods to reconcile reality toward
+  it**, on a continuous watch-and-reconcile loop rather than a one-shot
+  action; that's why a Pod you `kubectl delete` manually comes right
+  back — the controller re-notices the drift within its next
+  reconciliation pass.
+- **The scheduler assigns each Pod to a node using a two-phase process —
+  filtering out nodes that fail hard constraints (insufficient CPU/memory
+  requests, taints, zone/anti-affinity rules), then scoring the survivors
+  and picking the best fit** — which is the actual mechanism behind pods
+  landing across zones in a multi-zone worker pool: it's an explicit
+  spread-scoring heuristic, not a round-robin default.
+- **A `LoadBalancer` Service doesn't run its own proxy — creating one
+  triggers IKS's cloud-controller-manager to provision a real VPC
+  Application Load Balancer via the VPC API, and Kubernetes' own
+  kube-proxy on each node programs iptables/IPVS rules that route
+  traffic arriving at the node to the correct backend Pod.** Two
+  separate load-balancing layers are actually involved: the VPC ALB
+  distributing across nodes, and kube-proxy distributing from a node to
+  whichever Pod is currently scheduled there.
+
 ## Cheat sheet
 
 | Command | Purpose |

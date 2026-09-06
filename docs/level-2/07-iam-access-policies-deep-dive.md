@@ -128,6 +128,44 @@ ibmcloud cbr rules
 ibmcloud iam access-report --output json
 ```
 
+## How It Actually Works
+
+- **Every IAM authorization decision — an ordinary policy, a tag-scoped
+  grant, or a CBR check — is evaluated by the same central policy
+  evaluation engine on every API call, not cached from login.** The
+  request context (identity, requested action, target resource's
+  attributes including its tags, and the network the call originates
+  from) is assembled fresh, then matched against every policy attached to
+  that identity or its access groups. A tag-based policy doesn't "expand"
+  into per-resource policies at grant time; the resource's current tags
+  are read and matched at the moment of the call, which is exactly why
+  tagging a new resource `env:staging` grants access to it immediately
+  with zero policy edits.
+- **Custom roles don't add new capabilities to a service — they subset a
+  fixed action list the service itself registers with IAM.** `ibmcloud iam
+  service-roles` is reading that registered catalog, and a custom role is
+  just a named bundle of a subset of those action strings. When a policy
+  references the role, the evaluator expands it back to its action list at
+  check time, so narrowing a custom role's actions later tightens every
+  policy referencing it without needing to touch those policies.
+- **Service-to-service authorization policies are matched by service name
+  and resource-group/instance scope, and once matched they mint a
+  short-lived token behind the scenes on the source service's behalf** —
+  there's no long-lived credential exchanged at all. This is why revoking
+  the authorization policy takes effect immediately (the next token
+  request is simply refused) rather than requiring you to hunt down and
+  rotate a leaked key, which is the whole point relative to a
+  Kubernetes-secret-held API key.
+- **CBR is enforced at the network/API-gateway layer, before IAM policy
+  evaluation even runs — the two are independent gates in series, not
+  alternatives.** A request first has its source IP/VPC/service-ref
+  checked against the zones referenced by any enforced rule for that
+  target service; only a request that clears CBR gets forwarded on to
+  normal IAM policy evaluation. That ordering is why a `report`-mode rule
+  is genuinely safe to test in production: it logs what the CBR gate would
+  have decided without ever engaging its block, leaving IAM evaluation
+  (and real traffic) untouched.
+
 ## Cheat sheet
 
 | Command | Purpose |

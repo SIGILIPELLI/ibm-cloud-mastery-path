@@ -127,6 +127,40 @@ ibmcloud resource group-create mastery-path
 ibmcloud target -g mastery-path
 ```
 
+## How It Actually Works
+
+- **`ibmcloud login` doesn't send your password on every later command — it
+  exchanges credentials once for a short-lived IAM access token (an hour or
+  so) plus a longer-lived refresh token, both cached in
+  `~/.bluemix/config.json`.** Every subsequent CLI call reads that cached
+  access token and attaches it as an `Authorization: Bearer` header to the
+  IBM Cloud IAM-fronted API it's hitting; when the access token expires the
+  CLI silently uses the refresh token to mint a new one, which is why a
+  session that's been idle for days sometimes forces a fresh `login` — the
+  refresh token itself has finally expired too.
+- **An API key is a static, non-expiring credential in a different tier
+  from that ephemeral access token — it's what you trade in for a new
+  token, not the token itself.** `ibmcloud login --apikey @file` reads the
+  key from the JSON file, POSTs it to IAM's token endpoint
+  (`iam.cloud.ibm.com/identity/token`), and receives back the same
+  short-lived access token an interactive login would get. This is exactly
+  why the key file, not the token cache, is the thing worth protecting:
+  anyone holding it can regenerate valid tokens indefinitely, while a
+  leaked access token self-expires within the hour.
+- **Region and resource-group targeting are local CLI state, not account
+  configuration — `ibmcloud target` writes your choice into
+  `~/.bluemix/config.json` and every later command reads it from there to
+  fill in the region/resource-group fields a REST call requires.** Nothing
+  about the account itself changes; a second terminal, or the console UI,
+  has no idea what you targeted. That's also why CI pipelines re-target
+  explicitly on every run instead of relying on a previous session's
+  state — there's no shared, server-side "current context" to inherit.
+- **Each `ibmcloud plugin install` pulls a self-contained Go binary for
+  that service family and registers its subcommands with the core CLI's
+  command router — the base CLI ships thin on purpose so it stays small and
+  installs fast, deferring the actual API client code for VPC, COS,
+  Cloud Databases, etc. until you ask for it.**
+
 ## Cheat sheet
 
 | Command | Purpose |

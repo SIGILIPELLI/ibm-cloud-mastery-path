@@ -161,6 +161,39 @@ watch -n 30 ibmcloud is instance-group-memberships web-group
 ibmcloud is load-balancer ha-app-alb --output json | jq -r .hostname
 ```
 
+## How It Actually Works
+
+- **An Application Load Balancer for VPC is itself a managed,
+  horizontally-scaled fleet of proxy nodes spread across your chosen
+  zones — not a single appliance** — which is why it's given a hostname
+  that resolves via DNS to multiple IPs rather than one static address:
+  the ALB's own capacity scales behind the scenes, and the hostname
+  indirection is what lets IBM add or replace proxy nodes without
+  changing what clients connect to.
+- **Health checks are the actual mechanism deciding pool membership in
+  real time — the load balancer independently probes each backend
+  member on the configured interval/path, and a member that fails the
+  configured consecutive-failure threshold is removed from the
+  live-routing set immediately, before any traffic is sent to it**,
+  which is why an autoscaled-in instance isn't usable the instant it
+  boots: it has to pass its first health checks before the load balancer
+  routes anything to it.
+- **Instance group autoscaling makes decisions from the same metrics
+  pipeline Monitoring uses — it evaluates the group's average CPU (or
+  configured metric) against your target on a polling interval, and
+  scale-out/scale-in are separate control-plane actions that create or
+  delete VSIs from a template**, not resource reallocation on existing
+  instances; that's why autoscaling has real lag (metric window +
+  cooldown + VSI boot time) between load rising and capacity actually
+  increasing.
+- **Session persistence (sticky sessions) works by the load balancer
+  hashing a cookie or source IP into a consistent backend selection on
+  every request, rather than the backend fleet sharing session state** —
+  which is exactly why removing a "sticky" backend member (scale-in, a
+  failed health check) breaks in-flight sessions pinned to it: there's
+  no session data replicated elsewhere for the load balancer to fail
+  over to.
+
 ## Cheat sheet
 
 | Command | Purpose |

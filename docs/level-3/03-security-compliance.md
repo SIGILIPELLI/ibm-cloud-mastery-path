@@ -177,6 +177,42 @@ Route all-events-route created.
   fine for this module's exercise, not for a production compliance
   program.
 
+## How It Actually Works
+
+- **Key rotation needs no data re-encryption because of envelope
+  encryption, the same mechanism Level 2's COS module covered.** Each
+  object or volume has its own data-encryption key (DEK) wrapped by the
+  Key Protect root key, and rotating the root key only changes what future
+  wrap operations use — existing DEKs already wrapped under the prior
+  version stay valid because Key Protect retains old key versions
+  internally to keep unwrapping them, it just stops issuing new wraps with
+  them. That's the whole reason rotation is near-instant regardless of how
+  much data the key protects.
+- **SCC's continuous checks work by periodically querying each resource's
+  actual configuration through the same APIs you'd call directly** — a
+  control like "COS buckets are not public" isn't a static rule matched
+  against a snapshot; SCC's scanner calls the COS API to read each
+  bucket's public-access setting on every scan cycle and compares it
+  against the profile's expected value, which is why a manual console
+  change that violates a control shows up as a new failure on the very
+  next scan rather than staying silently unnoticed.
+- **The 30-day deletion window on a Key Protect instance is a scheduled
+  hold, not a soft-delete flag your code can query around** — the key
+  material stays fully wrappable/unwrappable during that window (a
+  cancellation restores full use), and only after it elapses does Key
+  Protect irreversibly destroy the key. Since deleting the wrapping root
+  key is what makes envelope-encrypted data unrecoverable, that window
+  exists specifically as the last chance to notice a wrong deletion before
+  every object it protects becomes permanently unreadable.
+- **Activity Tracker routes are additive because each one independently
+  subscribes to the same underlying platform event stream** — every
+  IAM-authenticated API call across the account emits an event onto that
+  stream regardless of whether any route exists, and each configured route
+  is simply a filter-plus-forward rule matching those events into its own
+  target. Two overlapping routes both fire because they're two separate
+  subscriptions reading the same stream, not two paths through one
+  pipeline — hence the doubled storage cost.
+
 ## Cheat sheet
 
 | Task | Command |

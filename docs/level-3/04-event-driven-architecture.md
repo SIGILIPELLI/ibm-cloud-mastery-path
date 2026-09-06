@@ -183,6 +183,43 @@ terraform validate
   balancer close after a period of inactivity — clients need
   reconnect/retry logic, not a bare "connect once" pattern.
 
+## How It Actually Works
+
+- **A partition is what actually enforces the ordering guarantee — Kafka
+  hashes the message key to deterministically pick one partition, and
+  each partition is an append-only log read by consumers strictly in
+  write order.** Two messages with the same `order.id` key always hash to
+  the same partition and are therefore always read in the order they were
+  written; two different order IDs can (and usually do) land on different
+  partitions, which are consumed independently and offer no relative
+  ordering guarantee between them — that's the mechanical reason "ordered
+  per key, not globally" is true rather than a design choice you could opt
+  out of.
+- **A consumer group's parallelism is capped by partition count because
+  Kafka assigns each partition to exactly one consumer within a group at a
+  time.** With 3 partitions, a 3-instance consumer group gets one
+  partition each and runs fully parallel; a 4th instance in that group
+  sits idle with no partition assigned, and increasing partitions later
+  doesn't retroactively fix already-skewed key distribution — existing
+  keys already hashed against the old partition count keep landing where
+  they always did unless the hashing function itself changes.
+- **The replication factor of 3 means each partition's log is fully
+  duplicated across three separate broker processes, one elected leader
+  and two in-sync replicas** — producers and consumers only ever talk to
+  the current leader, and a broker failure triggers leader election among
+  the remaining in-sync replicas using the same consensus mechanism open-
+  source Kafka uses. This is why replication factor, not the "standard"
+  plan name, is the actual thing determining how many broker failures a
+  topic survives without data loss.
+- **Mirror Maker 2 works as a consumer-then-producer pair, not a network-
+  level replication** — it runs a real consumer group against the source
+  cluster's topic, re-serializes each record, and produces it as a new
+  message into the target cluster's differently-named topic, preserving
+  the key (hence partition ordering) but assigning fresh offsets. That's
+  exactly why the mirrored topic needs a distinct name and consumers must
+  subscribe to `<topic>-source` explicitly — it's a genuinely separate
+  topic with its own offset history, not a live extension of the original.
+
 ## Cheat sheet
 
 | Task | Command |

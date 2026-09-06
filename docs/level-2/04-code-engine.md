@@ -149,6 +149,40 @@ seconds to start). For latency-sensitive endpoints, `--min-scale 1` trades
 that guaranteed idle cost for consistent response times — there's no
 setting that gives you both zero idle cost and zero cold starts.
 
+## How It Actually Works
+
+- **Scale-to-zero isn't Code Engine "pausing" your container — it's deleting
+  the last running instance and keeping only the route/metadata around.**
+  The Knative-based control plane watches request queue depth per
+  revision; when it hits zero for `--scale-down-delay` seconds it tears
+  the pod down entirely, freeing the worker capacity back to the shared
+  pool. The next request hits the project's proxy layer, which holds the
+  connection open while a fresh pod is scheduled, image-pulled (or reused
+  from a warm node cache) and started — that gap is the cold start you
+  feel, not a resume from a suspended state.
+- **`--concurrency` sets a per-instance request cap enforced by that same
+  proxy, not by your application code.** Once an instance has that many
+  in-flight requests, the proxy queues new ones and asks the autoscaler for
+  another instance rather than forwarding the request and letting your app
+  get overwhelmed — which is why a CPU-bound app with high concurrency can
+  look "scaled fine" while individual requests actually queue for seconds
+  behind each other on the same instance.
+- **Buildpacks builds and image-based deploys both end up as the same
+  artifact type internally** — a Buildpacks build runs in a short-lived
+  build pod, produces an OCI image, and pushes it to an internal registry
+  namespace Code Engine manages for the project, then the app is created
+  against that image exactly like `--image icr.io/...` would be. That's
+  why a from-source app still has an image digest visible in
+  `ibmcloud ce build get`, and why rebuilding from unchanged source
+  produces a no-op deploy if the digest matches.
+- **`--array-indices` doesn't spin up a coordinator job** — Code Engine
+  submits N independent job-run pods, each with `CE_SUBJOB_INDEX` baked in
+  as a plain env var at pod creation time, and tracks their exit codes
+  individually. There's no shared state or barrier between indices; if
+  index 2 fails and retries under `--retry-limit`, indices 0, 1, 3, 4 are
+  unaffected and the job's overall status is just an aggregate of each
+  index's terminal state.
+
 ## Cheat sheet
 
 | Command | Purpose |

@@ -185,6 +185,43 @@ Bumping `ref` is then a deliberate, reviewable change (a one-line diff)
 rather than every environment silently picking up whatever the module
 directory currently contains.
 
+## How It Actually Works
+
+- **A Schematics workspace is really just a hosted Terraform state file
+  plus a managed job runner** — `plan`/`apply` don't run on your laptop,
+  they run in an IBM-managed container that clones the bound Git
+  directory, downloads the exact `terraform_v1.5`-pinned binary, runs it
+  against the workspace's own state, and streams logs back. Two workspaces
+  pointed at the same repo but different subdirectories share nothing at
+  runtime except the source code — their state files, variable sets, and
+  job history are completely independent, which is the entire safety
+  property behind "one workspace per environment."
+- **A `module` block doesn't get compiled or copied at plan time from a
+  remote source every run** — for a local `../../modules/vpc` path
+  Terraform reads it straight off disk on each `plan`, so an edit to the
+  module is live for every environment's very next plan with no explicit
+  update step. A `git::...?ref=` source is different: Terraform clones
+  that specific ref into `.terraform/modules/` once and reuses the cached
+  copy until `terraform init -upgrade` is run again, which is the actual
+  mechanism that turns "pin a module version" from a convention into an
+  enforced fact.
+- **`for_each = toset(var.zones)` builds Terraform's resource graph with
+  one graph node per zone value, keyed by that value, instead of by
+  numeric index the way `count` would.** That keying is why reordering
+  `zones` in a variable doesn't cause Terraform to plan a destroy/recreate
+  of unrelated subnets the way a `count`-based list reorder would — each
+  subnet's identity in state is tied to its zone string, not its position.
+- **Cross-workspace output passing is manual because Schematics workspace
+  state is opaque to other workspaces by design** — `ibmcloud schematics
+  output` is reading a JSON blob out of one workspace's completed apply,
+  and `workspace update --var` is writing a plain string into another
+  workspace's variable set; there's no `remote_state` data source linking
+  them automatically the way a single Terraform config's own module
+  outputs would. That gap is deliberate: it forces the dependency between
+  infrastructure and app workspaces to show up as an explicit, reviewable
+  pipeline step (Module 8) rather than an implicit reach into another
+  workspace's state.
+
 ## Cheat sheet
 
 | Command / Syntax | Purpose |

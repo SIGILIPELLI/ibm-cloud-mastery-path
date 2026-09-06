@@ -108,6 +108,38 @@ ibmcloud schematics output --id <workspace-id>
 ibmcloud schematics destroy --id <workspace-id>
 ```
 
+## How It Actually Works
+
+- **Schematics is a managed Terraform runner, not a separate IaC
+  engine — a workspace packages your `.tf` files plus a chosen Terraform
+  version, and every plan/apply runs an actual `terraform plan`/`apply`
+  inside an IBM-managed container, against a state file IBM stores and
+  locks on your behalf.** That's the real reason you never see
+  `terraform.tfstate` sitting in your repo when using Schematics: it
+  lives server-side, and the workspace ID is effectively a pointer to
+  that remote state plus its execution history.
+- **`terraform plan`'s diff isn't guesswork — it refreshes the state
+  file by querying the real IBM Cloud API for each resource's current
+  attributes, then does a structural diff against your `.tf`
+  configuration** to compute exactly which resources would be created,
+  changed in place, or destroyed-and-recreated; a "recreate" appears
+  specifically when you change an attribute that provider knows can't
+  be updated on the live resource (e.g. a VSI's zone), forcing
+  delete-then-create instead of an in-place PATCH.
+- **State locking prevents two concurrent applies from corrupting each
+  other by having the first apply take an exclusive lock on the state
+  file before it starts** — a second `apply` targeting the same
+  workspace blocks (or errors) until the first releases it, which is
+  the actual mechanism that keeps Schematics safe for team or CI use
+  against a shared workspace, not a UI-level "someone's editing this"
+  warning.
+- **`destroy` walks the state file's dependency graph in reverse
+  topological order** — the same graph Terraform built to know that a
+  VPC must exist before a subnet, so it necessarily deletes the subnet
+  before the VPC — which is why destroy failures usually mean a
+  resource outside Terraform's knowledge (a manually created dependency)
+  is blocking deletion of something the graph expected to be free.
+
 ## Cheat sheet
 
 | Command | Purpose |
