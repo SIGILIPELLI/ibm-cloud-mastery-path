@@ -1782,6 +1782,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2338,6 +2349,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2516,6 +2538,45 @@ gateway is the enforcement point.</p>
 <li><strong>Catalog vs. space vs. organization</strong> is a three-level hierarchy that's
   easy to get backwards — a product published to the wrong catalog is
   invisible to the portal users expecting it in another one.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The API Connect gateway sits as a full reverse proxy in the request
+  path, executing the assembly pipeline before anything reaches the
+  backend — rate limiting is enforced there by counting requests against a
+  shared counter keyed to the caller's API key and plan.</strong> Each incoming
+  request is authenticated against that key first, then the gateway checks
+  and increments the plan's rolling counter (<code>1000/1hour</code> here); a caller
+  over the limit gets <code>429</code> straight from the gateway's own logic and the
+  <code>invoke</code> policy that would call the backend never executes. That's
+  exactly why the backend "has no idea" — it's not in the call chain at
+  all for a throttled request.</li>
+<li><strong>The <code>gatewayscript</code> and <code>json-to-xml</code> policies run as ordered steps in
+  the same assembly pipeline as <code>invoke</code>, operating on the in-flight
+  message object rather than on a copy of the backend's response sent
+  separately.</strong> <code>invoke</code> populates <code>context.message.body</code> with whatever
+  the backend returned; each subsequent policy reads and mutates that same
+  object in place, which is why ordering matters (stripping a field before
+  a format-conversion step processes different bytes than stripping it
+  after) and why the backend's actual response, internal fields included,
+  genuinely leaves the backend network — it's removed downstream at the
+  gateway, not withheld by the backend itself.</li>
+<li><strong>Two product versions can be live at once because each published
+  product gets its own base path bound to a specific OpenAPI document and
+  assembly, not because API Connect merges document versions.</strong> Publishing
+  <code>2.0.0</code> doesn't touch <code>1.0.0</code>'s gateway configuration at all — they're
+  independent artifacts that happen to route to the same or different
+  backend URLs; a partner's existing key, scoped to the <code>1.0.0</code> product's
+  plan, simply never resolves against <code>/orders-api/v2</code> unless a separate
+  subscription is created for it.</li>
+<li><strong>The developer portal is a separate content-management layer reading
+  catalog/product metadata via API Connect's management API, not a live
+  view directly into the gateway's runtime config.</strong> Publishing a product
+  writes its definition into the catalog; the portal periodically (or on
+  an explicit "publish portal") pulls that catalog metadata to regenerate
+  its own pages — which is the actual reason a freshly published product
+  can be callable at the gateway before it's visible for self-service
+  discovery in the portal UI.</li>
 </ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>

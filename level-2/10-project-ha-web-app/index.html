@@ -1423,6 +1423,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2338,6 +2349,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2597,6 +2619,44 @@ pod level:</p>
 <p>If the <code>curl</code> loop above never returns anything but <code>200</code> while zone 1's
 node is drained, the app survived a simulated zone outage — the actual
 point of this whole project.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>cordon</code> and <code>drain</code> don't simulate a zone failure the way killing a
+  VM would — they walk a deliberate eviction protocol the control plane
+  fully participates in.</strong> <code>cordon</code> marks the node unschedulable so the
+  scheduler stops placing new pods there; <code>drain</code> then evicts existing
+  pods one at a time through the Kubernetes eviction API, respecting each
+  Deployment's <code>PodDisruptionBudget</code> (implicit here, defaulting to
+  allowing disruption) and letting <code>terminationGracePeriodSeconds</code> run
+  before force-killing. The scheduler immediately re-places evicted pods
+  on any node with capacity — zone 2's — which is the actual mechanism
+  behind "traffic never drops," not some IKS-specific failover feature.</li>
+<li><strong>The <code>LoadBalancer</code> Service's zero-downtime behavior during the drain
+  comes from the ALB's health checks, not from Kubernetes.</strong> The VPC ALB
+  provisioned for this Service continuously health-checks every backend
+  pod IP across both zones; as zone 1's pods are evicted, the ALB's health
+  check for those targets fails and it stops routing new connections to
+  them within its check interval, while zone 2's already-healthy targets
+  absorb the traffic — the ALB doesn't know or care that an entire zone
+  went away, it's just reacting to individual target health the same way
+  it would for one crashed pod.</li>
+<li><strong>The HPA doesn't watch CPU usage directly — it polls aggregated metrics
+  from the Kubernetes metrics-server</strong> (itself scraping kubelet's
+  cAdvisor-derived stats from each node) on a fixed interval, computes
+  <code>currentUtilization / targetUtilization</code> against <code>averageUtilization:
+  70</code>, and only then requests a new replica count from the Deployment.
+  That polling interval (roughly every 15-30s) plus a stabilization window
+  to avoid flapping is why replica count visibly lags a CPU spike by tens
+  of seconds rather than reacting instantly.</li>
+<li><strong>Writes to <code>mastery-postgres-ha</code> over the private endpoint still go to
+  exactly one member — the current primary</strong> — multi-member HA changes
+  what happens when that member fails, not how many members accept writes
+  at once. The pods in this Deployment all share one <code>postgres-creds</code>
+  Secret pointing at the same primary-tracking hostname; if the primary
+  fails over mid-drain-test, every pod reconnects to the same hostname
+  once DNS re-resolves to the newly promoted member, with no code change
+  needed on the application side.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

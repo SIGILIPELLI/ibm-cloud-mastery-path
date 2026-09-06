@@ -1367,6 +1367,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2316,6 +2327,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2509,6 +2531,44 @@ the REST API is the scriptable equivalent for status checks from another
 pipeline or a notification script, but for actually reading build logs
 day-to-day, the console is the practical tool — there's no <code>tkn</code>-style CLI
 against IBM's managed service.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>A toolchain is a metadata container that groups tool integrations — it
+  runs nothing itself.</strong> <code>ibm_cd_toolchain</code> just creates an ID and a
+  resource-group scope; every actual capability (the Git link, the
+  pipeline, a Slack notifier) is a separate <code>ibm_cd_toolchain_tool_*</code>
+  resource that registers itself against that toolchain ID. That
+  separation is why deleting a toolchain in Terraform cascades to delete
+  its tool integrations, but the underlying GitHub repo or Container
+  Registry namespace those tools point at is untouched — the toolchain
+  only holds references, not the resources themselves.</li>
+<li><strong>An SCM trigger works through a webhook IBM registers on your Git
+  provider, not through Continuous Delivery polling the repo.</strong> Creating
+  <code>ibm_cd_tekton_pipeline_trigger</code> with <code>type = "scm"</code> calls out to GitHub
+  (via the token in the hostedgit tool integration) to add a webhook
+  pointed at an <code>event_listener</code> endpoint unique to that pipeline; a push
+  matching the branch pattern makes GitHub POST the commit payload to that
+  endpoint, which is what actually starts the <code>PipelineRun</code>. If the
+  webhook is deleted on the GitHub side out-of-band, Terraform's state
+  still shows the trigger configured but nothing will ever fire.</li>
+<li><strong>Each Tekton <code>Task</code> step runs in its own ephemeral container on the
+  pipeline's worker, not in a persistent build VM</strong> — <code>runAfter</code> ordering
+  is enforced by the pipeline controller creating each step's pod only
+  once its dependency's pod has exited successfully, and any files a task
+  needs to pass to the next (like the built image reference) go through a
+  workspace volume or params, not shared process state, since the
+  containers never coexist. That's also why the <code>public</code> worker type has
+  cold-start latency comparable to a fresh Code Engine instance — it's
+  provisioning fresh compute per run, the same primitive Module 4 used for
+  jobs.</li>
+<li><strong><code>terraform apply</code> only ever changes control-plane wiring — a
+  <code>PipelineRun</code> is a separate, transient Kubernetes-style custom resource
+  created either by the webhook listener or your manual API call</strong>, never
+  by Terraform's own reconciliation loop. This is precisely why the state
+  after <code>apply</code> has an idle pipeline: Terraform's job ends at "the trigger
+  exists and is correctly configured," and something outside Terraform
+  (the webhook, or you) has to be the thing that actually creates a run.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

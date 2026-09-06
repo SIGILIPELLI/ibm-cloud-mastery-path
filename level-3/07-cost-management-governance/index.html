@@ -1737,6 +1737,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2360,6 +2371,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2535,6 +2557,43 @@ pools support autoscaling:</p>
   tags</strong> — the two tag systems look similar in the console but serve
   different purposes (attribution vs. IAM scoping) and are managed by
   different <code>ibmcloud resource tag-attach --tag-type</code> values.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Usage attribution is computed from metering records emitted by each
+  service, not from polling resource inventories.</strong> Every billable
+  service reports discrete usage events (an hour of ROKS worker time, a
+  GB-month of COS storage) tagged with the resource's ID, resource group,
+  and whatever access-management/cost tags were attached to it <em>at the
+  moment the event was recorded</em>. That's the actual mechanism behind
+  "tagging after the fact doesn't retroactively attribute spend" — the
+  historical metering records were already written without the tag and
+  are never rewritten once billing has rolled them up.</li>
+<li><strong>A budget is a threshold watcher over the same aggregated usage data
+  the billing API exposes, evaluated on a periodic sweep — not a live
+  gate any provisioning call passes through.</strong> Creating a resource never
+  consults the budget at all; the budget engine separately totals a
+  resource group's usage-to-date against the configured amount and fires
+  a notification when a percentage threshold is crossed, which is exactly
+  why it can only ever alert after the spend already happened rather than
+  prevent it.</li>
+<li><strong>VPC infrastructure quotas are enforced synchronously at the API layer,
+  which is the real distinction from budgets.</strong> A <code>POST</code> to create a
+  floating IP or instance is checked against the account's quota
+  allowance in the same request path that validates the rest of the
+  payload, and a request that would exceed the limit is rejected outright
+  — no resource is created, no charge accrues, and no alert is needed
+  because the action itself never completed. That's why quotas stop a
+  runaway loop and budgets only report on one after the fact.</li>
+<li><strong>Autoscaling on a worker pool watches pending-pod pressure via the
+  cluster autoscaler component, not raw CPU usage on existing nodes.</strong> It
+  polls the Kubernetes scheduler for pods that are <code>Unschedulable</code> due to
+  insufficient resources; if any exist and the pool is under <code>max-size</code>,
+  it requests a new worker node from the ROKS control plane. Scale-down
+  works the opposite way — a node whose pods could all be rescheduled
+  elsewhere is cordoned, drained, and removed once utilization stays low
+  past the <code>--cooldown</code> window, which is why cooldown exists at all: to
+  stop nodes being added and removed on every small, momentary fluctuation.</li>
 </ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>

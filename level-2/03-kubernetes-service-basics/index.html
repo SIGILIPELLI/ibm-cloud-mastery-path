@@ -1216,6 +1216,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2294,6 +2305,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2469,6 +2491,40 @@ ALB Ingress controller instead of one <code>LoadBalancer</code> Service per app 
 region without extra image-pull secrets, as long as the cluster's default
 service account has the <code>Reader</code> role on the registry namespace (granted
 automatically for clusters and registries in the same account).</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>IKS runs the control plane (API server, etcd, scheduler, controller
+  manager) as IBM-managed infrastructure you never see or pay VSI cost
+  for, while worker nodes are ordinary VPC VSIs that IBM provisions,
+  joins to the cluster via kubelet, and bills to your account like any
+  other compute.</strong> That split is exactly why <code>ibmcloud ks cluster
+  create</code> takes minutes (standing up managed control-plane components)
+  while <code>ibmcloud ks worker-pool create</code> is comparatively fast — it's
+  provisioning VSIs and running a join script against a control plane
+  that already exists.</li>
+<li><strong><code>kubectl apply</code> doesn't imperatively create your Deployment — it
+  writes desired state into etcd via the API server, and the Deployment
+  controller (running in the control plane) is what actually notices
+  the diff and creates ReplicaSets and Pods to reconcile reality toward
+  it</strong>, on a continuous watch-and-reconcile loop rather than a one-shot
+  action; that's why a Pod you <code>kubectl delete</code> manually comes right
+  back — the controller re-notices the drift within its next
+  reconciliation pass.</li>
+<li><strong>The scheduler assigns each Pod to a node using a two-phase process —
+  filtering out nodes that fail hard constraints (insufficient CPU/memory
+  requests, taints, zone/anti-affinity rules), then scoring the survivors
+  and picking the best fit</strong> — which is the actual mechanism behind pods
+  landing across zones in a multi-zone worker pool: it's an explicit
+  spread-scoring heuristic, not a round-robin default.</li>
+<li><strong>A <code>LoadBalancer</code> Service doesn't run its own proxy — creating one
+  triggers IKS's cloud-controller-manager to provision a real VPC
+  Application Load Balancer via the VPC API, and Kubernetes' own
+  kube-proxy on each node programs iptables/IPVS rules that route
+  traffic arriving at the node to the correct backend Pod.</strong> Two
+  separate load-balancing layers are actually involved: the VPC ALB
+  distributing across nodes, and kube-proxy distributing from a node to
+  whichever Pod is currently scheduled there.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

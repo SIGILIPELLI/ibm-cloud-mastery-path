@@ -1199,6 +1199,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2316,6 +2327,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2491,6 +2513,39 @@ afford to run continuously, not just what you hope never gets hit.</p>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Hostname to actually hit</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>ibmcloud<span class="w"> </span>is<span class="w"> </span>load-balancer<span class="w"> </span>ha-app-alb<span class="w"> </span>--output<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span>.hostname
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>An Application Load Balancer for VPC is itself a managed,
+  horizontally-scaled fleet of proxy nodes spread across your chosen
+  zones — not a single appliance</strong> — which is why it's given a hostname
+  that resolves via DNS to multiple IPs rather than one static address:
+  the ALB's own capacity scales behind the scenes, and the hostname
+  indirection is what lets IBM add or replace proxy nodes without
+  changing what clients connect to.</li>
+<li><strong>Health checks are the actual mechanism deciding pool membership in
+  real time — the load balancer independently probes each backend
+  member on the configured interval/path, and a member that fails the
+  configured consecutive-failure threshold is removed from the
+  live-routing set immediately, before any traffic is sent to it</strong>,
+  which is why an autoscaled-in instance isn't usable the instant it
+  boots: it has to pass its first health checks before the load balancer
+  routes anything to it.</li>
+<li><strong>Instance group autoscaling makes decisions from the same metrics
+  pipeline Monitoring uses — it evaluates the group's average CPU (or
+  configured metric) against your target on a polling interval, and
+  scale-out/scale-in are separate control-plane actions that create or
+  delete VSIs from a template</strong>, not resource reallocation on existing
+  instances; that's why autoscaling has real lag (metric window +
+  cooldown + VSI boot time) between load rising and capacity actually
+  increasing.</li>
+<li><strong>Session persistence (sticky sessions) works by the load balancer
+  hashing a cookie or source IP into a consistent backend selection on
+  every request, rather than the backend fleet sharing session state</strong> —
+  which is exactly why removing a "sticky" backend member (scale-in, a
+  failed health check) breaks in-flight sessions pinned to it: there's
+  no session data replicated elsewhere for the load balancer to fail
+  over to.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

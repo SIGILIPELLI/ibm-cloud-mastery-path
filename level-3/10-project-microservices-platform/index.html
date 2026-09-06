@@ -1843,6 +1843,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2393,6 +2404,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2574,6 +2596,41 @@ the platform.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>terraform<span class="w"> </span>validate
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># Success! The configuration is valid.</span>
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The decoupling this platform relies on holds because <code>inventory-svc</code>
+  and <code>billing-svc</code> are two independent consumer groups reading the same
+  Kafka partition log, not two subscribers on a fan-out bus.</strong> Each group
+  maintains its own committed offset into <code>orders.created</code>; a slow or
+  crashed <code>billing-svc</code> doesn't block <code>inventory-svc</code>'s consumption
+  because Kafka retains the log and serves each group from wherever its
+  own offset sits — adding <code>notifications-svc</code> in the stretch goal is
+  purely "start a third consumer group at whatever offset it chooses,"
+  which is why it requires zero change to the producer side.</li>
+<li><strong>One root key covering both databases and the COS bucket means one
+  Key Protect rotation event re-wraps every data-encryption key those
+  services hold a reference to — it doesn't touch or re-encrypt the
+  underlying data itself</strong>, per the envelope-encryption mechanism from
+  Module 03. That's the operational payoff of standardizing on a single
+  platform-wide root key: a security incident response that needs to
+  revoke and rotate a key does it once, for everything the platform
+  encrypts, instead of hunting down every service's own key.</li>
+<li><strong>The Sysdig alert and the API Connect rate limit protect two different
+  layers of the same request path and can both be true simultaneously.</strong>
+  A caller hammering <code>/orders</code> first hits API Connect's per-plan counter
+  (Module 09) — if under the limit, the request proceeds to the ROKS
+  Route and only then shows up in Sysdig's per-namespace error-rate metric
+  (Module 05) if the backend itself starts failing. A spike in gateway
+  429s and a spike in backend 5xx alerts are diagnosing different
+  problems even though both fire from the same burst of traffic.</li>
+<li><strong>Cross-region DR readiness here is only as real as the last drill —
+  the replica relationship shown by <code>deployment-connections</code> proves
+  replication is live, not that promotion and failback actually work
+  end-to-end</strong>, which is exactly why Module 06 treats a timed promotion
+  drill as the real verification, and why this project's checklist checks
+  for an active replica but the stretch goal insists on actually running
+  the failover.</li>
+</ul>
 <h2 id="stretch-goals">Stretch goals<a class="headerlink" href="#stretch-goals" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Add a fourth consumer service (<code>notifications-svc</code>) to <code>orders.created</code>

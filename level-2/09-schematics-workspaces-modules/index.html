@@ -1384,6 +1384,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2294,6 +2305,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2486,6 +2508,43 @@ to share broadly:</p>
 <p>Bumping <code>ref</code> is then a deliberate, reviewable change (a one-line diff)
 rather than every environment silently picking up whatever the module
 directory currently contains.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>A Schematics workspace is really just a hosted Terraform state file
+  plus a managed job runner</strong> — <code>plan</code>/<code>apply</code> don't run on your laptop,
+  they run in an IBM-managed container that clones the bound Git
+  directory, downloads the exact <code>terraform_v1.5</code>-pinned binary, runs it
+  against the workspace's own state, and streams logs back. Two workspaces
+  pointed at the same repo but different subdirectories share nothing at
+  runtime except the source code — their state files, variable sets, and
+  job history are completely independent, which is the entire safety
+  property behind "one workspace per environment."</li>
+<li><strong>A <code>module</code> block doesn't get compiled or copied at plan time from a
+  remote source every run</strong> — for a local <code>../../modules/vpc</code> path
+  Terraform reads it straight off disk on each <code>plan</code>, so an edit to the
+  module is live for every environment's very next plan with no explicit
+  update step. A <code>git::...?ref=</code> source is different: Terraform clones
+  that specific ref into <code>.terraform/modules/</code> once and reuses the cached
+  copy until <code>terraform init -upgrade</code> is run again, which is the actual
+  mechanism that turns "pin a module version" from a convention into an
+  enforced fact.</li>
+<li><strong><code>for_each = toset(var.zones)</code> builds Terraform's resource graph with
+  one graph node per zone value, keyed by that value, instead of by
+  numeric index the way <code>count</code> would.</strong> That keying is why reordering
+  <code>zones</code> in a variable doesn't cause Terraform to plan a destroy/recreate
+  of unrelated subnets the way a <code>count</code>-based list reorder would — each
+  subnet's identity in state is tied to its zone string, not its position.</li>
+<li><strong>Cross-workspace output passing is manual because Schematics workspace
+  state is opaque to other workspaces by design</strong> — <code>ibmcloud schematics
+  output</code> is reading a JSON blob out of one workspace's completed apply,
+  and <code>workspace update --var</code> is writing a plain string into another
+  workspace's variable set; there's no <code>remote_state</code> data source linking
+  them automatically the way a single Terraform config's own module
+  outputs would. That gap is deliberate: it forces the dependency between
+  infrastructure and app workspaces to show up as an explicit, reviewable
+  pipeline step (Module 8) rather than an implicit reach into another
+  workspace's state.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

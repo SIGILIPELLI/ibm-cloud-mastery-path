@@ -2018,6 +2018,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2338,6 +2349,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2523,6 +2545,46 @@ ongoing monitoring the same way infrastructure posture does.</p>
   (<code>ibm/granite-13b-instruct-v2</code>, not an unpinned "latest" alias) for
   anything where consistent output matters, such as automated report
   generation.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Db2 Warehouse gets its analytical speed from a columnar, MPP (massively
+  parallel processing) storage engine rather than the row-store B-tree
+  indexing an OLTP engine like PostgreSQL uses.</strong> Data is physically
+  stored column-by-column and distributed across worker nodes, so a query
+  like <code>SUM(total_cents)</code> reads only the <code>total_cents</code> column's compressed
+  blocks across all nodes in parallel instead of scanning entire rows one
+  at a time — exactly backwards from what makes a transactional engine
+  fast at single-row inserts and lookups, which is the real reason the two
+  workload shapes don't share one database well.</li>
+<li><strong>The external-table/Parquet loading pattern works because Db2
+  Warehouse's storage engine can read columnar Parquet files directly off
+  Cloud Object Storage without a separate import step — <code>CREATE EXTERNAL
+  TABLE</code> registers metadata pointing at the S3-compatible COS path, and
+  <code>CREATE TABLE ... AS SELECT</code> triggers a parallel read-and-load into the
+  warehouse's own storage.</strong> That's why the export format matters: Parquet
+  already carries columnar layout and compression the warehouse's engine
+  reads efficiently, versus a row-oriented format like CSV that would need
+  full re-parsing per column read.</li>
+<li><strong>A foundation-model call is a stateless HTTP request to a hosted
+  inference endpoint — the "model" holds no memory between calls, so
+  RAG's grounding effect comes entirely from what's stuffed into that
+  single prompt's context window, not from the model learning anything.</strong>
+  Every token in the retrieved context plus the question plus the
+  generated response counts against the model's context-length limit and
+  the account's billed/metered token usage, which is the direct
+  mechanical reason unbounded retrieved-chunk counts are a cost and
+  latency problem: it's literally more tokens sent and generated per call,
+  with no caching of "what was retrieved last time" built in.</li>
+<li><strong>Pinning a model version matters because IBM periodically retrains or
+  swaps out what a named model checkpoint under an unpinned alias
+  actually serves — the inference API resolves the model ID to a specific
+  set of weights at call time, and "greedy decoding" only guarantees
+  determinism against one fixed set of weights, not across a silent
+  version change behind the same alias.</strong> Referencing an explicit version
+  string is what actually freezes which weights answer your prompt; an
+  alias frees IBM to move it later without changing your code, which is
+  precisely the tradeoff to avoid for reproducible report generation.</li>
 </ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>

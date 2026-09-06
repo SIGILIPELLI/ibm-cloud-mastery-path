@@ -829,6 +829,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2409,6 +2431,38 @@ network interface.</p>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/mastery-path<span class="w"> </span>root@&lt;floating-ip&gt;
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>A VSI is not a dedicated physical box — it's a KVM-based virtual
+  machine multiplexed onto a shared hypervisor host, with your VPC's
+  network fabric implementing isolation at the software-defined-networking
+  layer rather than with physical cabling.</strong> Every packet your VSI sends
+  is intercepted by the hypervisor's virtual switch, which tags it with
+  your VPC's network identifier before it ever reaches shared physical
+  wiring — that's the actual mechanism guaranteeing tenant isolation, not
+  the mere existence of separate account boundaries.</li>
+<li><strong>A floating IP is a NAT mapping maintained in the VPC's network
+  edge, not an address configured on the VM's own network interface.</strong>
+  The VSI's real (private) network interface only ever knows its private
+  subnet IP; the floating IP lives in a translation table on the fabric
+  router, which rewrites the destination address of inbound packets and
+  the source address of outbound ones. This is exactly why detaching and
+  reattaching a floating IP to a different instance is instantaneous —
+  you're editing one row of a routing table, not reconfiguring a NIC.</li>
+<li><strong>Boot volumes are backed by IBM Cloud Block Storage, itself replicated
+  across independent physical drives inside the availability zone</strong> — the
+  VSI's disk I/O is actually network-attached storage traffic over the
+  data center's internal fabric, not local disk. That's why you can
+  resize or snapshot a boot volume without physically touching the
+  instance: a snapshot is a copy-on-write pointer into the same
+  distributed storage backend, not a byte-for-byte disk image.</li>
+<li><strong>Security groups are evaluated per network interface, stateful, and
+  additive across every group attached to that interface</strong> — a packet is
+  allowed the instant any one rule permits it, and a reply to an already
+  permitted outbound connection is auto-allowed without a matching
+  inbound rule, because the fabric tracks connection state rather than
+  re-evaluating every packet independently.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

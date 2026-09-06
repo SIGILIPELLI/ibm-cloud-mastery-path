@@ -1951,6 +1951,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2316,6 +2327,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2510,6 +2532,46 @@ instead of invisible, which a missing tag would otherwise be.</p>
 <li><strong>Account activation polling loops need a timeout</strong> — an owner who never
   accepts the invitation email leaves a naive <code>until ... ACTIVE</code> loop
   running forever; add a max-attempts guard in real automation.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The landing zone module isn't a new IBM Cloud service — it's a
+  composition layer that internally calls the same <code>ibm_is_vpc</code>,
+  <code>ibm_tg_gateway</code>, and related resources you wrote by hand in Level 2 and
+  Level 3, wired together with sensible defaults and cross-references.</strong>
+  <code>terraform plan</code> against it produces exactly the resource graph those
+  earlier modules built manually (VPCs, subnets, address prefixes, a
+  Transit Gateway, connections) — the module's value is that those
+  cross-resource references (subnet IDs into worker pools, VPC CRNs into
+  Transit Gateway connections) are already correctly wired and tested,
+  not that it does anything the underlying provider couldn't.</li>
+<li><strong>A version pin on a shared module works the same mechanism as any
+  Terraform module source pin (Level 3, Module 08): <code>terraform init</code>
+  resolves <code>~&gt; 5.0</code> once against the module registry and caches the
+  fetched version, only re-resolving on <code>init -upgrade</code>.</strong> That's why an
+  unpinned or loosely pinned landing zone module is riskier than an
+  ordinary app dependency — every account bootstrapped through it inherits
+  whatever breaking variable rename or default change shipped in a newer
+  minor version the next time someone runs <code>init -upgrade</code> on the shared
+  bootstrap repo, not just the one account being built.</li>
+<li><strong><code>cost-center:unassigned</code> as a default tag exploits the same tag-based
+  billing attribution mechanism from Level 3, Module 07 — a resource
+  without an explicit cost-center tag still emits metering records, and
+  those records need <em>some</em> tag value to be queryable at all.</strong> Applying
+  the placeholder at creation time (via the Terraform resource, not a
+  later manual step) guarantees every metering record from that resource
+  carries a non-null, searchable value, turning "forgot to tag" into a
+  visible, queryable billing-report line instead of spend that simply
+  doesn't show up when filtering by tag.</li>
+<li><strong>The account-activation polling loop works because
+  <code>ibmcloud enterprise account-create</code> only creates a <em>pending</em> invitation
+  record — the account itself doesn't exist as a usable IAM/billing
+  entity until the invited owner accepts it</strong>, which is a human action
+  Terraform and the CLI have no way to trigger or wait on synchronously.
+  That's why the bootstrap script polls state rather than chaining
+  <code>apply</code> directly after <code>account-create</code>: there's a genuine external
+  dependency (an email being read and a link clicked) sitting between the
+  two API calls.</li>
 </ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>

@@ -2206,6 +2206,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2362,6 +2373,17 @@
     <span class="md-ellipsis">
       
         Verification checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
       
     </span>
   </a>
@@ -2530,6 +2552,48 @@ against <code>catalog-prod</code>'s Schematics workspace only, never <code>order
       spend in one view.</li>
 <li>[ ] An SLO and a fast/slow burn-rate alert pair exist for at least one
       service, with the arithmetic behind the thresholds documented.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Both accounts inherit identical guardrails from one landing zone
+  module because Terraform composes the same underlying resource graph
+  twice, once per <code>module</code> block, against two different account-scoped
+  provider configurations</strong> — the module's HCL is fetched and evaluated
+  once but instantiated per module call, so <code>orders_landing_zone</code> and
+  <code>catalog_landing_zone</code> end up as two independent sets of the same VPC,
+  IAM, and SCC resources rather than one shared instance split between
+  teams. That independence is exactly what makes a GitOps PR against
+  <code>catalog-prod</code> provably unable to touch <code>orders-prod</code>: they don't share
+  a Schematics workspace, state file, or Terraform module instance at all.</li>
+<li><strong>The account-group usage rollup, the Satellite-to-Transit-Gateway
+  routing, and the per-team GitOps isolation are all instances of the
+  same underlying pattern from earlier modules applied at once: a shared
+  control-plane resource (billing hierarchy, routing fabric, or CI
+  pipeline definition) parameterized per tenant rather than duplicated
+  by hand</strong> — which is the actual argument for the whole capstone's
+  architecture: none of Level 4's individual mechanisms changed to
+  support two teams, they were simply invoked twice with different
+  parameters, exactly as Module 02's landing zone argued a standardized
+  starting point should behave.</li>
+<li><strong>Segregating KYOK to only payment-adjacent fields works because
+  envelope encryption operates per data-encryption-key, not per
+  database</strong> — a table's columns can reference different wrapping keys
+  for different rows or fields as long as the application (or a
+  column-level encryption feature) chooses which key CRN wraps which
+  DEK, so <code>billing-svc</code> genuinely can have some fields protected by an
+  HPCS master key with all its ceremony overhead while adjacent
+  non-sensitive fields use ordinary Key Protect BYOK, without needing two
+  separate databases.</li>
+<li><strong>A cost-based autoscaling ceiling and an SLO's error budget are
+  reconciled by the same arithmetic relationship Module 05 introduced for
+  sizing, just run in the opposite direction</strong> — Module 05 derived
+  <code>max-size</code> from a required replica count to hit a latency target;
+  capping <code>max-size</code> at whatever the FinOps budget affords instead fixes
+  the ceiling first and makes the achievable SLO the dependent variable,
+  which is precisely why documenting that tradeoff explicitly (rather
+  than treating both as independent, always-satisfiable constraints)
+  matters once real traffic exceeds what the budget-capped ceiling can
+  serve.</li>
 </ul>
 <h2 id="stretch-goals">Stretch goals<a class="headerlink" href="#stretch-goals" title="Permanent link">&para;</a></h2>
 <ul>

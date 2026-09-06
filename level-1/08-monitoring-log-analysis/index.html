@@ -969,6 +969,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2382,6 +2404,37 @@ built from a small set of primitives:</p>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">}</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">EOF</span>
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>IBM Cloud Monitoring is built on Sysdig, and metrics arrive via an
+  agent that scrapes the local kernel/cgroup and process tables on each
+  host or container, batching data points and shipping them to a
+  time-series backend rather than the backend polling each instance
+  directly.</strong> That's why installing the monitoring agent (or, on
+  managed services, IBM's own instrumentation) is a prerequisite for
+  data to exist at all — without an agent pushing data, there is
+  nothing for the dashboard to query.</li>
+<li><strong>A dashboard panel is a saved query against that time-series store,
+  re-executed live every time you view it</strong> — nothing is pre-rendered
+  and cached; the numbers you see are the query's result as of that
+  instant, aggregated (sum/avg/percentile) over the time window and
+  grouping you configured, which is why zooming a time range or
+  changing the aggregation recomputes the panel from raw samples rather
+  than redrawing a static image.</li>
+<li><strong>Log Analysis is built on ELK-family technology (Elasticsearch under
+  the hood) — every log line you ship is tokenized and indexed into an
+  inverted index at write time</strong>, which is the actual mechanism that
+  makes full-text search across millions of log lines return in
+  milliseconds: you're not scanning raw log files at query time, you're
+  looking up pre-built token-to-document mappings.</li>
+<li><strong>An alert isn't a background thread watching your infrastructure
+  continuously — it's a query re-evaluated on a fixed polling interval
+  (e.g. every minute) against the same time-series backend the
+  dashboards use</strong>, and the alert fires the moment that query's result
+  crosses your configured threshold for the configured duration; the
+  duration requirement exists specifically to avoid firing on a single
+  noisy sample rather than a sustained condition.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

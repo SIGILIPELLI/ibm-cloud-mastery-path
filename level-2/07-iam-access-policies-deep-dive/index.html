@@ -1317,6 +1317,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2418,6 +2440,44 @@ outside the zone you defined) just as effectively as they block attackers.</p>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Simulate whether a specific request would be allowed, without making it</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>ibmcloud<span class="w"> </span>iam<span class="w"> </span>access-report<span class="w"> </span>--output<span class="w"> </span>json
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Every IAM authorization decision — an ordinary policy, a tag-scoped
+  grant, or a CBR check — is evaluated by the same central policy
+  evaluation engine on every API call, not cached from login.</strong> The
+  request context (identity, requested action, target resource's
+  attributes including its tags, and the network the call originates
+  from) is assembled fresh, then matched against every policy attached to
+  that identity or its access groups. A tag-based policy doesn't "expand"
+  into per-resource policies at grant time; the resource's current tags
+  are read and matched at the moment of the call, which is exactly why
+  tagging a new resource <code>env:staging</code> grants access to it immediately
+  with zero policy edits.</li>
+<li><strong>Custom roles don't add new capabilities to a service — they subset a
+  fixed action list the service itself registers with IAM.</strong> <code>ibmcloud iam
+  service-roles</code> is reading that registered catalog, and a custom role is
+  just a named bundle of a subset of those action strings. When a policy
+  references the role, the evaluator expands it back to its action list at
+  check time, so narrowing a custom role's actions later tightens every
+  policy referencing it without needing to touch those policies.</li>
+<li><strong>Service-to-service authorization policies are matched by service name
+  and resource-group/instance scope, and once matched they mint a
+  short-lived token behind the scenes on the source service's behalf</strong> —
+  there's no long-lived credential exchanged at all. This is why revoking
+  the authorization policy takes effect immediately (the next token
+  request is simply refused) rather than requiring you to hunt down and
+  rotate a leaked key, which is the whole point relative to a
+  Kubernetes-secret-held API key.</li>
+<li><strong>CBR is enforced at the network/API-gateway layer, before IAM policy
+  evaluation even runs — the two are independent gates in series, not
+  alternatives.</strong> A request first has its source IP/VPC/service-ref
+  checked against the zones referenced by any enforced rule for that
+  target service; only a request that clears CBR gets forwarded on to
+  normal IAM policy evaluation. That ordering is why a <code>report</code>-mode rule
+  is genuinely safe to test in production: it logs what the CBR gate would
+  have decided without ever engaging its block, leaving IAM evaluation
+  (and real traffic) untouched.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

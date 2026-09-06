@@ -812,6 +812,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2294,6 +2305,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2436,6 +2458,43 @@ scoped to only what it needs, never as your personal user.</p>
   couple of people — one policy change on the group updates everyone.</li>
 <li>Rotate and delete API keys you're not actively using; a key never expires
   on its own.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Every access check IAM ever performs is the same evaluation, run
+  fresh on every API call: gather every policy attached to the caller
+  (directly, via access groups, and inherited from parent resource
+  groups or the account), union the platform and service-access roles
+  they grant on the target resource, and check whether the specific
+  action being invoked (e.g. <code>cloud-object-storage.object.write</code>) is
+  included.</strong> There is no cached "you're an editor" flag stamped on a
+  session — a policy change on an access group takes effect on that
+  member's very next request, because the decision is recomputed from
+  scratch every time, not read from a stale grant.</li>
+<li><strong>Roles are not features IBM Cloud invented per-service; they're
+  standardized labels (<code>Viewer</code>/<code>Operator</code>/<code>Editor</code>/<code>Administrator</code> for
+  the platform, <code>Reader</code>/<code>Writer</code>/<code>Manager</code> for service access) mapped
+  internally to a fixed set of fine-grained actions that each service
+  registers with IAM.</strong> That's why granting "Writer" on Cloud Object
+  Storage and "Writer" on Cloud Databases produce completely different
+  actual permissions — each service defines its own action list behind
+  the same role name.</li>
+<li><strong>An access group is not itself an identity IAM authenticates — it's a
+  policy-attachment container.</strong> When a user or service ID is added to a
+  group, IAM doesn't create a new merged identity; at evaluation time it
+  simply also pulls in every policy attached to any group that identity
+  is a member of. This is why removing someone from a group revokes
+  access instantly (there's nothing cached to expire) but why an
+  identity's <em>direct</em> policies remain even after you remove every group
+  membership — group and direct policies are additive, never exclusive.</li>
+<li><strong>A service ID's API key is bound to that ID's policies, not to
+  whoever created it</strong> — the key is just a bearer credential that proves
+  "I am this service ID" to the token endpoint; IAM then evaluates
+  policies against the service ID, never against the human who ran
+  <code>service-api-key-create</code>. That's the actual mechanism behind least
+  privilege: scoping the <em>service ID's</em> policy narrowly matters, and
+  scoping the creating user's own access does nothing to constrain what
+  the resulting key can do.</li>
 </ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>

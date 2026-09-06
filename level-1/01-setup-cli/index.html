@@ -773,6 +773,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2417,6 +2439,40 @@ easy to find (and easy to tear down) later:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ibmcloud<span class="w"> </span>resource<span class="w"> </span>group-create<span class="w"> </span>mastery-path
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ibmcloud<span class="w"> </span>target<span class="w"> </span>-g<span class="w"> </span>mastery-path
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>ibmcloud login</code> doesn't send your password on every later command — it
+  exchanges credentials once for a short-lived IAM access token (an hour or
+  so) plus a longer-lived refresh token, both cached in
+  <code>~/.bluemix/config.json</code>.</strong> Every subsequent CLI call reads that cached
+  access token and attaches it as an <code>Authorization: Bearer</code> header to the
+  IBM Cloud IAM-fronted API it's hitting; when the access token expires the
+  CLI silently uses the refresh token to mint a new one, which is why a
+  session that's been idle for days sometimes forces a fresh <code>login</code> — the
+  refresh token itself has finally expired too.</li>
+<li><strong>An API key is a static, non-expiring credential in a different tier
+  from that ephemeral access token — it's what you trade in for a new
+  token, not the token itself.</strong> <code>ibmcloud login --apikey @file</code> reads the
+  key from the JSON file, POSTs it to IAM's token endpoint
+  (<code>iam.cloud.ibm.com/identity/token</code>), and receives back the same
+  short-lived access token an interactive login would get. This is exactly
+  why the key file, not the token cache, is the thing worth protecting:
+  anyone holding it can regenerate valid tokens indefinitely, while a
+  leaked access token self-expires within the hour.</li>
+<li><strong>Region and resource-group targeting are local CLI state, not account
+  configuration — <code>ibmcloud target</code> writes your choice into
+  <code>~/.bluemix/config.json</code> and every later command reads it from there to
+  fill in the region/resource-group fields a REST call requires.</strong> Nothing
+  about the account itself changes; a second terminal, or the console UI,
+  has no idea what you targeted. That's also why CI pipelines re-target
+  explicitly on every run instead of relying on a previous session's
+  state — there's no shared, server-side "current context" to inherit.</li>
+<li><strong>Each <code>ibmcloud plugin install</code> pulls a self-contained Go binary for
+  that service family and registers its subcommands with the core CLI's
+  command router — the base CLI ships thin on purpose so it stays small and
+  installs fast, deferring the actual API client code for VPC, COS,
+  Cloud Databases, etc. until you ask for it.</strong></li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

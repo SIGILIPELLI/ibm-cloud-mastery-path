@@ -1547,6 +1547,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2316,6 +2327,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2521,6 +2543,46 @@ auditable exception:</p>
 <li><strong>Node flavor changes require a new pool</strong>: you cannot resize an existing
   worker pool's flavor in place — create a new pool with the target flavor,
   drain, then delete the old one.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>SCCs are evaluated as an admission-control step, before the scheduler
+  ever sees the pod</strong> — when you <code>oc apply</code> a pod spec, the API server
+  runs it through every SecurityContextConstraint bound to the submitting
+  service account (via RBAC-like <code>system:openshift:scc:*</code> role bindings)
+  in priority order, and the pod is only admitted if some SCC's
+  constraints (allowed UID range, whether privilege escalation is
+  permitted, allowed volume types) are satisfied. The <code>restricted</code> SCC's
+  UID range you saw in the error isn't arbitrary — it's the namespace's
+  slice of a cluster-wide UID pool that OpenShift allocates per project so
+  that no two namespaces' containers can collide on host UID even if both
+  omit <code>runAsUser</code> entirely, which is the actual mechanism the leave-it-
+  unset fix relies on.</li>
+<li><strong>A <code>Route</code> doesn't replace your Service's ClusterIP — it's a separate
+  object the HAProxy router watches and uses purely for host-based
+  routing.</strong> Every worker node running the router pod watches the
+  <code>Route</code>/<code>Service</code>/<code>Endpoints</code> API objects, and when <code>frontend.roks-
+  mastery...</code> matches an incoming request's Host header, HAProxy forwards
+  directly to one of the Service's pod IPs — bypassing kube-proxy's
+  ClusterIP entirely for that hop. That's why an edge-terminated Route
+  needs no in-cluster TLS: HAProxy terminates TLS at the router and speaks
+  plain HTTP to the pod from there.</li>
+<li><strong>The wildcard <code>*.containers.appdomain.cloud</code> certificate is a single
+  cert covering the whole cluster's default routing subdomain, provisioned
+  and rotated by IBM's managed control plane</strong> — it's not per-app. Any
+  <code>Route</code> created without an explicit certificate automatically resolves
+  under that shared wildcard, which is why a first deploy gets working TLS
+  with zero cert-manager setup, but also why it can't be used for a
+  hostname outside <code>*.&lt;cluster&gt;.&lt;region&gt;.containers.appdomain.cloud</code> — a
+  custom domain needs its own certificate supplied to <code>oc create route
+  edge --cert</code>.</li>
+<li><strong><code>--disable-public-service-endpoint</code> doesn't firewall the API — it
+  simply never provisions the public listener for it</strong>, so the control
+  plane's load balancer only ever binds a private VPC address. Reaching it
+  then requires being on that VPC's network (a VSI, VPN, or Direct Link)
+  because there's no public DNS record or route to it at all, which is a
+  stronger guarantee than a security-group rule blocking public access
+  would be — there's nothing to misconfigure open later.</li>
 </ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>

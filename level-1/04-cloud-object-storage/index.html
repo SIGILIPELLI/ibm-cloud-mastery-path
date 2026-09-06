@@ -857,6 +857,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2412,6 +2434,38 @@ the capstone project's frontend uses.</p>
 </code></pre></div>
 <p>The public website endpoint follows the pattern
 <code>https://&lt;bucket&gt;.s3-web.&lt;region&gt;.cloud-object-storage.appdomain.cloud</code>.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>COS never stores an object as one intact copy — every object is
+  split into chunks and encoded with erasure coding (Reed-Solomon-style
+  math) into a larger number of slices distributed across multiple
+  physical devices and, at regional/cross-region resiliency, multiple
+  data centers.</strong> Reading the object back only requires a subset of
+  those slices — for example, an object might be split so that any 6 of
+  9 slices reconstruct it fully — which is why COS tolerates several
+  simultaneous drive or even facility failures without data loss without
+  ever having stored the object twice like naive replication would.</li>
+<li><strong>A bucket's resiliency setting (Cross Region / Regional / Single Data
+  Center) chooses <em>where</em> those erasure-coded slices are spread, and
+  that's a permanent, bucket-creation-time decision</strong> — it determines the
+  radius of physical failure the encoding is spread across, not a
+  performance toggle you can flip later. It cannot be changed after
+  creation for exactly this reason: the data is already physically
+  distributed according to that geometry.</li>
+<li><strong>Every write to an object is atomic and immutable at the API layer —
+  PUT never patches bytes in place.</strong> Uploading to an existing key
+  writes an entirely new object version (or, if versioning is off,
+  atomically swaps which object the key now resolves to) rather than
+  modifying data in place, which is the underlying reason COS has no
+  partial-write or append operation and why overwriting a large object
+  is exactly as expensive as uploading it fresh.</li>
+<li><strong>Static website hosting doesn't run a web server at all — the S3-web
+  endpoint is a thin HTTP front end that translates a URL path directly
+  into an object-GET against the bucket</strong>, applying only the
+  bucket-level public-read policy and a configured index/error document
+  mapping; there's no compute serving the page, which is exactly why it
+  scales to arbitrary traffic without you provisioning anything.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

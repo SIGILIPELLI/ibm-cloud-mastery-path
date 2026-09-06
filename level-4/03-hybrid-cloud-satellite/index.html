@@ -1990,6 +1990,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2338,6 +2349,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2509,6 +2531,49 @@ principle regardless of where the compute physically lives.</p>
   cause the managed control plane's view of cluster state to disagree
   with actual host state — treat Satellite hosts like any other IaC-
   managed resource, no manual edits.</li>
+</ul>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The outbound-only connectivity model works because every registered
+  host runs an agent that dials out to IBM Cloud's Satellite control
+  plane and holds that connection open, rather than IBM Cloud dialing
+  in.</strong> <code>attach-host.sh</code> installs that agent and points it at the
+  location's management endpoint in the <code>--managed-from</code> region; the
+  agent then long-polls or holds a persistent tunnel for control
+  instructions (schedule this workload, apply this cluster upgrade) and
+  pushes status back over the same connection. That's the entire reason
+  no inbound firewall rule is ever needed on the on-prem side — from the
+  data center's network perspective, this looks identical to any other
+  outbound HTTPS client.</li>
+<li><strong>Satellite's managed control plane genuinely runs in the IBM Cloud
+  region you pick with <code>--managed-from</code>, while only the worker nodes are
+  physically on-prem</strong> — the OpenShift API server, etcd, and scheduler for
+  a Satellite cluster live in IBM's cloud, communicating with the
+  on-prem/attached hosts over the same outbound agent tunnel used for
+  location management. That split is precisely why <code>oc get nodes</code>, <code>oc
+  new-app</code>, and every Level 3 OpenShift pattern behave identically: the
+  control plane your <code>oc</code> CLI talks to is doing the same job it always
+  does, it's just scheduling pods onto remote, physically distant workers
+  instead of local ones.</li>
+<li><strong>A GRE tunnel into Transit Gateway routes Satellite traffic by
+  encapsulating packets between the location and the hub over whatever
+  transport connects them (often the public internet, unlike Direct
+  Link's dedicated circuit)</strong> — once encapsulated, the packets are
+  injected into the same route-exchange fabric Level 3's Transit Gateway
+  module described, so from a routing perspective the Satellite location
+  looks like just another attached network. Throughput and latency are
+  bounded by the underlying GRE transport, though, which is why Direct
+  Link is recommended once bandwidth needs exceed what a tunnel over
+  shared internet capacity can reliably deliver.</li>
+<li><strong>Host readiness is a separate signal from host registration because
+  they're checked by different layers</strong> — registration only confirms the
+  agent successfully authenticated and joined the location's inventory;
+  schedulability additionally requires the host to pass hardware/kernel
+  prerequisite checks the control plane runs after registration. A host
+  that fails those checks stays registered (visible in <code>sat host ls</code>) but
+  is marked unhealthy and never receives a workload, which is why "pending
+  forever with no obvious error" is actually the control plane waiting on
+  enough <em>healthy</em>, not merely <em>registered</em>, capacity per zone.</li>
 </ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>

@@ -1058,6 +1058,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2338,6 +2349,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2551,6 +2573,32 @@ haven't already torn each one down as you went:</p>
 <p>Both commands should come back empty (or show only Lite-tier COS/Functions
 resources) for the <code>mastery-path</code> resource group. If anything unexpected
 shows up, delete it before you consider the project finished.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Nothing you built across Modules 1–9 shares a hidden dependency
+  beyond what you wired explicitly — VPC, COS, a database, and Functions
+  are each independent control planes that only interact through the
+  network paths, IAM policies, and connection strings you configured.</strong>
+  This capstone's integration work is precisely the part IBM Cloud
+  doesn't do for you: each service is provisioned and billed
+  independently, so a working end-to-end app is the sum of explicit
+  wiring, not an emergent property of having all the pieces switched on.</li>
+<li><strong>A "nothing billable is left running" check has to enumerate
+  resources, not just compute — a stopped VSI still bills for its
+  attached block storage, a deleted-looking COS bucket with a pending
+  lifecycle rule can still hold objects, and an idle Cloud Databases
+  deployment bills for its provisioned memory/disk regardless of query
+  volume</strong>, because IBM Cloud's billing meters track allocated capacity
+  per resource independently of whether it's actively serving traffic —
+  there is no platform-wide "auto-pause everything idle" behavior.</li>
+<li><strong>Resource-group scoping is what makes a clean teardown checkable at
+  all: <code>ibmcloud resource service-instances -g mastery-path</code> and
+  <code>ibmcloud is instances --resource-group-name mastery-path</code> both query
+  the resource-group index directly</strong>, which is exactly why Module 1
+  had you create a dedicated group up front — without a shared
+  tag/group to filter by, verifying "did I delete everything" degrades
+  to manually checking every service's console page.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

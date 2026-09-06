@@ -997,6 +997,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2403,6 +2425,38 @@ in the repo:</p>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Tear everything the workspace created back down</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>ibmcloud<span class="w"> </span>schematics<span class="w"> </span>destroy<span class="w"> </span>--id<span class="w"> </span>&lt;workspace-id&gt;
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Schematics is a managed Terraform runner, not a separate IaC
+  engine — a workspace packages your <code>.tf</code> files plus a chosen Terraform
+  version, and every plan/apply runs an actual <code>terraform plan</code>/<code>apply</code>
+  inside an IBM-managed container, against a state file IBM stores and
+  locks on your behalf.</strong> That's the real reason you never see
+  <code>terraform.tfstate</code> sitting in your repo when using Schematics: it
+  lives server-side, and the workspace ID is effectively a pointer to
+  that remote state plus its execution history.</li>
+<li><strong><code>terraform plan</code>'s diff isn't guesswork — it refreshes the state
+  file by querying the real IBM Cloud API for each resource's current
+  attributes, then does a structural diff against your <code>.tf</code>
+  configuration</strong> to compute exactly which resources would be created,
+  changed in place, or destroyed-and-recreated; a "recreate" appears
+  specifically when you change an attribute that provider knows can't
+  be updated on the live resource (e.g. a VSI's zone), forcing
+  delete-then-create instead of an in-place PATCH.</li>
+<li><strong>State locking prevents two concurrent applies from corrupting each
+  other by having the first apply take an exclusive lock on the state
+  file before it starts</strong> — a second <code>apply</code> targeting the same
+  workspace blocks (or errors) until the first releases it, which is
+  the actual mechanism that keeps Schematics safe for team or CI use
+  against a shared workspace, not a UI-level "someone's editing this"
+  warning.</li>
+<li><strong><code>destroy</code> walks the state file's dependency graph in reverse
+  topological order</strong> — the same graph Terraform built to know that a
+  VPC must exist before a subnet, so it necessarily deletes the subnet
+  before the VPC — which is why destroy failures usually mean a
+  resource outside Terraform's knowledge (a manually created dependency)
+  is blocking deletion of something the graph expected to be free.</li>
+</ul>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
