@@ -1,3 +1,7 @@
+---
+description: "Object Storage Lifecycle & Security — Level 1's COS module (Module 4) covered creating buckets and putting objects in them by hand. Production buckets…"
+---
+
 # 06 · Object Storage Lifecycle & Security
 
 Level 1's COS module (Module 4) covered creating buckets and putting

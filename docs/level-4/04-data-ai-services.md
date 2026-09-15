@@ -1,3 +1,7 @@
+---
+description: "Data & AI Services (watsonx, Db2 Warehouse) — Every database module so far used Databases for PostgreSQL — transactional, row-oriented. This module adds…"
+---
+
 # 04 · Data & AI Services (watsonx, Db2 Warehouse)
 
 Every database module so far used Databases for PostgreSQL —

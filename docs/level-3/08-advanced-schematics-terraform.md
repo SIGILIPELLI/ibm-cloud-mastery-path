@@ -1,3 +1,7 @@
+---
+description: "Advanced Schematics & Terraform Modules — Every prior module ran terraform validate locally against snippets. Real teams don't run terraform apply from a…"
+---
+
 # 08 · Advanced Schematics & Terraform Modules
 
 Every prior module ran `terraform validate` locally against snippets.

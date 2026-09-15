@@ -1,3 +1,7 @@
+---
+description: "Code Engine (Containers & Serverless) — IKS in Module 3 is powerful but always-on: worker nodes bill by the hour whether or not any pod is handling…"
+---
+
 # 04 · Code Engine (Containers & Serverless)
 
 IKS in Module 3 is powerful but always-on: worker nodes bill by the hour

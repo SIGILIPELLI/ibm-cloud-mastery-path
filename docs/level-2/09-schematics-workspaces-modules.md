@@ -1,3 +1,7 @@
+---
+description: "Schematics Workspaces & Modules — Level 1's Schematics module (Module 9) used one flat main.tf in one workspace — fine for a VPC and a subnet, but it…"
+---
+
 # 09 · Schematics Workspaces & Modules
 
 Level 1's Schematics module (Module 9) used one flat `main.tf` in one

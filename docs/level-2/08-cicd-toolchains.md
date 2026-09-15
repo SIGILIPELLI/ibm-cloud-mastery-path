@@ -1,3 +1,7 @@
+---
+description: "CI/CD with Toolchains — Every module so far has been 'run a command, watch it happen.' A real team doesn't deploy that way — a git push should be what…"
+---
+
 # 08 · CI/CD with Toolchains
 
 Every module so far has been "run a command, watch it happen." A real

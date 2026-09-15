@@ -1,3 +1,7 @@
+---
+description: "Multi-Region & Disaster Recovery — Level 2's multi-zone VPC survives a zone outage. It does not survive a regional outage — a rare but real event (network…"
+---
+
 # 06 · Multi-Region & Disaster Recovery
 
 Level 2's multi-zone VPC survives a zone outage. It does not survive a

@@ -1,3 +1,7 @@
+---
+description: "Capstone Project — The capstone combines every Level 4 module — enterprise account structure, landing zone, hybrid connectivity, data/AI services…"
+---
+
 # 10 · Capstone Project
 
 The capstone combines every Level 4 module — enterprise account

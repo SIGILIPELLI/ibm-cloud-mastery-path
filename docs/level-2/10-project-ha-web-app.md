@@ -1,3 +1,7 @@
+---
+description: "Project — Highly Available Web App — The capstone for this level: one web app that survives losing an entire availability zone. It combines the VPC design…"
+---
+
 # 10 · Project — Highly Available Web App
 
 The capstone for this level: one web app that survives losing an entire

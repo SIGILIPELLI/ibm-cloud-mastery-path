@@ -1,3 +1,7 @@
+---
+description: "Schematics (Terraform-based IaC) — Every resource in Modules 3-8 was created with one-off CLI commands. Schematics is IBM Cloud's managed Terraform…"
+---
+
 # 09 · Schematics (Terraform-based IaC)
 
 Every resource in Modules 3-8 was created with one-off CLI commands.

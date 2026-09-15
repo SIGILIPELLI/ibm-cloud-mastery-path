@@ -1,3 +1,7 @@
+---
+description: "Red Hat OpenShift on IBM Cloud — Level 3 shifts from raw VPC infrastructure to a managed Kubernetes distribution: Red Hat OpenShift on IBM Cloud (ROKS).…"
+---
+
 # 01 · Red Hat OpenShift on IBM Cloud
 
 Level 3 shifts from raw VPC infrastructure to a managed Kubernetes

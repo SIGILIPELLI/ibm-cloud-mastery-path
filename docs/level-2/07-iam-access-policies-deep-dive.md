@@ -1,3 +1,7 @@
+---
+description: "IAM Access Policies Deep Dive — Level 1's IAM module (Module 2) covered users, service IDs, access groups, and resource-group-scoped policies — enough for…"
+---
+
 # 07 · IAM Access Policies Deep Dive
 
 Level 1's IAM module (Module 2) covered users, service IDs, access groups,

@@ -1,3 +1,7 @@
+---
+description: "IAM & Security Basics — Identity and Access Management (IAM) is the layer that decides who (a person or a piece of software) can do what to which resource…"
+---
+
 # 02 · IAM & Security Basics
 
 Identity and Access Management (IAM) is the layer that decides *who* (a

@@ -1,3 +1,7 @@
+---
+description: "Enterprise Account Structure & IAM at Scale — Level 1's IAM module covered users, roles, and access groups inside a single account. That model breaks down…"
+---
+
 # 01 · Enterprise Account Structure & IAM at Scale
 
 Level 1's IAM module covered users, roles, and access groups inside a

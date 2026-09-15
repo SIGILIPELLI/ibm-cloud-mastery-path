@@ -1,3 +1,7 @@
+---
+description: "Advanced Networking (Transit Gateway, VPN, Direct Link) — Level 2 built one VPC with public/private tiers. Real deployments rarely stop at one VPC — a…"
+---
+
 # 02 · Advanced Networking (Transit Gateway, VPN, Direct Link)
 
 Level 2 built one VPC with public/private tiers. Real deployments rarely

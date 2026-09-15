@@ -1,3 +1,7 @@
+---
+description: "Kubernetes Service (IKS) Basics — The instance group in Module 2 auto-scales identical VSIs, but it has no idea what's running on each one beyond 'boot…"
+---
+
 # 03 · Kubernetes Service (IKS) Basics
 
 The instance group in Module 2 auto-scales identical VSIs, but it has no

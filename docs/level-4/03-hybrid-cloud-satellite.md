@@ -1,3 +1,7 @@
+---
+description: "Hybrid Cloud with Satellite — Level 3's Direct Link and VPN modules connected IBM Cloud networking to on-prem infrastructure. IBM Cloud Satellite goes…"
+---
+
 # 03 · Hybrid Cloud with Satellite
 
 Level 3's Direct Link and VPN modules connected IBM Cloud networking to

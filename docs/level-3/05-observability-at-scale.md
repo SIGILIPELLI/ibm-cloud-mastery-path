@@ -1,3 +1,7 @@
+---
+description: "Observability at Scale (Activity Tracker, Sysdig) — A handful of resources can be watched by hand in the console. A ROKS cluster with a dozen…"
+---
+
 # 05 · Observability at Scale (Activity Tracker, Sysdig)
 
 A handful of resources can be watched by hand in the console. A ROKS

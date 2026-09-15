@@ -1,3 +1,7 @@
+---
+description: "Cloud Databases Deep Dive — Level 1's database module (Module 6) provisioned a single PostgreSQL deployment and connected to it — enough to store data…"
+---
+
 # 05 · Cloud Databases Deep Dive
 
 Level 1's database module (Module 6) provisioned a single PostgreSQL

@@ -1,3 +1,7 @@
+---
+description: "Setup & the `ibmcloud` CLI — Every lesson in this level assumes two things: you have an IBM Cloud account, and you can drive it from a terminal with the…"
+---
+
 # 01 · Setup & the `ibmcloud` CLI
 
 Every lesson in this level assumes two things: you have an IBM Cloud account,

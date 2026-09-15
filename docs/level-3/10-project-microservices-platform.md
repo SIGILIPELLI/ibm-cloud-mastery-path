@@ -1,3 +1,7 @@
+---
+description: "Project — Multi-Tier Microservices Platform — This project combines every Level 3 module into one working platform: an order-processing system running on…"
+---
+
 # 10 · Project — Multi-Tier Microservices Platform
 
 This project combines every Level 3 module into one working platform: an

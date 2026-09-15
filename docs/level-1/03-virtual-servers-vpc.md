@@ -1,3 +1,7 @@
+---
+description: "Virtual Servers (VPC) — A Virtual Server Instance (VSI) is IBM Cloud's basic unit of compute inside a Virtual Private Cloud (VPC) — a full virtual machine…"
+---
+
 # 03 · Virtual Servers (VPC)
 
 A **Virtual Server Instance (VSI)** is IBM Cloud's basic unit of compute

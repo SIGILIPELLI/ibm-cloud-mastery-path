@@ -1,3 +1,7 @@
+---
+description: "Cloud Functions — A web action is the simplest way to give a frontend (like the COS static site from Module 4) a callable backend endpoint with no server…"
+---
+
 # 07 · Cloud Functions
 
 **IBM Cloud Functions** is IBM's serverless platform, built on the

@@ -1,3 +1,7 @@
+---
+description: "Automation Pipelines at Scale (GitOps + Schematics) — Level 2 built a basic CI/CD toolchain. Level 3's Schematics module ran Terraform through a managed…"
+---
+
 # 07 · Automation Pipelines at Scale (GitOps + Schematics)
 
 Level 2 built a basic CI/CD toolchain. Level 3's Schematics module ran

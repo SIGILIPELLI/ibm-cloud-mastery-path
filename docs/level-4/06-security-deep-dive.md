@@ -1,3 +1,7 @@
+---
+description: "Security Deep Dive (Hyper Protect, Key Management) — Level 3's Key Protect module covered bring-your-own-key (BYOK) encryption — IBM still has technical…"
+---
+
 # 06 · Security Deep Dive (Hyper Protect, Key Management)
 
 Level 3's Key Protect module covered bring-your-own-key (BYOK) encryption

@@ -1,3 +1,7 @@
+---
+description: "VPC Design Deep Dive — Level 1's VPC module (Module 3) built one subnet in one zone — enough to launch a single VSI, not enough to survive a zone outage.…"
+---
+
 # 01 · VPC Design Deep Dive
 
 Level 1's VPC module (Module 3) built one subnet in one zone — enough to

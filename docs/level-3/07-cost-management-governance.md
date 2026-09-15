@@ -1,3 +1,7 @@
+---
+description: "Cost Management & Governance — Everything built in Levels 1–3 costs money the moment it's provisioned. This module covers seeing that spend clearly…"
+---
+
 # 07 · Cost Management & Governance
 
 Everything built in Levels 1–3 costs money the moment it's provisioned.

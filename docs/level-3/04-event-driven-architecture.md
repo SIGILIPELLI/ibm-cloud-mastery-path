@@ -1,3 +1,7 @@
+---
+description: "Event-Driven Architecture (Event Streams / Kafka) — Every service so far has talked over synchronous HTTP. This module introduces Event Streams, IBM…"
+---
+
 # 04 · Event-Driven Architecture (Event Streams / Kafka)
 
 Every service so far has talked over synchronous HTTP. This module

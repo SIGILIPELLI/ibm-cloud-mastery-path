@@ -1,3 +1,7 @@
+---
+description: "VPC Networking Basics — Module 3 used a VPC and subnet to launch a VM without explaining the networking model underneath. This module fills that gap: how…"
+---
+
 # 05 · VPC Networking Basics
 
 Module 3 used a VPC and subnet to launch a VM without explaining the

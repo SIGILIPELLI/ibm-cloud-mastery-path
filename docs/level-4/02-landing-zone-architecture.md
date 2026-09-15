@@ -1,3 +1,7 @@
+---
+description: "Landing Zone Architecture — Every network, IAM, and governance pattern from earlier modules — multi-account structure, Transit Gateway hubs, SCC profiles…"
+---
+
 # 02 · Landing Zone Architecture
 
 Every network, IAM, and governance pattern from earlier modules —

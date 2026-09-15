@@ -1,3 +1,7 @@
+---
+description: "Performance & Scalability Engineering — Every module so far provisioned infrastructure sized by guesswork ('3 workers,' 'bx2.4x16'). This module makes…"
+---
+
 # 05 · Performance & Scalability Engineering
 
 Every module so far provisioned infrastructure sized by guesswork

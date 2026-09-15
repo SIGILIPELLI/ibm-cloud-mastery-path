@@ -1,3 +1,7 @@
+---
+description: "Cloud Object Storage — A COS instance is the billable resource; buckets live inside it."
+---
+
 # 04 · Cloud Object Storage
 
 **Cloud Object Storage (COS)** is IBM Cloud's S3-compatible object store —

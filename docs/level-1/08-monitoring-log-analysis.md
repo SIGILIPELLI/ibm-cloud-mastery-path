@@ -1,3 +1,7 @@
+---
+description: "Monitoring & Log Analysis — Once something is running (a VSI, a Cloud Functions action, a Kubernetes workload), you need to see whether it's healthy and…"
+---
+
 # 08 · Monitoring & Log Analysis
 
 Once something is running (a VSI, a Cloud Functions action, a Kubernetes

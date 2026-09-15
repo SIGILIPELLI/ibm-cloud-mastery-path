@@ -1,3 +1,7 @@
+---
+description: "Load Balancing & Auto Scaling — Module 1 built a VPC with redundant subnets across zones — but redundant subnets don't help if only one VSI is actually…"
+---
+
 # 02 · Load Balancing & Auto Scaling
 
 Module 1 built a VPC with redundant subnets across zones — but redundant

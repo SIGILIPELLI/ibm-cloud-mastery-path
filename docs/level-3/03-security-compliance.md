@@ -1,3 +1,7 @@
+---
+description: "Security & Compliance (Security Advisor, Key Protect) — Levels 1–2 covered IAM roles and security groups — controlling who and what network path can reach…"
+---
+
 # 03 · Security & Compliance (Security Advisor, Key Protect)
 
 Levels 1–2 covered IAM roles and security groups — controlling *who* and
