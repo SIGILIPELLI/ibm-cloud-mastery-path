@@ -138,6 +138,11 @@ ibmcloud is vpc-routing-table-route-create app-vpc <routing-table-id> \
 | Per-subnet, stateless firewall | Network ACLs (`ibmcloud is network-acl-*`) |
 | View VPC routes | `ibmcloud is vpc-routing-tables <vpc>` |
 
+## 🔀 Related lessons on other tracks
+
+- [AWS — 05 · VPC Networking Basics](https://sigilipelli.github.io/aws-mastery-path/level-1/05-vpc-networking-basics/)
+- [GCP — 05 · VPC Networking Basics](https://sigilipelli.github.io/gcp-mastery-path/level-1/05-vpc-networking/)
+
 ## Exercise
 
 Create a VPC with two subnets in two different zones, attach a public

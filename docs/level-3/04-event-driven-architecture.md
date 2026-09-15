@@ -235,6 +235,11 @@ terraform validate
 | Set mirroring topics | `ibmcloud es mirroring-topic-selection-set --instance <dr> --source-instance <src> --topics <pattern>` |
 | Delete topic | `ibmcloud es topic-delete <name> --instance <n>` |
 
+## 🔀 Related lessons on other tracks
+
+- [Azure — 04 · Event-Driven Architecture (Event Grid, Service Bus)](https://sigilipelli.github.io/azure-mastery-path/level-3/04-event-driven-architecture/)
+- [REST API — 07 · Event-Driven APIs & Async Patterns](https://sigilipelli.github.io/rest-api-mastery-path/level-4/07-event-driven-apis/)
+
 ## Exercise
 
 1. Create an Event Streams instance and an `orders.created` topic with 3

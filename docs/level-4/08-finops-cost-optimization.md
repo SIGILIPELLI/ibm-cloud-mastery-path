@@ -214,6 +214,12 @@ terraform validate
 | List subscription/reserved offerings | `ibmcloud billing offering-list` |
 | View pod resource usage cluster-wide | `oc adm top pods -A` |
 
+## 🔀 Related lessons on other tracks
+
+- [AI/ML — 08 · Cost Optimization & Efficient Inference](https://sigilipelli.github.io/ai-ml-mastery-path/level-4/08-efficient-inference/)
+- [AWS — Cost Optimization at Scale](https://sigilipelli.github.io/aws-mastery-path/level-4/06-cost-optimization-at-scale/)
+- [Azure — 09 · Cost Management & Optimization](https://sigilipelli.github.io/azure-mastery-path/level-3/09-cost-management-optimization/)
+
 ## Exercise
 
 1. Write a script (Python or `jq`) that flags any resource whose current

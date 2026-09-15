@@ -236,6 +236,10 @@ terraform validate
 | Create watsonx.governance instance | `ibmcloud resource service-instance-create <n> aiopenscale lite <region>` |
 | List service instance plans | `ibmcloud catalog service-marketplace <service> --output json` |
 
+## 🔀 Related lessons on other tracks
+
+- [ETL & Data Lake — 06 · What Is a Data Lake? (vs. Data Warehouse)](https://sigilipelli.github.io/etl-datalake-mastery-path/level-1/06-what-is-a-data-lake/)
+
 ## Exercise
 
 1. Design an ETL flow (prose plus a SQL `CREATE EXTERNAL TABLE`

@@ -204,6 +204,10 @@ ibmcloud iam service-policy-create mastery-path-app \
 | `ibmcloud cos bucket-create --bucket <b> --ibm-sse-kp-customer-root-key-crn <crn>` | Encrypt a bucket with your own Key Protect key |
 | `ibmcloud iam service-policy-create <id> --service-name cloud-object-storage --resource-type bucket --resource <bucket>` | Scope IAM access to one bucket |
 
+## 🔀 Related lessons on other tracks
+
+- [Embedded Python — Security Hardening — TLS & Secure Storage](https://sigilipelli.github.io/embedded-python-mastery-path/level-4/06-security-hardening/)
+
 ## Exercise
 
 Create a bucket with Object Lock enabled, set a `COMPLIANCE` default

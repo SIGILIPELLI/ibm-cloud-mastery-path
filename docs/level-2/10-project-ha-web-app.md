@@ -303,6 +303,11 @@ ibmcloud is vpc-delete ha-app-vpc -f
 them as soon as you've confirmed the failover test, the same discipline
 from Level 1's capstone teardown.
 
+## 🔀 Related lessons on other tracks
+
+- [Server Ops — 10 · Capstone — Highly Available Web Service Design](https://sigilipelli.github.io/server-ops-mastery-path/level-3/10-capstone-ha-web-service-design/)
+- [Azure — 10 · Project — Highly Available Microservices](https://sigilipelli.github.io/azure-mastery-path/level-3/10-project-ha-microservices/)
+
 ## Exercise
 
 Build the full architecture above, run the zone-drain failover test, and

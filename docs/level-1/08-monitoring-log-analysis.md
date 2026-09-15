@@ -132,6 +132,10 @@ EOF
 | Sysdig agent install script | Ship OS-level metrics from a VSI |
 | LogDNA agent install script | Ship OS-level logs from a VSI |
 
+## 🔀 Related lessons on other tracks
+
+- [Cybersecurity — 06 · SIEM & Log Analysis Basics](https://sigilipelli.github.io/cybersecurity-mastery-path/level-2/06-siem-log-analysis-basics/)
+
 ## Exercise
 
 Provision a Monitoring instance and a Log Analysis instance (`7-day` plan),

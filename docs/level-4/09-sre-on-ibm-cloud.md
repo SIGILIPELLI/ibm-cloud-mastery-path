@@ -217,6 +217,10 @@ terraform validate
 | Error budget formula | `1 - SLO` over the SLO's measurement window |
 | Fast-burn multiplier (common default) | 14.4x over 1h ≈ exhausts a 28-day budget in ~2 days |
 
+## 🔀 Related lessons on other tracks
+
+- [Data Engineering — 08 · Data Reliability Engineering](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/08-data-reliability-engineering/)
+
 ## Exercise
 
 1. Define an SLI, SLO, and resulting error budget in hours/month for a

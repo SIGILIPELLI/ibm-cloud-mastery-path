@@ -240,6 +240,10 @@ terraform validate
 | Create a developer org | `ibmcloud apic developer-orgs:create --server <inst> --title <name>` |
 | List published products | `ibmcloud apic products:list --server <inst> --catalog <cat>` |
 
+## 🔀 Related lessons on other tracks
+
+- [Azure — 05 · API Management](https://sigilipelli.github.io/azure-mastery-path/level-3/05-api-management/)
+
 ## Exercise
 
 1. Write an OpenAPI 3.0 spec for two endpoints of a service from an

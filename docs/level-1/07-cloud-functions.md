@@ -155,6 +155,10 @@ ibmcloud fn action list
 | `ibmcloud fn package create <name>` | Group related actions |
 | `ibmcloud fn action delete <name>` | Delete an action |
 
+## 🔀 Related lessons on other tracks
+
+- [GCP — 07 · Cloud Functions & Cloud Run](https://sigilipelli.github.io/gcp-mastery-path/level-1/07-serverless-run-functions/)
+
 ## Exercise
 
 Deploy the `hello` action above as a web action and confirm you can `curl`

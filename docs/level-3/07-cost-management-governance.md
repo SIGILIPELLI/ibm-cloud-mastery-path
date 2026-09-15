@@ -241,6 +241,12 @@ terraform validate
 | List VPC quotas | `ibmcloud is quota-list` |
 | Enable worker pool autoscaling | `ibmcloud ks worker-pool autoscale set --cluster <c> --worker-pool <p> --enable` |
 
+## 🔀 Related lessons on other tracks
+
+- [AWS — 09 · Cost Management & Billing](https://sigilipelli.github.io/aws-mastery-path/level-2/09-cost-management-billing/)
+- [Azure — 09 · Cost Management & Optimization](https://sigilipelli.github.io/azure-mastery-path/level-3/09-cost-management-optimization/)
+- [GCP — 09 · Cost Management & Billing](https://sigilipelli.github.io/gcp-mastery-path/level-2/09-cost-management-billing/)
+
 ## Exercise
 
 1. Tag at least three resources with `env`, `team`, and `cost-center`

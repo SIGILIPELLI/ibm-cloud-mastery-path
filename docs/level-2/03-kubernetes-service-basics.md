@@ -218,6 +218,10 @@ automatically for clusters and registries in the same account).
 | `ibmcloud cr namespace-add <ns>` / `docker push icr.io/<ns>/<image>` | Push a private image |
 | `ibmcloud ks cluster rm --cluster <c>` | Delete the cluster (and its worker nodes) |
 
+## 🔀 Related lessons on other tracks
+
+- [Azure — 04 · Azure Kubernetes Service (AKS) Basics](https://sigilipelli.github.io/azure-mastery-path/level-2/04-aks-basics/)
+
 ## Exercise
 
 Create a two-zone IKS cluster with one worker pool per zone, deploy the

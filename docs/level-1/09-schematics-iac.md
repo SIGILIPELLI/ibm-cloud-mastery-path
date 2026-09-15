@@ -156,6 +156,10 @@ ibmcloud schematics destroy --id <workspace-id>
 | `ibmcloud schematics output --id <id>` | Show Terraform outputs |
 | `ibmcloud schematics destroy --id <id>` | Tear down everything the workspace manages |
 
+## 🔀 Related lessons on other tracks
+
+- [Terraform — 01 · What Is IaC & Why Terraform?](https://sigilipelli.github.io/terraform-mastery-path/level-1/01-what-is-iac-why-terraform/)
+
 ## Exercise
 
 Push the `main.tf` above to a Git repo of your own, create a Schematics

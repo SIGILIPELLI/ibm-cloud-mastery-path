@@ -150,6 +150,11 @@ ibmcloud iam service-api-key-delete mastery-path-app <key-name>
 | `ibmcloud iam service-policies <id>` | Review a service ID's policies |
 | `ibmcloud iam service-api-key-delete <id> <key-name>` | Revoke an API key |
 
+## 🔀 Related lessons on other tracks
+
+- [AWS — 02 · IAM & Security Basics](https://sigilipelli.github.io/aws-mastery-path/level-1/02-iam-security-basics/)
+- [GCP — 02 · IAM & Security Basics](https://sigilipelli.github.io/gcp-mastery-path/level-1/02-iam-security/)
+
 ## Exercise
 
 Create an access group called `mastery-path-developers` with `Editor` on

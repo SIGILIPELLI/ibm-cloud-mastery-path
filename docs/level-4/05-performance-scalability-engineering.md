@@ -238,6 +238,10 @@ terraform validate
 | Run a k6 load test | `k6 run --vus <n> --duration <t> <script>.js` |
 | Create a CDN cache page rule | `ibmcloud cis page-rule-create --instance <cis> --target <pattern> --actions '<json>'` |
 
+## 🔀 Related lessons on other tracks
+
+- [Azure — 06 · Performance Engineering & Load Testing](https://sigilipelli.github.io/azure-mastery-path/level-4/06-performance-load-testing/)
+
 ## Exercise
 
 1. Capture baseline CPU/memory for a running deployment, then run a load

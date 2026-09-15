@@ -183,6 +183,10 @@ ibmcloud iam access-report --output json
 | `ibmcloud cbr rule-create --resource-attributes <attrs> --zone-id <id> --enforcement-mode report` | Restrict a service to a zone (test mode first) |
 | `ibmcloud iam access-group-policies <group>` | Audit a group's effective policies |
 
+## 🔀 Related lessons on other tracks
+
+- [GCP — 04 · Advanced IAM (Org Policies, Custom Roles)](https://sigilipelli.github.io/gcp-mastery-path/level-3/04-advanced-iam/)
+
 ## Exercise
 
 Create a custom role on Cloud Object Storage that only permits reading

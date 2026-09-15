@@ -147,6 +147,10 @@ The public website endpoint follows the pattern
 | `ibmcloud cos bucket-website-put --bucket <b> --website-configuration <json>` | Enable static website hosting |
 | `ibmcloud cos bucket-delete --bucket <b> --force` | Delete a bucket and its contents |
 
+## 🔀 Related lessons on other tracks
+
+- [GCP — 04 · Cloud Storage](https://sigilipelli.github.io/gcp-mastery-path/level-1/04-cloud-storage/)
+
 ## Exercise
 
 Create a COS instance and a **regional**, Standard-class bucket named after

@@ -220,6 +220,11 @@ terraform validate
 | List TGW connections | `ibmcloud tg connections <gw>` |
 | Route report | `ibmcloud tg route-report-create <gw>` |
 
+## 🔀 Related lessons on other tracks
+
+- [AWS — Advanced VPC (Peering, Transit Gateway, VPN)](https://sigilipelli.github.io/aws-mastery-path/level-3/01-advanced-vpc/)
+- [Azure — 01 · Advanced Networking (VPN Gateway, ExpressRoute)](https://sigilipelli.github.io/azure-mastery-path/level-3/01-advanced-networking/)
+
 ## Exercise
 
 1. Create two VPCs with non-overlapping CIDR blocks and attach both to a

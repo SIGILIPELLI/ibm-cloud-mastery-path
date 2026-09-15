@@ -211,6 +211,12 @@ ibmcloud is load-balancer ha-app-alb --output json | jq -r .hostname
 | `ibmcloud is instance-group-manager-policy-create <group> <manager> --metric-type cpu --metric-value <pct>` | Scale on a target metric |
 | `ibmcloud is instance-group-memberships <group>` | List current group membership |
 
+## 🔀 Related lessons on other tracks
+
+- [AWS — 02 · Auto Scaling & Load Balancing](https://sigilipelli.github.io/aws-mastery-path/level-2/02-autoscaling-load-balancing/)
+- [GCP — 02 · Autoscaling & Load Balancing](https://sigilipelli.github.io/gcp-mastery-path/level-2/02-autoscaling-load-balancing/)
+- [Kubernetes — 02 · Ingress & Load Balancing](https://sigilipelli.github.io/kubernetes-mastery-path/level-2/02-ingress-load-balancing/)
+
 ## Exercise
 
 Attach the ALB and instance group from this module to the two-zone VPC you
