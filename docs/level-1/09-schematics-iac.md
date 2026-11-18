@@ -158,7 +158,7 @@ ibmcloud schematics destroy --id <workspace-id>
 
 ## 🔀 Related lessons on other tracks
 
-- [Terraform — 01 · What Is IaC & Why Terraform?](https://sigilipelli.github.io/terraform-mastery-path/level-1/01-what-is-iac-why-terraform/)
+- [Terraform — 01 · What Is IaC & Why Terraform?](https://learnmasterypath.com/terraform-mastery-path/level-1/01-what-is-iac-why-terraform/)
 
 ## Exercise
 

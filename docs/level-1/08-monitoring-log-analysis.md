@@ -134,7 +134,7 @@ EOF
 
 ## 🔀 Related lessons on other tracks
 
-- [Cybersecurity — 06 · SIEM & Log Analysis Basics](https://sigilipelli.github.io/cybersecurity-mastery-path/level-2/06-siem-log-analysis-basics/)
+- [Cybersecurity — 06 · SIEM & Log Analysis Basics](https://learnmasterypath.com/cybersecurity-mastery-path/level-2/06-siem-log-analysis-basics/)
 
 ## Exercise
 

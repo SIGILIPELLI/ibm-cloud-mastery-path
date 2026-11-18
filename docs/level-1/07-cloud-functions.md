@@ -157,7 +157,7 @@ ibmcloud fn action list
 
 ## 🔀 Related lessons on other tracks
 
-- [GCP — 07 · Cloud Functions & Cloud Run](https://sigilipelli.github.io/gcp-mastery-path/level-1/07-serverless-run-functions/)
+- [GCP — 07 · Cloud Functions & Cloud Run](https://learnmasterypath.com/gcp-mastery-path/level-1/07-serverless-run-functions/)
 
 ## Exercise
 

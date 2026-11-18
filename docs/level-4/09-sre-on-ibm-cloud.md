@@ -219,7 +219,7 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [Data Engineering — 08 · Data Reliability Engineering](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/08-data-reliability-engineering/)
+- [Data Engineering — 08 · Data Reliability Engineering](https://learnmasterypath.com/data-engineering-mastery-path/level-4/08-data-reliability-engineering/)
 
 ## Exercise
 

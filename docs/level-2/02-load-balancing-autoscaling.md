@@ -213,9 +213,9 @@ ibmcloud is load-balancer ha-app-alb --output json | jq -r .hostname
 
 ## 🔀 Related lessons on other tracks
 
-- [AWS — 02 · Auto Scaling & Load Balancing](https://sigilipelli.github.io/aws-mastery-path/level-2/02-autoscaling-load-balancing/)
-- [GCP — 02 · Autoscaling & Load Balancing](https://sigilipelli.github.io/gcp-mastery-path/level-2/02-autoscaling-load-balancing/)
-- [Kubernetes — 02 · Ingress & Load Balancing](https://sigilipelli.github.io/kubernetes-mastery-path/level-2/02-ingress-load-balancing/)
+- [AWS — 02 · Auto Scaling & Load Balancing](https://learnmasterypath.com/aws-mastery-path/level-2/02-autoscaling-load-balancing/)
+- [GCP — 02 · Autoscaling & Load Balancing](https://learnmasterypath.com/gcp-mastery-path/level-2/02-autoscaling-load-balancing/)
+- [Kubernetes — 02 · Ingress & Load Balancing](https://learnmasterypath.com/kubernetes-mastery-path/level-2/02-ingress-load-balancing/)
 
 ## Exercise
 

@@ -242,7 +242,7 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [Azure — 05 · API Management](https://sigilipelli.github.io/azure-mastery-path/level-3/05-api-management/)
+- [Azure — 05 · API Management](https://learnmasterypath.com/azure-mastery-path/level-3/05-api-management/)
 
 ## Exercise
 

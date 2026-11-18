@@ -238,7 +238,7 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [ETL & Data Lake — 06 · What Is a Data Lake? (vs. Data Warehouse)](https://sigilipelli.github.io/etl-datalake-mastery-path/level-1/06-what-is-a-data-lake/)
+- [ETL & Data Lake — 06 · What Is a Data Lake? (vs. Data Warehouse)](https://learnmasterypath.com/etl-datalake-mastery-path/level-1/06-what-is-a-data-lake/)
 
 ## Exercise
 

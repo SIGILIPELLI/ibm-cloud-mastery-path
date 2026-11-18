@@ -140,8 +140,8 @@ ibmcloud is vpc-routing-table-route-create app-vpc <routing-table-id> \
 
 ## 🔀 Related lessons on other tracks
 
-- [AWS — 05 · VPC Networking Basics](https://sigilipelli.github.io/aws-mastery-path/level-1/05-vpc-networking-basics/)
-- [GCP — 05 · VPC Networking Basics](https://sigilipelli.github.io/gcp-mastery-path/level-1/05-vpc-networking/)
+- [AWS — 05 · VPC Networking Basics](https://learnmasterypath.com/aws-mastery-path/level-1/05-vpc-networking-basics/)
+- [GCP — 05 · VPC Networking Basics](https://learnmasterypath.com/gcp-mastery-path/level-1/05-vpc-networking/)
 
 ## Exercise
 

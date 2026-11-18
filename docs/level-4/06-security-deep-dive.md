@@ -227,8 +227,8 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [Cybersecurity — 09 · Security Leadership & Risk Management](https://sigilipelli.github.io/cybersecurity-mastery-path/level-4/09-security-leadership-risk-management/)
-- [Embedded Linux — 08 · Security Hardening & CVE Management](https://sigilipelli.github.io/embedded-linux-mastery-path/level-4/08-security-hardening/)
+- [Cybersecurity — 09 · Security Leadership & Risk Management](https://learnmasterypath.com/cybersecurity-mastery-path/level-4/09-security-leadership-risk-management/)
+- [Embedded Linux — 08 · Security Hardening & CVE Management](https://learnmasterypath.com/embedded-linux-mastery-path/level-4/08-security-hardening/)
 
 ## Exercise
 

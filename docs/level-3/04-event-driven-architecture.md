@@ -237,8 +237,8 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [Azure — 04 · Event-Driven Architecture (Event Grid, Service Bus)](https://sigilipelli.github.io/azure-mastery-path/level-3/04-event-driven-architecture/)
-- [REST API — 07 · Event-Driven APIs & Async Patterns](https://sigilipelli.github.io/rest-api-mastery-path/level-4/07-event-driven-apis/)
+- [Azure — 04 · Event-Driven Architecture (Event Grid, Service Bus)](https://learnmasterypath.com/azure-mastery-path/level-3/04-event-driven-architecture/)
+- [REST API — 07 · Event-Driven APIs & Async Patterns](https://learnmasterypath.com/rest-api-mastery-path/level-4/07-event-driven-apis/)
 
 ## Exercise
 

@@ -206,7 +206,7 @@ ibmcloud iam service-policy-create mastery-path-app \
 
 ## 🔀 Related lessons on other tracks
 
-- [Embedded Python — Security Hardening — TLS & Secure Storage](https://sigilipelli.github.io/embedded-python-mastery-path/level-4/06-security-hardening/)
+- [Embedded Python — Security Hardening — TLS & Secure Storage](https://learnmasterypath.com/embedded-python-mastery-path/level-4/06-security-hardening/)
 
 ## Exercise
 

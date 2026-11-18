@@ -152,8 +152,8 @@ ibmcloud iam service-api-key-delete mastery-path-app <key-name>
 
 ## 🔀 Related lessons on other tracks
 
-- [AWS — 02 · IAM & Security Basics](https://sigilipelli.github.io/aws-mastery-path/level-1/02-iam-security-basics/)
-- [GCP — 02 · IAM & Security Basics](https://sigilipelli.github.io/gcp-mastery-path/level-1/02-iam-security/)
+- [AWS — 02 · IAM & Security Basics](https://learnmasterypath.com/aws-mastery-path/level-1/02-iam-security-basics/)
+- [GCP — 02 · IAM & Security Basics](https://learnmasterypath.com/gcp-mastery-path/level-1/02-iam-security/)
 
 ## Exercise
 

@@ -240,7 +240,7 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [Azure — 06 · Performance Engineering & Load Testing](https://sigilipelli.github.io/azure-mastery-path/level-4/06-performance-load-testing/)
+- [Azure — 06 · Performance Engineering & Load Testing](https://learnmasterypath.com/azure-mastery-path/level-4/06-performance-load-testing/)
 
 ## Exercise
 

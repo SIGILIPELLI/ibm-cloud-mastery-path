@@ -243,9 +243,9 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [AWS — 09 · Cost Management & Billing](https://sigilipelli.github.io/aws-mastery-path/level-2/09-cost-management-billing/)
-- [Azure — 09 · Cost Management & Optimization](https://sigilipelli.github.io/azure-mastery-path/level-3/09-cost-management-optimization/)
-- [GCP — 09 · Cost Management & Billing](https://sigilipelli.github.io/gcp-mastery-path/level-2/09-cost-management-billing/)
+- [AWS — 09 · Cost Management & Billing](https://learnmasterypath.com/aws-mastery-path/level-2/09-cost-management-billing/)
+- [Azure — 09 · Cost Management & Optimization](https://learnmasterypath.com/azure-mastery-path/level-3/09-cost-management-optimization/)
+- [GCP — 09 · Cost Management & Billing](https://learnmasterypath.com/gcp-mastery-path/level-2/09-cost-management-billing/)
 
 ## Exercise
 

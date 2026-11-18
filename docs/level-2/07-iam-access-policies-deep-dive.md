@@ -185,7 +185,7 @@ ibmcloud iam access-report --output json
 
 ## 🔀 Related lessons on other tracks
 
-- [GCP — 04 · Advanced IAM (Org Policies, Custom Roles)](https://sigilipelli.github.io/gcp-mastery-path/level-3/04-advanced-iam/)
+- [GCP — 04 · Advanced IAM (Org Policies, Custom Roles)](https://learnmasterypath.com/gcp-mastery-path/level-3/04-advanced-iam/)
 
 ## Exercise
 

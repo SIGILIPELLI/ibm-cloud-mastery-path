@@ -220,7 +220,7 @@ automatically for clusters and registries in the same account).
 
 ## 🔀 Related lessons on other tracks
 
-- [Azure — 04 · Azure Kubernetes Service (AKS) Basics](https://sigilipelli.github.io/azure-mastery-path/level-2/04-aks-basics/)
+- [Azure — 04 · Azure Kubernetes Service (AKS) Basics](https://learnmasterypath.com/azure-mastery-path/level-2/04-aks-basics/)
 
 ## Exercise
 

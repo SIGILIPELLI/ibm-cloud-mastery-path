@@ -234,9 +234,9 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [AWS — Multi-Region & Disaster Recovery](https://sigilipelli.github.io/aws-mastery-path/level-3/07-multi-region-disaster-recovery/)
-- [GCP — 07 · Multi-Region & Disaster Recovery](https://sigilipelli.github.io/gcp-mastery-path/level-3/07-multi-region-disaster-recovery/)
-- [Azure — 07 · High Availability & Disaster Recovery](https://sigilipelli.github.io/azure-mastery-path/level-3/07-ha-disaster-recovery/)
+- [AWS — Multi-Region & Disaster Recovery](https://learnmasterypath.com/aws-mastery-path/level-3/07-multi-region-disaster-recovery/)
+- [GCP — 07 · Multi-Region & Disaster Recovery](https://learnmasterypath.com/gcp-mastery-path/level-3/07-multi-region-disaster-recovery/)
+- [Azure — 07 · High Availability & Disaster Recovery](https://learnmasterypath.com/azure-mastery-path/level-3/07-ha-disaster-recovery/)
 
 ## Exercise
 

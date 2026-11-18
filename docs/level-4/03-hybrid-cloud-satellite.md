@@ -229,8 +229,8 @@ terraform validate
 
 ## 🔀 Related lessons on other tracks
 
-- [Azure — 04 · Azure Arc & Hybrid Cloud](https://sigilipelli.github.io/azure-mastery-path/level-4/04-azure-arc-hybrid-cloud/)
-- [ETL & Data Lake — 07 · Multi-Cloud & Hybrid Data Lake Strategy](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/07-multi-cloud-hybrid-strategy/)
+- [Azure — 04 · Azure Arc & Hybrid Cloud](https://learnmasterypath.com/azure-mastery-path/level-4/04-azure-arc-hybrid-cloud/)
+- [ETL & Data Lake — 07 · Multi-Cloud & Hybrid Data Lake Strategy](https://learnmasterypath.com/etl-datalake-mastery-path/level-4/07-multi-cloud-hybrid-strategy/)
 
 ## Exercise
 

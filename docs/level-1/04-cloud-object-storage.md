@@ -149,7 +149,7 @@ The public website endpoint follows the pattern
 
 ## 🔀 Related lessons on other tracks
 
-- [GCP — 04 · Cloud Storage](https://sigilipelli.github.io/gcp-mastery-path/level-1/04-cloud-storage/)
+- [GCP — 04 · Cloud Storage](https://learnmasterypath.com/gcp-mastery-path/level-1/04-cloud-storage/)
 
 ## Exercise
 
