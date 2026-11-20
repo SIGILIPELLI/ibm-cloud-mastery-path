@@ -1,3 +1,7 @@
+---
+description: "Level 2 (Intermediate) of the free IBM Cloud Mastery Path: VPC Design Deep Dive, Load Balancing & Auto Scaling, Kubernetes Service (IKS) Basics, Code Engine…"
+---
+
 # Level 2 · Intermediate
 
 ## Modules

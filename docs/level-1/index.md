@@ -1,3 +1,7 @@
+---
+description: "Level 1 (Entry) of the free IBM Cloud Mastery Path. Get comfortable with the ibmcloud CLI and IAM, stand up compute, storage, networking, a database, and a…"
+---
+
 # Level 1 · Entry <span class="level-badge">Foundations</span>
 
 Goal: get comfortable with the `ibmcloud` CLI and IAM, stand up compute,

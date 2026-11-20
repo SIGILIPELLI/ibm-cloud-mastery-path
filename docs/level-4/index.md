@@ -1,3 +1,7 @@
+---
+description: "Level 4 (Master) of the free IBM Cloud Mastery Path: Enterprise Account Structure & IAM at Scale, Landing Zone Architecture, Hybrid Cloud with Satellite…"
+---
+
 # Level 4 · Master
 
 ## Modules

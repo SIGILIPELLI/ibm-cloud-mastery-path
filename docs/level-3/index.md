@@ -1,3 +1,7 @@
+---
+description: "Level 3 (Advanced) of the free IBM Cloud Mastery Path: Red Hat OpenShift on IBM Cloud, Advanced Networking (Transit Gateway, VPN, Direct Link), Security &…"
+---
+
 # Level 3 · Advanced
 
 ## Modules
