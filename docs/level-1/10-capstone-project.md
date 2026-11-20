@@ -1,5 +1,6 @@
 ---
 description: "Capstone Project — Visit Counter — A small end-to-end app that ties together three services from this level: Cloud Object Storage serves a static…"
+title: "Level 1 Capstone: IBM Cloud Foundations Project"
 ---
 
 # 10 · Capstone Project — Visit Counter

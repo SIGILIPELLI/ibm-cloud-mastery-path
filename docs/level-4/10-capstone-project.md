@@ -1,5 +1,6 @@
 ---
 description: "Capstone Project — The capstone combines every Level 4 module — enterprise account structure, landing zone, hybrid connectivity, data/AI services…"
+title: "Level 4 Capstone: Production-Grade IBM Cloud Architecture"
 ---
 
 # 10 · Capstone Project
