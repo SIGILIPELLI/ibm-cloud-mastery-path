@@ -94,7 +94,7 @@ nav:
       - "07 · Cloud Functions": level-1/07-cloud-functions.md
       - "08 · Monitoring & Log Analysis": level-1/08-monitoring-log-analysis.md
       - "09 · Schematics (Terraform IaC)": level-1/09-schematics-iac.md
-      - "10 · Capstone Project": level-1/10-capstone-project.md
+      - "10 · Project": level-1/10-capstone-project.md
   - "Level 2 · Intermediate":
       - Overview: level-2/index.md
       - "01 · VPC Design Deep Dive": level-2/01-vpc-design-deep-dive.md
