@@ -1,0 +1,4218 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="179 IBM Cloud interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the IBM Cloud Mastery Path.">
+      
+      
+      
+        <link rel="canonical" href="https://learnmasterypath.com/ibm-cloud-mastery-path/interview-questions/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../cheat-sheet/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+  
+  <title>IBM Cloud Interview Questions and Answers (179 Questions)</title>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/progress-tracker.css">
+    
+      <link rel="stylesheet" href="../stylesheets/final-quiz.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-05VBGCXN12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-05VBGCXN12');
+  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mastery Path">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="IBM Cloud Interview Questions and Answers (179 Questions)">
+  <meta property="og:description" content="179 IBM Cloud interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the IBM Cloud Mastery Path.">
+  <meta property="og:url" content="https://learnmasterypath.com/ibm-cloud-mastery-path/interview-questions/">
+  <meta property="og:image" content="https://learnmasterypath.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mastery Path: free structured courses, beginner to master">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IBM Cloud Interview Questions and Answers (179 Questions)">
+  <meta name="twitter:description" content="179 IBM Cloud interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the IBM Cloud Mastery Path.">
+  <meta name="twitter:image" content="https://learnmasterypath.com/og-image.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
+     crossorigin="anonymous"></script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Mastery Path", "item": "https://learnmasterypath.com/"},
+      {"@type": "ListItem", "position": 2, "name": "IBM Cloud Mastery Path", "item": "https://learnmasterypath.com/ibm-cloud-mastery-path/"},
+      {"@type": "ListItem", "position": 3, "name": "Interview Questions", "item": "https://learnmasterypath.com/ibm-cloud-mastery-path/interview-questions/"}
+    ]
+  }
+  </script>
+  <style>
+    .md-banner a:hover { text-decoration: underline !important; }
+    .mp-related { margin-top: 2.4rem; padding-top: 1rem; border-top: 1px solid var(--md-default-fg-color--lightest); font-size: .78rem; }
+    .mp-related h2 { font-size: .9rem; margin: 0 0 .5rem; }
+    .mp-related ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem .9rem; }
+    .mp-related li { margin: 0 !important; }
+  </style>
+  <script type="application/json" id="mp-course-meta">{"home": false, "id": "ibm-cloud-mastery-path", "name": "IBM Cloud Mastery Path", "repo": "https://github.com/SIGILIPELLI/ibm-cloud-mastery-path", "src": "interview-questions.md", "url": "https://learnmasterypath.com/ibm-cloud-mastery-path/"}</script>
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/learn.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/course.css?v=1">
+  <script src="https://learnmasterypath.com/assets/learn.js" defer></script>
+  <script src="https://learnmasterypath.com/assets/signup.js" defer></script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ibm-cloud-interview-questions-and-answers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://learnmasterypath.com/" style="color: inherit; text-decoration: none;">
+    &larr; Mastery Path &middot; all 100+ free courses
+  </a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/search/" style="color: inherit; text-decoration: none;">Search all courses</a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/resume/" style="color: inherit; font-weight: 700; text-decoration: none;">
+    Got the skills? Free resume ATS check &rarr;
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Cloud Mastery Path" class="md-header__button md-logo" aria-label="IBM Cloud Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Cloud Mastery Path
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IBM Cloud Interview Questions and Answers (179 Questions)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SIGILIPELLI/ibm-cloud-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ibm-cloud-mastery-path
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Interview Questions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cheat-sheet/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cheat Sheet
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 1 · Entry
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 2 · Intermediate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 3 · Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 4 · Master
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quiz/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Final Quiz
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Cloud Mastery Path" class="md-nav__button md-logo" aria-label="IBM Cloud Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    IBM Cloud Mastery Path
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SIGILIPELLI/ibm-cloud-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ibm-cloud-mastery-path
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-setup-the-ibmcloud-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Setup &amp; the ibmcloud CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-iam-security-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · IAM &amp; Security Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-virtual-servers-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Virtual Servers (VPC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-cloud-object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Cloud Object Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-vpc-networking-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · VPC Networking Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-cloud-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Cloud Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-cloud-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Cloud Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-monitoring-log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Monitoring &amp; Log Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-schematics-terraform-based-iac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Schematics (Terraform-based IaC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project-visit-counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project — Visit Counter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-vpc-design-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · VPC Design Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-load-balancing-auto-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Load Balancing &amp; Auto Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-kubernetes-service-iks-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Kubernetes Service (IKS) Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-code-engine-containers-serverless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Code Engine (Containers &amp; Serverless)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-cloud-databases-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Cloud Databases Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-object-storage-lifecycle-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Object Storage Lifecycle &amp; Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-iam-access-policies-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · IAM Access Policies Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-cicd-with-toolchains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · CI/CD with Toolchains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-schematics-workspaces-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Schematics Workspaces &amp; Modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-highly-available-web-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Highly Available Web App
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-red-hat-openshift-on-ibm-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Red Hat OpenShift on IBM Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-advanced-networking-transit-gateway-vpn-direct-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Advanced Networking (Transit Gateway, VPN, Direct Link)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-security-compliance-security-advisor-key-protect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Security &amp; Compliance (Security Advisor, Key Protect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-event-driven-architecture-event-streams-kafka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Event-Driven Architecture (Event Streams / Kafka)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-observability-at-scale-activity-tracker-sysdig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Observability at Scale (Activity Tracker, Sysdig)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-multi-region-disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Multi-Region &amp; Disaster Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-cost-management-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Cost Management &amp; Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-advanced-schematics-terraform-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Advanced Schematics &amp; Terraform Modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-api-management-api-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · API Management (API Connect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-multi-tier-microservices-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Multi-Tier Microservices Platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-enterprise-account-structure-iam-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Enterprise Account Structure &amp; IAM at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-landing-zone-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Landing Zone Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-hybrid-cloud-with-satellite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Hybrid Cloud with Satellite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-data-ai-services-watsonx-db2-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Data &amp; AI Services (watsonx, Db2 Warehouse)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-performance-scalability-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Performance &amp; Scalability Engineering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-security-deep-dive-hyper-protect-key-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Security Deep Dive (Hyper Protect, Key Management)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-automation-pipelines-at-scale-gitops-schematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Automation Pipelines at Scale (GitOps + Schematics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-finops-enterprise-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · FinOps &amp; Enterprise Cost Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-site-reliability-engineering-on-ibm-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Site Reliability Engineering on IBM Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-a-multi-zone-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan a multi-zone VPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluate-iam-access-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluate IAM access policies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/01-setup-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Setup & the ibmcloud CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/02-iam-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · IAM & Security Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/03-virtual-servers-vpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Virtual Servers (VPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/04-cloud-object-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Cloud Object Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/05-vpc-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · VPC Networking Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/06-cloud-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Cloud Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/07-cloud-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Cloud Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/08-monitoring-log-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Monitoring & Log Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/09-schematics-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Schematics (Terraform IaC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 · Intermediate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 2 · Intermediate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/01-vpc-design-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · VPC Design Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/02-load-balancing-autoscaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Load Balancing & Auto Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/03-kubernetes-service-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Kubernetes Service (IKS) Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/04-code-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Code Engine (Containers & Serverless)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/05-cloud-databases-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Cloud Databases Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/06-object-storage-lifecycle-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Object Storage Lifecycle & Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/07-iam-access-policies-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · IAM Access Policies Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/08-cicd-toolchains/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · CI/CD with Toolchains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/09-schematics-workspaces-modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Schematics Workspaces & Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/10-project-ha-web-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Highly Available Web App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 · Advanced
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 3 · Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/01-openshift-on-ibm-cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Red Hat OpenShift on IBM Cloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/02-advanced-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Advanced Networking (Transit Gateway, VPN, Direct Link)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/03-security-compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Security & Compliance (Security Advisor, Key Protect)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/04-event-driven-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Event-Driven Architecture (Event Streams / Kafka)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/05-observability-at-scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Observability at Scale (Activity Tracker, Sysdig)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/06-multi-region-dr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Multi-Region & Disaster Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/07-cost-management-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Cost Management & Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/08-advanced-schematics-terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Advanced Schematics & Terraform Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/09-api-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · API Management (API Connect)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/10-project-microservices-platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Multi-Tier Microservices Platform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 · Master
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 4 · Master
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/01-enterprise-account-iam-at-scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Enterprise Account Structure & IAM at Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/02-landing-zone-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Landing Zone Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/03-hybrid-cloud-satellite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Hybrid Cloud with Satellite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/04-data-ai-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Data & AI Services (watsonx, Db2 Warehouse)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/05-performance-scalability-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Performance & Scalability Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/06-security-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Security Deep Dive (Hyper Protect, Key Management)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/07-automation-pipelines-at-scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Automation Pipelines at Scale (GitOps + Schematics)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/08-finops-cost-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · FinOps & Enterprise Cost Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/09-sre-on-ibm-cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Site Reliability Engineering on IBM Cloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Final Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-setup-the-ibmcloud-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Setup &amp; the ibmcloud CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-iam-security-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · IAM &amp; Security Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-virtual-servers-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Virtual Servers (VPC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-cloud-object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Cloud Object Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-vpc-networking-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · VPC Networking Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-cloud-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Cloud Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-cloud-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Cloud Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-monitoring-log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Monitoring &amp; Log Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-schematics-terraform-based-iac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Schematics (Terraform-based IaC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project-visit-counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project — Visit Counter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-vpc-design-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · VPC Design Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-load-balancing-auto-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Load Balancing &amp; Auto Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-kubernetes-service-iks-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Kubernetes Service (IKS) Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-code-engine-containers-serverless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Code Engine (Containers &amp; Serverless)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-cloud-databases-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Cloud Databases Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-object-storage-lifecycle-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Object Storage Lifecycle &amp; Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-iam-access-policies-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · IAM Access Policies Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-cicd-with-toolchains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · CI/CD with Toolchains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-schematics-workspaces-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Schematics Workspaces &amp; Modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-highly-available-web-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Highly Available Web App
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-red-hat-openshift-on-ibm-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Red Hat OpenShift on IBM Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-advanced-networking-transit-gateway-vpn-direct-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Advanced Networking (Transit Gateway, VPN, Direct Link)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-security-compliance-security-advisor-key-protect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Security &amp; Compliance (Security Advisor, Key Protect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-event-driven-architecture-event-streams-kafka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Event-Driven Architecture (Event Streams / Kafka)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-observability-at-scale-activity-tracker-sysdig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Observability at Scale (Activity Tracker, Sysdig)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-multi-region-disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Multi-Region &amp; Disaster Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-cost-management-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Cost Management &amp; Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-advanced-schematics-terraform-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Advanced Schematics &amp; Terraform Modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-api-management-api-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · API Management (API Connect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-multi-tier-microservices-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Multi-Tier Microservices Platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-enterprise-account-structure-iam-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Enterprise Account Structure &amp; IAM at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-landing-zone-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Landing Zone Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-hybrid-cloud-with-satellite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Hybrid Cloud with Satellite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-data-ai-services-watsonx-db2-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Data &amp; AI Services (watsonx, Db2 Warehouse)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-performance-scalability-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Performance &amp; Scalability Engineering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-security-deep-dive-hyper-protect-key-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Security Deep Dive (Hyper Protect, Key Management)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-automation-pipelines-at-scale-gitops-schematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Automation Pipelines at Scale (GitOps + Schematics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-finops-enterprise-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · FinOps &amp; Enterprise Cost Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-site-reliability-engineering-on-ibm-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Site Reliability Engineering on IBM Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-a-multi-zone-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan a multi-zone VPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluate-iam-access-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluate IAM access policies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="ibm-cloud-interview-questions-and-answers">IBM Cloud Interview Questions and Answers<a class="headerlink" href="#ibm-cloud-interview-questions-and-answers" title="Permanent link">&para;</a></h1>
+<p><strong>179 questions</strong> with the correct answer and a short explanation, organised from beginner (Level 1) to advanced (Level 4). Every question comes from a lesson in the free IBM Cloud Mastery Path, so you can open the lesson to go deeper.</p>
+<div class="admonition tip">
+<p class="admonition-title">Practise, don't just read</p>
+<p>Each lesson also ends with an interactive quiz, and the <a href="../quiz/">final quiz</a> tests all four levels. Try to answer each question below before reading the answer.</p>
+</div>
+<h2 id="level-1-entry">Level 1 · Entry<a class="headerlink" href="#level-1-entry" title="Permanent link">&para;</a></h2>
+<h3 id="01-setup-the-ibmcloud-cli"><a href="../level-1/01-setup-cli/">01 · Setup &amp; the <code>ibmcloud</code> CLI</a><a class="headerlink" href="#01-setup-the-ibmcloud-cli" title="Permanent link">&para;</a></h3>
+<p><strong>Q1.</strong> What does <code>ibmcloud login</code> do?</p>
+<p><strong>Answer:</strong> Authenticates the CLI to your IBM Cloud account</p>
+<p>Use SSO or API keys.</p>
+<p><strong>Q2.</strong> What does <code>ibmcloud target -g &lt;group&gt; -r &lt;region&gt;</code> do?</p>
+<p><strong>Answer:</strong> Sets the resource group and region for commands</p>
+<p>Context.</p>
+<p><strong>Q3.</strong> What's a resource group?</p>
+<p><strong>Answer:</strong> A logical container for organizing resources and access control</p>
+<p>Required for most resources.</p>
+<p><strong>Q4.</strong> What does the free/Lite tier caution include?</p>
+<p><strong>Answer:</strong> Resources can bill if upgraded; delete practice resources</p>
+<p>Check plans.</p>
+<h3 id="02-iam-security-basics"><a href="../level-1/02-iam-security/">02 · IAM &amp; Security Basics</a><a class="headerlink" href="#02-iam-security-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q5.</strong> What does IAM decide?</p>
+<p><strong>Answer:</strong> Who (user, service ID) can do what (role) on which resource</p>
+<p>Policies.</p>
+<p><strong>Q6.</strong> What are service IDs for?</p>
+<p><strong>Answer:</strong> Identities for applications/automation rather than people</p>
+<p>With API keys.</p>
+<p><strong>Q7.</strong> What are the platform vs service access roles?</p>
+<p><strong>Answer:</strong> Platform roles manage resources; service roles control data access inside services</p>
+<p>Viewer/Editor/Administrator and Reader/Writer/Manager.</p>
+<p><strong>Q8.</strong> Why use access groups?</p>
+<p><strong>Answer:</strong> Assign policies to groups and add users, instead of per-user policies</p>
+<p>Scalable.</p>
+<h3 id="03-virtual-servers-vpc"><a href="../level-1/03-virtual-servers-vpc/">03 · Virtual Servers (VPC)</a><a class="headerlink" href="#03-virtual-servers-vpc" title="Permanent link">&para;</a></h3>
+<p><strong>Q9.</strong> What is a VSI?</p>
+<p><strong>Answer:</strong> Virtual Server Instance in a VPC</p>
+<p>IaaS compute.</p>
+<p><strong>Q10.</strong> What do you need before launching a VSI?</p>
+<p><strong>Answer:</strong> A VPC, subnet, SSH key and image/profile</p>
+<p>Network first.</p>
+<p><strong>Q11.</strong> What's a profile?</p>
+<p><strong>Answer:</strong> The instance's vCPU/RAM size family (e.g. bx2-2x8)</p>
+<p>Balanced/compute/memory.</p>
+<p><strong>Q12.</strong> How reach a private VSI?</p>
+<p><strong>Answer:</strong> Floating IP, bastion/VPN or Transit Gateway</p>
+<p>Least exposure.</p>
+<h3 id="04-cloud-object-storage"><a href="../level-1/04-cloud-object-storage/">04 · Cloud Object Storage</a><a class="headerlink" href="#04-cloud-object-storage" title="Permanent link">&para;</a></h3>
+<p><strong>Q13.</strong> What is COS?</p>
+<p><strong>Answer:</strong> S3-compatible object storage with buckets and objects</p>
+<p>Cloud Object Storage.</p>
+<p><strong>Q14.</strong> What do storage classes represent?</p>
+<p><strong>Answer:</strong> Cost/performance for access frequency (Smart, Standard, Vault, Cold)</p>
+<p>Lifecycle.</p>
+<p><strong>Q15.</strong> How should apps access COS?</p>
+<p><strong>Answer:</strong> Using service credentials/IAM with HMAC or API keys, least privilege</p>
+<p>Rotate keys.</p>
+<p><strong>Q16.</strong> What does bucket versioning protect against?</p>
+<p><strong>Answer:</strong> Accidental deletes and overwrites</p>
+<p>Immutable history.</p>
+<h3 id="05-vpc-networking-basics"><a href="../level-1/05-vpc-networking/">05 · VPC Networking Basics</a><a class="headerlink" href="#05-vpc-networking-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q17.</strong> What's a VPC subnet?</p>
+<p><strong>Answer:</strong> An IP range in one zone for placing instances</p>
+<p>Zone-scoped.</p>
+<p><strong>Q18.</strong> What's a security group?</p>
+<p><strong>Answer:</strong> A stateful firewall at the instance/interface level</p>
+<p>Allow rules.</p>
+<p><strong>Q19.</strong> What's a network ACL?</p>
+<p><strong>Answer:</strong> A stateless subnet-level rule list (allow/deny)</p>
+<p>Ordered rules.</p>
+<p><strong>Q20.</strong> What does a public gateway do?</p>
+<p><strong>Answer:</strong> Gives instances in a subnet outbound internet access</p>
+<p>NAT-like.</p>
+<h3 id="06-cloud-databases"><a href="../level-1/06-cloud-databases/">06 · Cloud Databases</a><a class="headerlink" href="#06-cloud-databases" title="Permanent link">&para;</a></h3>
+<p><strong>Q21.</strong> What does a managed database service handle?</p>
+<p><strong>Answer:</strong> Provisioning, backups, patching and scaling for you</p>
+<p>Databases for PostgreSQL.</p>
+<p><strong>Q22.</strong> Which connection practice is right?</p>
+<p><strong>Answer:</strong> TLS with credentials from service credentials/Secrets Manager</p>
+<p>Private endpoints preferred.</p>
+<p><strong>Q23.</strong> What do private endpoints do?</p>
+<p><strong>Answer:</strong> Keep traffic on IBM's private network</p>
+<p>Reduce exposure.</p>
+<p><strong>Q24.</strong> Why enable backups/PITR?</p>
+<p><strong>Answer:</strong> Recover from corruption or mistakes</p>
+<p>Test restores.</p>
+<h3 id="07-cloud-functions"><a href="../level-1/07-cloud-functions/">07 · Cloud Functions</a><a class="headerlink" href="#07-cloud-functions" title="Permanent link">&para;</a></h3>
+<p><strong>Q25.</strong> What is Cloud Functions' programming model?</p>
+<p><strong>Answer:</strong> Event-driven actions triggered by HTTP, events or schedules</p>
+<p>OpenWhisk based.</p>
+<p><strong>Q26.</strong> What's a cold start?</p>
+<p><strong>Answer:</strong> Latency when a new runtime container starts</p>
+<p>Keep warm if needed.</p>
+<p><strong>Q27.</strong> What are triggers and rules?</p>
+<p><strong>Answer:</strong> Triggers emit events; rules connect them to actions</p>
+<p>Wiring.</p>
+<p><strong>Q28.</strong> What limits actions?</p>
+<p><strong>Answer:</strong> Memory, timeouts and payload size</p>
+<p>Design stateless.</p>
+<h3 id="08-monitoring-log-analysis"><a href="../level-1/08-monitoring-log-analysis/">08 · Monitoring &amp; Log Analysis</a><a class="headerlink" href="#08-monitoring-log-analysis" title="Permanent link">&para;</a></h3>
+<p><strong>Q29.</strong> What does IBM Cloud Logs/Log Analysis collect?</p>
+<p><strong>Answer:</strong> Logs from services and apps for search and alerting</p>
+<p>Agent or integration.</p>
+<p><strong>Q30.</strong> What do Monitoring metrics show?</p>
+<p><strong>Answer:</strong> Resource and app performance over time</p>
+<p>Dashboards/alerts.</p>
+<p><strong>Q31.</strong> Why alert on symptoms?</p>
+<p><strong>Answer:</strong> Users feel symptoms; avoid noise from causes</p>
+<p>Actionable.</p>
+<p><strong>Q32.</strong> What does Activity Tracker record?</p>
+<p><strong>Answer:</strong> Who did what to which resource (audit events)</p>
+<p>Compliance.</p>
+<h3 id="09-schematics-terraform-based-iac"><a href="../level-1/09-schematics-iac/">09 · Schematics (Terraform-based IaC)</a><a class="headerlink" href="#09-schematics-terraform-based-iac" title="Permanent link">&para;</a></h3>
+<p><strong>Q33.</strong> What is Schematics?</p>
+<p><strong>Answer:</strong> IBM's managed Terraform service (workspaces)</p>
+<p>IaC.</p>
+<p><strong>Q34.</strong> What does a workspace hold?</p>
+<p><strong>Answer:</strong> A Terraform configuration, variables and state</p>
+<p>Plan/apply.</p>
+<p><strong>Q35.</strong> Why use IaC?</p>
+<p><strong>Answer:</strong> Repeatable, reviewable, versioned infrastructure</p>
+<p>No console drift.</p>
+<p><strong>Q36.</strong> What does <code>plan</code> show?</p>
+<p><strong>Answer:</strong> Changes Terraform would make</p>
+<p>Review first.</p>
+<h3 id="10-capstone-project-visit-counter"><a href="../level-1/10-capstone-project/">10 · Capstone Project — Visit Counter</a><a class="headerlink" href="#10-capstone-project-visit-counter" title="Permanent link">&para;</a></h3>
+<p><strong>Q37.</strong> What does the visit counter capstone combine?</p>
+<p><strong>Answer:</strong> Cloud Functions/Code, a database, COS and Schematics with monitoring</p>
+<p>End to end.</p>
+<p><strong>Q38.</strong> How protect credentials?</p>
+<p><strong>Answer:</strong> Service IDs with least privilege and Secrets Manager</p>
+<p>Hygiene.</p>
+<p><strong>Q39.</strong> How verify it works?</p>
+<p><strong>Answer:</strong> Test the endpoint and check logs/metrics</p>
+<p>Observe.</p>
+<p><strong>Q40.</strong> What after finishing?</p>
+<p><strong>Answer:</strong> Destroy resources via Schematics to avoid cost</p>
+<p>Clean up.</p>
+<h2 id="level-2-intermediate">Level 2 · Intermediate<a class="headerlink" href="#level-2-intermediate" title="Permanent link">&para;</a></h2>
+<h3 id="01-vpc-design-deep-dive"><a href="../level-2/01-vpc-design-deep-dive/">01 · VPC Design Deep Dive</a><a class="headerlink" href="#01-vpc-design-deep-dive" title="Permanent link">&para;</a></h3>
+<p><strong>Q41.</strong> Why use multiple zones in a VPC?</p>
+<p><strong>Answer:</strong> Survive a zone failure with subnets and instances spread across zones</p>
+<p>HA.</p>
+<p><strong>Q42.</strong> What does address prefix management control?</p>
+<p><strong>Answer:</strong> The CIDR ranges available to subnets in each zone</p>
+<p>Plan ranges.</p>
+<p><strong>Q43.</strong> What's Transit Gateway for?</p>
+<p><strong>Answer:</strong> Connecting multiple VPCs and on-prem networks through a hub</p>
+<p>Scale connectivity.</p>
+<p><strong>Q44.</strong> What's a good practice for CIDR planning?</p>
+<p><strong>Answer:</strong> Avoid overlaps across VPCs and on-prem</p>
+<p>Connectivity later.</p>
+<h3 id="02-load-balancing-auto-scaling"><a href="../level-2/02-load-balancing-autoscaling/">02 · Load Balancing &amp; Auto Scaling</a><a class="headerlink" href="#02-load-balancing-auto-scaling" title="Permanent link">&para;</a></h3>
+<p><strong>Q45.</strong> What do VPC load balancers provide?</p>
+<p><strong>Answer:</strong> Distributing traffic across healthy instances (ALB/NLB)</p>
+<p>Health checks.</p>
+<p><strong>Q46.</strong> What's an instance group?</p>
+<p><strong>Answer:</strong> A set of identical VSIs with autoscaling from a template</p>
+<p>Elastic.</p>
+<p><strong>Q47.</strong> What triggers autoscaling policies?</p>
+<p><strong>Answer:</strong> Metrics like CPU or memory utilization</p>
+<p>Targets.</p>
+<p><strong>Q48.</strong> What's draining?</p>
+<p><strong>Answer:</strong> Letting in-flight requests finish before removing an instance</p>
+<p>Graceful.</p>
+<h3 id="03-kubernetes-service-iks-basics"><a href="../level-2/03-kubernetes-service-basics/">03 · Kubernetes Service (IKS) Basics</a><a class="headerlink" href="#03-kubernetes-service-iks-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q49.</strong> What is IKS?</p>
+<p><strong>Answer:</strong> IBM Cloud Kubernetes Service, a managed Kubernetes</p>
+<p>Workers in your VPC.</p>
+<p><strong>Q50.</strong> What does the managed control plane mean?</p>
+<p><strong>Answer:</strong> IBM runs and patches the Kubernetes masters</p>
+<p>You manage workers/workloads.</p>
+<p><strong>Q51.</strong> What's a worker pool?</p>
+<p><strong>Answer:</strong> A set of worker nodes with the same flavor</p>
+<p>Scale pools.</p>
+<p><strong>Q52.</strong> How expose apps?</p>
+<p><strong>Answer:</strong> Ingress/ALB or LoadBalancer services</p>
+<p>Routing.</p>
+<h3 id="04-code-engine-containers-serverless"><a href="../level-2/04-code-engine/">04 · Code Engine (Containers &amp; Serverless)</a><a class="headerlink" href="#04-code-engine-containers-serverless" title="Permanent link">&para;</a></h3>
+<p><strong>Q53.</strong> What's Code Engine?</p>
+<p><strong>Answer:</strong> A serverless platform for containers, jobs and apps scaling to zero</p>
+<p>Simple deploy.</p>
+<p><strong>Q54.</strong> What are Code Engine jobs?</p>
+<p><strong>Answer:</strong> Run-to-completion batch workloads</p>
+<p>Batch.</p>
+<p><strong>Q55.</strong> What's built into it?</p>
+<p><strong>Answer:</strong> Source-to-image builds from Git or Dockerfile</p>
+<p>Builds.</p>
+<p><strong>Q56.</strong> When prefer Code Engine over IKS?</p>
+<p><strong>Answer:</strong> When you want less cluster operation for simple workloads</p>
+<p>Trade-offs.</p>
+<h3 id="05-cloud-databases-deep-dive"><a href="../level-2/05-cloud-databases-deep-dive/">05 · Cloud Databases Deep Dive</a><a class="headerlink" href="#05-cloud-databases-deep-dive" title="Permanent link">&para;</a></h3>
+<p><strong>Q57.</strong> What's high availability for a managed DB?</p>
+<p><strong>Answer:</strong> Multi-member deployments across zones with automatic failover</p>
+<p>Replication.</p>
+<p><strong>Q58.</strong> What do read replicas help?</p>
+<p><strong>Answer:</strong> Scale reads and offload reporting</p>
+<p>Lag.</p>
+<p><strong>Q59.</strong> What does scaling a DB involve?</p>
+<p><strong>Answer:</strong> Adjusting memory/disk/CPU per member (with possible rolling restarts)</p>
+<p>Plan windows.</p>
+<p><strong>Q60.</strong> Why test restores?</p>
+<p><strong>Answer:</strong> Backups are unproven until restored</p>
+<p>DR confidence.</p>
+<h3 id="06-object-storage-lifecycle-security"><a href="../level-2/06-object-storage-lifecycle-security/">06 · Object Storage Lifecycle &amp; Security</a><a class="headerlink" href="#06-object-storage-lifecycle-security" title="Permanent link">&para;</a></h3>
+<p><strong>Q61.</strong> What do COS lifecycle rules do?</p>
+<p><strong>Answer:</strong> Transition or expire objects automatically by age</p>
+<p>Cost control.</p>
+<p><strong>Q62.</strong> What does immutable object storage (WORM) provide?</p>
+<p><strong>Answer:</strong> Retention locks preventing deletion/modification for a period</p>
+<p>Compliance.</p>
+<p><strong>Q63.</strong> How encrypt COS data?</p>
+<p><strong>Answer:</strong> Default at rest; use Key Protect/HPCS for customer-managed keys</p>
+<p>Control.</p>
+<p><strong>Q64.</strong> What does bucket firewall do?</p>
+<p><strong>Answer:</strong> Restricts access to allowed IP ranges/networks</p>
+<p>Defense.</p>
+<h3 id="07-iam-access-policies-deep-dive"><a href="../level-2/07-iam-access-policies-deep-dive/">07 · IAM Access Policies Deep Dive</a><a class="headerlink" href="#07-iam-access-policies-deep-dive" title="Permanent link">&para;</a></h3>
+<p><strong>Q65.</strong> What are access policies composed of?</p>
+<p><strong>Answer:</strong> Subject, role(s) and resource (with optional attributes/conditions)</p>
+<p>Fine grained.</p>
+<p><strong>Q66.</strong> What's the best practice for admin access?</p>
+<p><strong>Answer:</strong> Least privilege and separate admin identities with MFA</p>
+<p>Reduce risk.</p>
+<p><strong>Q67.</strong> What do trusted profiles do?</p>
+<p><strong>Answer:</strong> Let compute resources/federated users assume roles without API keys</p>
+<p>Keyless.</p>
+<p><strong>Q68.</strong> What does context-based restriction do?</p>
+<p><strong>Answer:</strong> Limit access by network location/context</p>
+<p>Zero trust.</p>
+<h3 id="08-cicd-with-toolchains"><a href="../level-2/08-cicd-toolchains/">08 · CI/CD with Toolchains</a><a class="headerlink" href="#08-cicd-with-toolchains" title="Permanent link">&para;</a></h3>
+<p><strong>Q69.</strong> What does an IBM Cloud toolchain automate?</p>
+<p><strong>Answer:</strong> Build, test and deploy via Continuous Delivery pipelines</p>
+<p>Tekton pipelines.</p>
+<p><strong>Q70.</strong> What's Tekton?</p>
+<p><strong>Answer:</strong> Kubernetes-native pipeline resources (tasks, pipelines)</p>
+<p>Cloud-native CI/CD.</p>
+<p><strong>Q71.</strong> What should pipelines use for secrets?</p>
+<p><strong>Answer:</strong> Secrets Manager/credentials store, not plain variables</p>
+<p>Protect.</p>
+<p><strong>Q72.</strong> What gate should deploys have?</p>
+<p><strong>Answer:</strong> Tests and approvals for production</p>
+<p>Safe delivery.</p>
+<h3 id="09-schematics-workspaces-modules"><a href="../level-2/09-schematics-workspaces-modules/">09 · Schematics Workspaces &amp; Modules</a><a class="headerlink" href="#09-schematics-workspaces-modules" title="Permanent link">&para;</a></h3>
+<p><strong>Q73.</strong> Why split Schematics workspaces by environment/layer?</p>
+<p><strong>Answer:</strong> Isolate state and blast radius</p>
+<p>Network vs app.</p>
+<p><strong>Q74.</strong> What are Terraform modules?</p>
+<p><strong>Answer:</strong> Reusable parameterized configuration blocks</p>
+<p>DRY.</p>
+<p><strong>Q75.</strong> What shares values between workspaces?</p>
+<p><strong>Answer:</strong> Outputs consumed via remote state or variables</p>
+<p>Layering.</p>
+<p><strong>Q76.</strong> What does drift detection show?</p>
+<p><strong>Answer:</strong> Differences between deployed resources and configuration</p>
+<p>Fix drift.</p>
+<h3 id="10-project-highly-available-web-app"><a href="../level-2/10-project-ha-web-app/">10 · Project — Highly Available Web App</a><a class="headerlink" href="#10-project-highly-available-web-app" title="Permanent link">&para;</a></h3>
+<p><strong>Q77.</strong> What does the HA web app project combine?</p>
+<p><strong>Answer:</strong> Multi-zone VPC, load balancer, autoscaling instance group and managed DB</p>
+<p>Level 2 project.</p>
+<p><strong>Q78.</strong> How prove zone-failure survival?</p>
+<p><strong>Answer:</strong> Disable/stop a zone's instances and verify service continues</p>
+<p>Chaos test.</p>
+<p><strong>Q79.</strong> What health checks matter?</p>
+<p><strong>Answer:</strong> LB checks on the app's real health endpoint</p>
+<p>Meaningful.</p>
+<p><strong>Q80.</strong> What monitors availability?</p>
+<p><strong>Answer:</strong> Synthetic checks and alerts on error rate/latency</p>
+<p>SLOs.</p>
+<h2 id="level-3-advanced">Level 3 · Advanced<a class="headerlink" href="#level-3-advanced" title="Permanent link">&para;</a></h2>
+<h3 id="01-red-hat-openshift-on-ibm-cloud"><a href="../level-3/01-openshift-on-ibm-cloud/">01 · Red Hat OpenShift on IBM Cloud</a><a class="headerlink" href="#01-red-hat-openshift-on-ibm-cloud" title="Permanent link">&para;</a></h3>
+<p><strong>Q81.</strong> What is Red Hat OpenShift on IBM Cloud (ROKS)?</p>
+<p><strong>Answer:</strong> A managed OpenShift (enterprise Kubernetes) service</p>
+<p>Operators, routes.</p>
+<p><strong>Q82.</strong> What does OpenShift add to Kubernetes?</p>
+<p><strong>Answer:</strong> Built-in CI/CD, routes, security context constraints and an operator ecosystem</p>
+<p>Platform.</p>
+<p><strong>Q83.</strong> What are Routes?</p>
+<p><strong>Answer:</strong> OpenShift's way to expose services externally</p>
+<p>Ingress alternative.</p>
+<p><strong>Q84.</strong> What are SCCs?</p>
+<p><strong>Answer:</strong> Security Context Constraints controlling pod privileges</p>
+<p>Hardening.</p>
+<h3 id="02-advanced-networking-transit-gateway-vpn-direct-link"><a href="../level-3/02-advanced-networking/">02 · Advanced Networking (Transit Gateway, VPN, Direct Link)</a><a class="headerlink" href="#02-advanced-networking-transit-gateway-vpn-direct-link" title="Permanent link">&para;</a></h3>
+<p><strong>Q85.</strong> What do Direct Link and VPN provide?</p>
+<p><strong>Answer:</strong> Private or encrypted connectivity between on-prem and IBM Cloud</p>
+<p>Hybrid.</p>
+<p><strong>Q86.</strong> What's a VPC peering alternative at scale?</p>
+<p><strong>Answer:</strong> Transit Gateway hub-and-spoke</p>
+<p>Transitive.</p>
+<p><strong>Q87.</strong> What does Cloud Internet Services (CIS) provide?</p>
+<p><strong>Answer:</strong> DNS, global load balancing, WAF and DDoS protection</p>
+<p>Edge.</p>
+<p><strong>Q88.</strong> What limits blast radius in networks?</p>
+<p><strong>Answer:</strong> Segmentation with subnets, ACLs and security groups</p>
+<p>Defense.</p>
+<h3 id="03-security-compliance-security-advisor-key-protect"><a href="../level-3/03-security-compliance/">03 · Security &amp; Compliance (Security Advisor, Key Protect)</a><a class="headerlink" href="#03-security-compliance-security-advisor-key-protect" title="Permanent link">&para;</a></h3>
+<p><strong>Q89.</strong> What does Key Protect/HPCS provide?</p>
+<p><strong>Answer:</strong> Key management with BYOK/KYOK for envelope encryption</p>
+<p>Control.</p>
+<p><strong>Q90.</strong> What does Security and Compliance Center do?</p>
+<p><strong>Answer:</strong> Continuous posture and compliance scanning against profiles</p>
+<p>Findings.</p>
+<p><strong>Q91.</strong> What's shared responsibility?</p>
+<p><strong>Answer:</strong> IBM secures the platform; you secure configuration and data</p>
+<p>Know the line.</p>
+<p><strong>Q92.</strong> What does Secrets Manager do?</p>
+<p><strong>Answer:</strong> Stores and rotates secrets and certificates</p>
+<p>Central.</p>
+<h3 id="04-event-driven-architecture-event-streams-kafka"><a href="../level-3/04-event-driven-architecture/">04 · Event-Driven Architecture (Event Streams / Kafka)</a><a class="headerlink" href="#04-event-driven-architecture-event-streams-kafka" title="Permanent link">&para;</a></h3>
+<p><strong>Q93.</strong> What does Event Streams provide?</p>
+<p><strong>Answer:</strong> Managed Kafka for event streaming</p>
+<p>Pub/sub.</p>
+<p><strong>Q94.</strong> Why event-driven architecture?</p>
+<p><strong>Answer:</strong> Loose coupling and asynchronous scalability</p>
+<p>Decoupled services.</p>
+<p><strong>Q95.</strong> What must consumers be?</p>
+<p><strong>Answer:</strong> Idempotent because delivery can repeat</p>
+<p>At-least-once.</p>
+<p><strong>Q96.</strong> What's a dead-letter pattern?</p>
+<p><strong>Answer:</strong> Routing repeatedly failing messages aside for inspection</p>
+<p>Safe handling.</p>
+<h3 id="05-observability-at-scale-activity-tracker-sysdig"><a href="../level-3/05-observability-at-scale/">05 · Observability at Scale (Activity Tracker, Sysdig)</a><a class="headerlink" href="#05-observability-at-scale-activity-tracker-sysdig" title="Permanent link">&para;</a></h3>
+<p><strong>Q97.</strong> What does observability at scale require?</p>
+<p><strong>Answer:</strong> Logs, metrics and traces correlated across services</p>
+<p>Context.</p>
+<p><strong>Q98.</strong> What's distributed tracing for?</p>
+<p><strong>Answer:</strong> Following a request across microservices to find latency</p>
+<p>Instana/OTel.</p>
+<p><strong>Q99.</strong> What's alert fatigue?</p>
+<p><strong>Answer:</strong> Too many low-value alerts causing real issues to be missed</p>
+<p>Tune.</p>
+<p><strong>Q100.</strong> What do SLOs drive?</p>
+<p><strong>Answer:</strong> Alerting and reliability targets tied to users</p>
+<p>Error budgets.</p>
+<h3 id="06-multi-region-disaster-recovery"><a href="../level-3/06-multi-region-dr/">06 · Multi-Region &amp; Disaster Recovery</a><a class="headerlink" href="#06-multi-region-disaster-recovery" title="Permanent link">&para;</a></h3>
+<p><strong>Q101.</strong> What does multi-region DR need?</p>
+<p><strong>Answer:</strong> Replicated data, deployable infrastructure and tested failover</p>
+<p>RTO/RPO.</p>
+<p><strong>Q102.</strong> What are RTO and RPO?</p>
+<p><strong>Answer:</strong> Time to recover and acceptable data loss window</p>
+<p>Drive design.</p>
+<p><strong>Q103.</strong> Which DR strategy is cheapest?</p>
+<p><strong>Answer:</strong> Backup and restore (slowest RTO)</p>
+<p>Trade-offs.</p>
+<p><strong>Q104.</strong> How validate DR?</p>
+<p><strong>Answer:</strong> Regular failover tests/game days</p>
+<p>Prove it.</p>
+<h3 id="07-cost-management-governance"><a href="../level-3/07-cost-management-governance/">07 · Cost Management &amp; Governance</a><a class="headerlink" href="#07-cost-management-governance" title="Permanent link">&para;</a></h3>
+<p><strong>Q105.</strong> How track IBM Cloud cost?</p>
+<p><strong>Answer:</strong> Billing/usage reports, tags and budgets with alerts</p>
+<p>FinOps.</p>
+<p><strong>Q106.</strong> What does tagging enable?</p>
+<p><strong>Answer:</strong> Cost allocation by team/project</p>
+<p>Showback.</p>
+<p><strong>Q107.</strong> What are quick savings?</p>
+<p><strong>Answer:</strong> Delete idle resources and right-size</p>
+<p>Hygiene.</p>
+<p><strong>Q108.</strong> What governance control limits spend?</p>
+<p><strong>Answer:</strong> Budgets, resource quotas and policies</p>
+<p>Guardrails.</p>
+<h3 id="08-advanced-schematics-terraform-modules"><a href="../level-3/08-advanced-schematics-terraform/">08 · Advanced Schematics &amp; Terraform Modules</a><a class="headerlink" href="#08-advanced-schematics-terraform-modules" title="Permanent link">&para;</a></h3>
+<p><strong>Q109.</strong> What does a Terraform CI check include?</p>
+<p><strong>Answer:</strong> fmt, validate, lint/security scan and plan review</p>
+<p>Pipeline.</p>
+<p><strong>Q110.</strong> What does remote state locking prevent?</p>
+<p><strong>Answer:</strong> Concurrent applies corrupting state</p>
+<p>Safety.</p>
+<p><strong>Q111.</strong> Why pin provider versions?</p>
+<p><strong>Answer:</strong> Reproducible plans</p>
+<p>Stability.</p>
+<p><strong>Q112.</strong> What are policy-as-code checks?</p>
+<p><strong>Answer:</strong> Automated guardrails evaluated on plans (OPA/Sentinel-like)</p>
+<p>Compliance.</p>
+<h3 id="09-api-management-api-connect"><a href="../level-3/09-api-management/">09 · API Management (API Connect)</a><a class="headerlink" href="#09-api-management-api-connect" title="Permanent link">&para;</a></h3>
+<p><strong>Q113.</strong> What does API Connect/API Gateway provide?</p>
+<p><strong>Answer:</strong> Publishing, securing and governing APIs with plans, quotas and analytics</p>
+<p>API management.</p>
+<p><strong>Q114.</strong> How secure APIs?</p>
+<p><strong>Answer:</strong> AuthN/Z, rate limits, validation and TLS</p>
+<p>Defense.</p>
+<p><strong>Q115.</strong> What are API plans?</p>
+<p><strong>Answer:</strong> Usage tiers/quotas for consumers</p>
+<p>Monetize/limit.</p>
+<p><strong>Q116.</strong> Why version APIs?</p>
+<p><strong>Answer:</strong> Evolve without breaking consumers</p>
+<p>Compatibility.</p>
+<h3 id="10-project-multi-tier-microservices-platform"><a href="../level-3/10-project-microservices-platform/">10 · Project — Multi-Tier Microservices Platform</a><a class="headerlink" href="#10-project-multi-tier-microservices-platform" title="Permanent link">&para;</a></h3>
+<p><strong>Q117.</strong> What does the microservices platform combine?</p>
+<p><strong>Answer:</strong> ROKS, networking, security, events, observability and DR</p>
+<p>Level 3 project.</p>
+<p><strong>Q118.</strong> How prove resilience?</p>
+<p><strong>Answer:</strong> Failure injection and monitored recovery</p>
+<p>Evidence.</p>
+<p><strong>Q119.</strong> What's the delivery model?</p>
+<p><strong>Answer:</strong> GitOps/CI-CD with automated tests</p>
+<p>Repeatable.</p>
+<p><strong>Q120.</strong> What should be documented?</p>
+<p><strong>Answer:</strong> Architecture, runbooks and ownership</p>
+<p>Operate.</p>
+<h2 id="level-4-master">Level 4 · Master<a class="headerlink" href="#level-4-master" title="Permanent link">&para;</a></h2>
+<h3 id="01-enterprise-account-structure-iam-at-scale"><a href="../level-4/01-enterprise-account-iam-at-scale/">01 · Enterprise Account Structure &amp; IAM at Scale</a><a class="headerlink" href="#01-enterprise-account-structure-iam-at-scale" title="Permanent link">&para;</a></h3>
+<p><strong>Q121.</strong> Why enterprise accounts?</p>
+<p><strong>Answer:</strong> Central governance and billing across multiple accounts</p>
+<p>Account hierarchy.</p>
+<p><strong>Q122.</strong> What does IAM at scale rely on?</p>
+<p><strong>Answer:</strong> Access groups, trusted profiles and consistent policy templates</p>
+<p>Automation.</p>
+<p><strong>Q123.</strong> What's account separation for?</p>
+<p><strong>Answer:</strong> Isolating environments/teams with guardrails</p>
+<p>Blast radius.</p>
+<p><strong>Q124.</strong> How manage across accounts?</p>
+<p><strong>Answer:</strong> Enterprise-level policies and service ID/automation</p>
+<p>Consistency.</p>
+<h3 id="02-landing-zone-architecture"><a href="../level-4/02-landing-zone-architecture/">02 · Landing Zone Architecture</a><a class="headerlink" href="#02-landing-zone-architecture" title="Permanent link">&para;</a></h3>
+<p><strong>Q125.</strong> What's a landing zone?</p>
+<p><strong>Answer:</strong> A secured, pre-configured multi-account foundation with networking and IAM</p>
+<p>Deployable architecture.</p>
+<p><strong>Q126.</strong> What does it include?</p>
+<p><strong>Answer:</strong> Network segmentation, IAM, logging, key management and guardrails</p>
+<p>Secure by default.</p>
+<p><strong>Q127.</strong> Why deploy it with IaC?</p>
+<p><strong>Answer:</strong> Repeatable and auditable foundations</p>
+<p>Terraform.</p>
+<p><strong>Q128.</strong> What's a management/workload VPC split?</p>
+<p><strong>Answer:</strong> Separate admin and app networks connected via Transit Gateway</p>
+<p>Isolation.</p>
+<h3 id="03-hybrid-cloud-with-satellite"><a href="../level-4/03-hybrid-cloud-satellite/">03 · Hybrid Cloud with Satellite</a><a class="headerlink" href="#03-hybrid-cloud-with-satellite" title="Permanent link">&para;</a></h3>
+<p><strong>Q129.</strong> What is IBM Cloud Satellite?</p>
+<p><strong>Answer:</strong> Extends IBM Cloud services to on-prem/edge locations managed from the cloud</p>
+<p>Hybrid.</p>
+<p><strong>Q130.</strong> Why hybrid cloud?</p>
+<p><strong>Answer:</strong> Data residency, latency or existing infrastructure</p>
+<p>Constraints.</p>
+<p><strong>Q131.</strong> What's a Satellite location?</p>
+<p><strong>Answer:</strong> Your own infrastructure registered as a control-plane-managed location</p>
+<p>Hosts connect.</p>
+<p><strong>Q132.</strong> What's the operational trade-off?</p>
+<p><strong>Answer:</strong> You manage the hardware and connectivity</p>
+<p>Responsibility.</p>
+<h3 id="04-data-ai-services-watsonx-db2-warehouse"><a href="../level-4/04-data-ai-services/">04 · Data &amp; AI Services (watsonx, Db2 Warehouse)</a><a class="headerlink" href="#04-data-ai-services-watsonx-db2-warehouse" title="Permanent link">&para;</a></h3>
+<p><strong>Q133.</strong> What do data and AI services include?</p>
+<p><strong>Answer:</strong> Databases, analytics and watsonx services</p>
+<p>Platform.</p>
+<p><strong>Q134.</strong> What does watsonx.ai provide?</p>
+<p><strong>Answer:</strong> Foundation models and tools to build generative AI</p>
+<p>Prompt/tune.</p>
+<p><strong>Q135.</strong> What's data governance in AI?</p>
+<p><strong>Answer:</strong> Lineage, access control and quality for training data</p>
+<p>Trust.</p>
+<p><strong>Q136.</strong> How protect sensitive data in AI?</p>
+<p><strong>Answer:</strong> Minimize, mask and control access with encryption</p>
+<p>Privacy.</p>
+<h3 id="05-performance-scalability-engineering"><a href="../level-4/05-performance-scalability-engineering/">05 · Performance &amp; Scalability Engineering</a><a class="headerlink" href="#05-performance-scalability-engineering" title="Permanent link">&para;</a></h3>
+<p><strong>Q137.</strong> What drives performance engineering?</p>
+<p><strong>Answer:</strong> Measure, find bottlenecks, then scale or optimize</p>
+<p>Evidence.</p>
+<p><strong>Q138.</strong> What does load testing reveal?</p>
+<p><strong>Answer:</strong> Capacity and failure behavior under stress</p>
+<p>Before launch.</p>
+<p><strong>Q139.</strong> What's horizontal scaling?</p>
+<p><strong>Answer:</strong> Adding instances instead of bigger ones</p>
+<p>Elastic.</p>
+<p><strong>Q140.</strong> What does caching reduce?</p>
+<p><strong>Answer:</strong> Latency and backend load</p>
+<p>Careful invalidation.</p>
+<h3 id="06-security-deep-dive-hyper-protect-key-management"><a href="../level-4/06-security-deep-dive/">06 · Security Deep Dive (Hyper Protect, Key Management)</a><a class="headerlink" href="#06-security-deep-dive-hyper-protect-key-management" title="Permanent link">&para;</a></h3>
+<p><strong>Q141.</strong> What does defense in depth mean here?</p>
+<p><strong>Answer:</strong> Layers: IAM, network controls, encryption, monitoring and response</p>
+<p>Overlap.</p>
+<p><strong>Q142.</strong> What does CBR add?</p>
+<p><strong>Answer:</strong> Network-context rules limiting where API calls may originate</p>
+<p>Perimeter.</p>
+<p><strong>Q143.</strong> How detect threats?</p>
+<p><strong>Answer:</strong> Security services, logs and anomaly alerts into a SIEM</p>
+<p>Visibility.</p>
+<p><strong>Q144.</strong> What's key rotation for?</p>
+<p><strong>Answer:</strong> Limit exposure from compromised keys</p>
+<p>Lifecycle.</p>
+<h3 id="07-automation-pipelines-at-scale-gitops-schematics"><a href="../level-4/07-automation-pipelines-at-scale/">07 · Automation Pipelines at Scale (GitOps + Schematics)</a><a class="headerlink" href="#07-automation-pipelines-at-scale-gitops-schematics" title="Permanent link">&para;</a></h3>
+<p><strong>Q145.</strong> What does pipeline automation at scale need?</p>
+<p><strong>Answer:</strong> Reusable templates, policy checks and secure credentials</p>
+<p>Standardize.</p>
+<p><strong>Q146.</strong> What's a golden pipeline?</p>
+<p><strong>Answer:</strong> A standard pipeline teams reuse with built-in checks</p>
+<p>Paved road.</p>
+<p><strong>Q147.</strong> Why gate on security scans?</p>
+<p><strong>Answer:</strong> Stop vulnerable artifacts from deploying</p>
+<p>Shift left.</p>
+<p><strong>Q148.</strong> How handle approvals?</p>
+<p><strong>Answer:</strong> Automated checks plus human gates for prod</p>
+<p>Balance.</p>
+<h3 id="08-finops-enterprise-cost-optimization"><a href="../level-4/08-finops-cost-optimization/">08 · FinOps &amp; Enterprise Cost Optimization</a><a class="headerlink" href="#08-finops-enterprise-cost-optimization" title="Permanent link">&para;</a></h3>
+<p><strong>Q149.</strong> What's FinOps?</p>
+<p><strong>Answer:</strong> Cross-team practice to optimize cloud spend with visibility and accountability</p>
+<p>Culture.</p>
+<p><strong>Q150.</strong> What lowers cost safely?</p>
+<p><strong>Answer:</strong> Right-sizing, reservations/savings plans and cleanup</p>
+<p>Evidence.</p>
+<p><strong>Q151.</strong> What's showback vs chargeback?</p>
+<p><strong>Answer:</strong> Showing teams their costs vs billing them</p>
+<p>Accountability.</p>
+<p><strong>Q152.</strong> What's a cost anomaly?</p>
+<p><strong>Answer:</strong> Unexpected spend spike needing investigation</p>
+<p>Alerts.</p>
+<h3 id="09-site-reliability-engineering-on-ibm-cloud"><a href="../level-4/09-sre-on-ibm-cloud/">09 · Site Reliability Engineering on IBM Cloud</a><a class="headerlink" href="#09-site-reliability-engineering-on-ibm-cloud" title="Permanent link">&para;</a></h3>
+<p><strong>Q153.</strong> What does SRE on IBM Cloud emphasize?</p>
+<p><strong>Answer:</strong> SLOs, error budgets, automation and blameless postmortems</p>
+<p>Reliability.</p>
+<p><strong>Q154.</strong> What's an error budget?</p>
+<p><strong>Answer:</strong> The allowed unreliability that balances velocity and stability</p>
+<p>Policy.</p>
+<p><strong>Q155.</strong> What makes a good postmortem?</p>
+<p><strong>Answer:</strong> Timeline, root cause and follow-up actions without blame</p>
+<p>Learn.</p>
+<p><strong>Q156.</strong> What reduces toil?</p>
+<p><strong>Answer:</strong> Automating repetitive operational tasks</p>
+<p>SRE goal.</p>
+<h3 id="10-capstone-project"><a href="../level-4/10-capstone-project/">10 · Capstone Project</a><a class="headerlink" href="#10-capstone-project" title="Permanent link">&para;</a></h3>
+<p><strong>Q157.</strong> What does the capstone combine?</p>
+<p><strong>Answer:</strong> Landing zone, security, hybrid, automation, FinOps and SRE practices</p>
+<p>Enterprise platform.</p>
+<p><strong>Q158.</strong> How prove readiness?</p>
+<p><strong>Answer:</strong> DR drills, security review, cost report and SLO dashboards</p>
+<p>Evidence.</p>
+<p><strong>Q159.</strong> What documentation helps?</p>
+<p><strong>Answer:</strong> Architecture decisions, runbooks and ownership maps</p>
+<p>Operate.</p>
+<p><strong>Q160.</strong> What sustains the platform?</p>
+<p><strong>Answer:</strong> Governance, automation and continuous improvement</p>
+<p>Lifecycle.</p>
+<h2 id="mixed-questions-across-all-levels">Mixed questions across all levels<a class="headerlink" href="#mixed-questions-across-all-levels" title="Permanent link">&para;</a></h2>
+<p><strong>Q161.</strong> A VSI in a private subnet needs to be managed from your laptop. What's the least-exposed approach?</p>
+<p><strong>Answer:</strong> A VPN/bastion (or Transit Gateway/private access) rather than a public IP on the instance</p>
+<p>Minimize attack surface.</p>
+<p><strong>Q162.</strong> An application needs to write to Cloud Object Storage. What identity and role?</p>
+<p><strong>Answer:</strong> A service ID with a service access role Writer on that bucket/instance, using its API key from Secrets Manager</p>
+<p>Least privilege.</p>
+<p><strong>Q163.</strong> What's the difference between platform and service access roles?</p>
+<p><strong>Answer:</strong> Platform roles manage the resource (create/configure); service roles control data/operations inside the service</p>
+<p>Both are needed in different situations.</p>
+<p><strong>Q164.</strong> Which structure lets you survive the loss of one availability zone?</p>
+<p><strong>Answer:</strong> Subnets and instances spread across at least two zones behind a load balancer</p>
+<p>Multi-zone VPC.</p>
+<p><strong>Q165.</strong> A VPC's subnets overlap with the on-prem network. What problem will you hit?</p>
+<p><strong>Answer:</strong> You can't route between them via Direct Link/VPN/Transit Gateway; plan non-overlapping CIDRs</p>
+<p>Plan addressing early.</p>
+<p><strong>Q166.</strong> How many usable addresses does a /24 IBM Cloud VPC subnet have (5 reserved)?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Answer:</strong> 251</p>
+<p>Five addresses are reserved per subnet. Verified by running it.</p>
+<p><strong>Q167.</strong> A security group and a network ACL both apply. Which is stateful?</p>
+<p><strong>Answer:</strong> The security group (the ACL is stateless)</p>
+<p>Return traffic handling.</p>
+<p><strong>Q168.</strong> Where should database credentials for a Code Engine app come from?</p>
+<p><strong>Answer:</strong> Service credentials bound to the app or Secrets Manager, never in the image or Git</p>
+<p>Rotate and scope.</p>
+<p><strong>Q169.</strong> A function must react to new objects in COS. Which model fits?</p>
+<p><strong>Answer:</strong> Event-driven: a trigger/notification invoking an action</p>
+<p>Loose coupling.</p>
+<p><strong>Q170.</strong> Queue consumers sometimes get the same message twice. What must handlers be?</p>
+<p><strong>Answer:</strong> Idempotent</p>
+<p>At-least-once delivery.</p>
+<p><strong>Q171.</strong> Traffic is spiky and mostly idle. Which compute option minimizes cost?</p>
+<p><strong>Answer:</strong> Serverless (Code Engine/Functions) scaling to zero</p>
+<p>Pay for use.</p>
+<p><strong>Q172.</strong> A deployment drifted because someone edited a resource in the console. How do you prevent this?</p>
+<p><strong>Answer:</strong> Manage infrastructure through Schematics/Terraform and detect/fix drift</p>
+<p>Infrastructure as code.</p>
+<p><strong>Q173.</strong> Terraform applies run concurrently and corrupt state. What helps?</p>
+<p><strong>Answer:</strong> Remote state with locking (Schematics workspaces serialize runs)</p>
+<p>Safety.</p>
+<p><strong>Q174.</strong> Which encryption approach gives you control of the keys?</p>
+<p><strong>Answer:</strong> Bring your own key with Key Protect or HPCS (customer-managed keys)</p>
+<p>Envelope encryption.</p>
+<p><strong>Q175.</strong> Which target defines how much data loss is acceptable after a disaster?</p>
+<p><strong>Answer:</strong> RPO (RTO is the recovery time)</p>
+<p>Design replication to meet it.</p>
+<p><strong>Q176.</strong> An audit asks 'who deleted this bucket?'. Which service answers it?</p>
+<p><strong>Answer:</strong> Activity Tracker (audit events)</p>
+<p>Who did what.</p>
+<p><strong>Q177.</strong> Monthly cost doubled. What do you check first?</p>
+<p><strong>Answer:</strong> Usage/billing reports by tag and resource, then idle or oversized resources</p>
+<p>FinOps basics.</p>
+<p><strong>Q178.</strong> Which practice makes a landing zone repeatable and auditable?</p>
+<p><strong>Answer:</strong> Deploy it as code with reviewed pipelines</p>
+<p>Deployable architectures.</p>
+<p><strong>Q179.</strong> What does an SRE error budget do?</p>
+<p><strong>Answer:</strong> Balances release velocity against reliability, pausing risky changes when the budget is spent</p>
+<p>Policy tool.</p>
+<h2 id="practical-coding-questions">Practical coding questions<a class="headerlink" href="#practical-coding-questions" title="Permanent link">&para;</a></h2>
+<h3 id="plan-a-multi-zone-vpc">Plan a multi-zone VPC<a class="headerlink" href="#plan-a-multi-zone-vpc" title="Permanent link">&para;</a></h3>
+<p>Implement plan_vpc(zones, tiers): carve a /18 address prefix per zone from 10.240.0.0/16 and allocate one /24 subnet per tier inside each zone's prefix, in order. Verify there are no overlaps and compute usable addresses per subnet (IBM Cloud reserves 5).</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>import ipaddress
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>def plan_vpc(zones, tiers, prefix_len=24, base="10.240.0.0/16"):
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    # give each zone its own /18 address prefix carved from base; inside each zone's prefix allocate one
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    # /prefix_len subnet per tier (in order). Return {zone: {tier: cidr}}; raise ValueError if
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    # there are too many zones or tiers to fit.
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    return {}
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>plan = plan_vpc(["us-south-1", "us-south-2", "us-south-3"], ["web", "app", "db"])
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>for z, tiers in plan.items():
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    print(z, tiers)
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>nets = [ipaddress.ip_network(c) for t in plan.values() for c in t.values()]
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>print("subnets:", len(nets), "overlaps:", any(a.overlaps(b) for i, a in enumerate(nets) for b in nets[i + 1:]))
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>print("usable per subnet:", nets[0].num_addresses - 5)
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>us-south-1 {'web': '10.240.0.0/24', 'app': '10.240.1.0/24', 'db': '10.240.2.0/24'}
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>us-south-2 {'web': '10.240.64.0/24', 'app': '10.240.65.0/24', 'db': '10.240.66.0/24'}
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>us-south-3 {'web': '10.240.128.0/24', 'app': '10.240.129.0/24', 'db': '10.240.130.0/24'}
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>subnets: 9 overlaps: False
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>usable per subnet: 251
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+import ipaddress
+
+def plan_vpc(zones, tiers, prefix_len=24, base="10.240.0.0/16"):
+    """One subnet per tier per zone, taken from per-zone address prefixes of the VPC (like IBM Cloud
+    address prefixes), never overlapping. Returns {zone: {tier: cidr}}."""
+    base_net = ipaddress.ip_network(base)
+    zone_prefix = 18                                   # each zone owns a /18 address prefix
+    zone_nets = list(base_net.subnets(new_prefix=zone_prefix))
+    if len(zones) &gt; len(zone_nets):
+        raise ValueError("too many zones")
+    plan = {}
+    for zone, znet in zip(zones, zone_nets):
+        subs = list(znet.subnets(new_prefix=prefix_len))
+        if len(tiers) &gt; len(subs):
+            raise ValueError("too many tiers")
+        plan[zone] = {tier: str(sub) for tier, sub in zip(tiers, subs)}
+    return plan
+
+plan = plan_vpc(["us-south-1", "us-south-2", "us-south-3"], ["web", "app", "db"])
+for z, tiers in plan.items():
+    print(z, tiers)
+nets = [ipaddress.ip_network(c) for t in plan.values() for c in t.values()]
+print("subnets:", len(nets), "overlaps:", any(a.overlaps(b) for i, a in enumerate(nets) for b in nets[i + 1:]))
+print("usable per subnet:", nets[0].num_addresses - 5)
+```
+
+Giving each zone its own address prefix and subnetting inside it keeps zones isolated and the plan non-overlapping. IBM Cloud reserves five addresses per subnet, so a /24 has 251 usable. Verified by running the solution.
+</code></pre></div>
+<h3 id="evaluate-iam-access-policies">Evaluate IAM access policies<a class="headerlink" href="#evaluate-iam-access-policies" title="Permanent link">&para;</a></h3>
+<p>Implement allowed(user, kind, service, group, needed_role): subjects are the user's access groups (or the user/service ID itself); a policy matches by subject, kind (platform vs service role), service and resource group ("*" matches anything) and grants if its role's rank is at least the needed role's rank.</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ROLE_RANK = {"Viewer": 1, "Reader": 1, "Operator": 2, "Writer": 2, "Editor": 3, "Manager": 3, "Administrator": 4}
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>POLICIES = [
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    # (subject, kind, role, service, resource_group)  kind: platform manages the service, service accesses its data
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    ("group:devs",   "service",  "Writer",  "cloud-object-storage", "dev"),
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    ("group:devs",   "platform", "Editor",  "is",                   "dev"),
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    ("group:ops",    "platform", "Administrator", "is",              "*"),
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    ("group:audit",  "platform", "Viewer",  "*",                    "*"),
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    ("serviceid:ci", "service",  "Writer",  "cloud-object-storage", "dev"),
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>]
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>MEMBERS = {"ada": ["group:devs"], "bo": ["group:ops"], "cy": ["group:audit"], "dan": []}
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>def allowed(user, kind, service, group, needed_role):
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    # a user's subjects are MEMBERS[user] (their access groups) or [user] itself (e.g. a service ID).
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    # allow if any POLICY matches subject, kind, service ("*" matches any) and resource group ("*" any)
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    # with a role whose rank is &gt;= the needed role's rank (platform and service roles are separate "kinds")
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    return False
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>checks = [
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    ("ada", "service", "cloud-object-storage", "dev", "Writer"),
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    ("ada", "service", "cloud-object-storage", "prod", "Writer"),
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    ("ada", "platform", "is", "dev", "Editor"),
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    ("ada", "platform", "is", "dev", "Administrator"),
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    ("bo", "platform", "is", "prod", "Operator"),
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    ("cy", "platform", "cloud-object-storage", "prod", "Viewer"),
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    ("cy", "service", "cloud-object-storage", "prod", "Reader"),
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    ("dan", "platform", "is", "dev", "Viewer"),
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>    ("serviceid:ci", "service", "cloud-object-storage", "dev", "Reader"),
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>]
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>for c in checks:
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>    print(("ALLOW" if allowed(*c) else "DENY ").ljust(6), *c)
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ALLOW  ada service cloud-object-storage dev Writer
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>DENY   ada service cloud-object-storage prod Writer
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>ALLOW  ada platform is dev Editor
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>DENY   ada platform is dev Administrator
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ALLOW  bo platform is prod Operator
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>ALLOW  cy platform cloud-object-storage prod Viewer
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>DENY   cy service cloud-object-storage prod Reader
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>DENY   dan platform is dev Viewer
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>ALLOW  serviceid:ci service cloud-object-storage dev Reader
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+ROLE_RANK = {"Viewer": 1, "Reader": 1, "Operator": 2, "Writer": 2, "Editor": 3, "Manager": 3, "Administrator": 4}
+
+POLICIES = [
+    # (subject, kind, role, service, resource_group)  kind: platform manages the service, service accesses its data
+    ("group:devs",   "service",  "Writer",  "cloud-object-storage", "dev"),
+    ("group:devs",   "platform", "Editor",  "is",                   "dev"),
+    ("group:ops",    "platform", "Administrator", "is",              "*"),
+    ("group:audit",  "platform", "Viewer",  "*",                    "*"),
+    ("serviceid:ci", "service",  "Writer",  "cloud-object-storage", "dev"),
+]
+MEMBERS = {"ada": ["group:devs"], "bo": ["group:ops"], "cy": ["group:audit"], "dan": []}
+
+def allowed(user, kind, service, group, needed_role):
+    subjects = MEMBERS.get(user, [user])
+    for subject, k, role, svc, rg in POLICIES:
+        if subject not in subjects or k != kind:
+            continue
+        if svc not in ("*", service) or rg not in ("*", group):
+            continue
+        if ROLE_RANK[role] &gt;= ROLE_RANK[needed_role]:
+            return True
+    return False
+
+checks = [
+    ("ada", "service", "cloud-object-storage", "dev", "Writer"),
+    ("ada", "service", "cloud-object-storage", "prod", "Writer"),
+    ("ada", "platform", "is", "dev", "Editor"),
+    ("ada", "platform", "is", "dev", "Administrator"),
+    ("bo", "platform", "is", "prod", "Operator"),
+    ("cy", "platform", "cloud-object-storage", "prod", "Viewer"),
+    ("cy", "service", "cloud-object-storage", "prod", "Reader"),
+    ("dan", "platform", "is", "dev", "Viewer"),
+    ("serviceid:ci", "service", "cloud-object-storage", "dev", "Reader"),
+]
+for c in checks:
+    print(("ALLOW" if allowed(*c) else "DENY ").ljust(6), *c)
+```
+
+Policies attach to groups and service IDs, scope to a service and resource group, and platform roles are separate from service roles. A user with no group gets nothing by default (deny by default). This is a simplified model of IBM Cloud IAM. Verified by running the solution.
+</code></pre></div>
+<hr />
+<p>More free practice: the <a href="../">IBM Cloud Mastery Path</a> curriculum, the <a href="https://learnmasterypath.com/interview-pack/">Interview Prep Pack</a> and the <a href="https://learnmasterypath.com/resume/">free resume ATS check</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+  <nav class="mp-related" aria-label="Related free courses">
+    <h2>Related free courses</h2>
+    <ul>
+      <li><a href="https://learnmasterypath.com/aws-mastery-path/">AWS</a></li><li><a href="https://learnmasterypath.com/azure-mastery-path/">Azure</a></li><li><a href="https://learnmasterypath.com/gcp-mastery-path/">GCP</a></li><li><a href="https://learnmasterypath.com/adobe-mastery-path/">Adobe</a></li>
+      <li><a href="https://learnmasterypath.com/">All 100+ courses &rarr;</a></li>
+    </ul>
+  </nav>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cheat-sheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Cheat Sheet">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Cheat Sheet
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="mp-foot">
+    <div class="mp-foot-inner">
+      <a class="mp-foot-brand" href="https://learnmasterypath.com/"><svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg><span>Mastery Path</span></a>
+      <nav class="mp-sitelinks" aria-label="Site and legal links">
+        <a href="https://learnmasterypath.com/">All courses</a>
+        <a href="https://learnmasterypath.com/about.html">About</a>
+        <a href="https://learnmasterypath.com/contact.html">Contact</a>
+        <a href="https://learnmasterypath.com/ibm-cloud-mastery-path/privacy/">Privacy Policy</a>
+        <a href="https://learnmasterypath.com/terms.html">Terms</a>
+        <a href="https://learnmasterypath.com/ibm-cloud-mastery-path/license/">License</a>
+        <a href="https://learnmasterypath.com/verify/">Verify a certificate</a>
+      </nav>
+    </div>
+    <p class="mp-license-note">
+      © 2026 Vinod Kumar Sigilipelli · Except where otherwise noted, lesson content is licensed under
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code examples under the
+      <a href="https://opensource.org/license/mit">MIT License</a>.
+    </p>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.path", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../javascripts/progress-tracker.js"></script>
+      
+        <script src="../javascripts/final-quiz.js"></script>
+      
+    
+  </body>
+</html>
