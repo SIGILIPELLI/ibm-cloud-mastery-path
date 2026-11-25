@@ -8,7 +8,7 @@ description: "Free IBM Cloud course from beginner to advanced -- hands-on cloud 
 A structured, module-wise IBM Cloud training program that takes you from
 creating your first Lite-tier account to designing production-grade,
 enterprise landing zones — with runnable `ibmcloud` CLI commands and config
-snippets in every module and a hands-on project at the end of each level.
+snippets in every module and a hands-on project at the end of Levels 1–3 and a capstone at the end of Level 4.
 
 ## How the program is organized
 
@@ -24,7 +24,7 @@ snippets in every module and a hands-on project at the end of each level.
 - Work through each level in order — later modules assume earlier ones.
 - Every topic page has runnable CLI commands and config snippets — copy them
   into a terminal with the `ibmcloud` CLI installed, or into your own project.
-- Each level ends with a project that combines everything learned in that level.
+- Levels 1–3 each end with a project that combines everything learned in that level, and Level 4 ends with the course capstone.
 - Use the search bar (top of the page) to jump straight to a topic.
 - Level 1 is built entirely around the **Lite (free) account tier** — the
   capstone project includes explicit teardown steps so nothing keeps billing
